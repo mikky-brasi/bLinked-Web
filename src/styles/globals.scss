@@ -1,24 +1,46 @@
 @font-face {
-    font-family: GT Walsheim PRO;
-    // src: url('./assets/TYPOGRAPHY/GT Walsheim Pro/GTWalsheimPro-Black.ttf');
-    // src: url('./assets/TYPOGRAPHY/GT Walsheim Pro/GTWalsheimPro-Bold.ttf');
-    // src: url('./assets/TYPOGRAPHY/GT Walsheim Pro/GTWalsheimPro-Light.ttf');
-    // src: url('./assets/TYPOGRAPHY/GT Walsheim Pro/GTWalsheimPro-Medium.ttf');
-    // src: url('./assets/TYPOGRAPHY/GT Walsheim Pro/GTWalsheimPro-Regular.ttf');
-    // src: url('./assets/TYPOGRAPHY/GT Walsheim Pro/GTWalsheimPro-Thin.ttf');
-    src: url('./assets/TYPOGRAPHY/adineue PRO/adineue PRO Bold Web Regular.ttf');
-    src: url('./assets/TYPOGRAPHY/adineue PRO/adineue PRO Bold.ttf');
-    src: url('./assets/TYPOGRAPHY/adineue PRO/adineue PRO KZ Bold.ttf');
-    src: url('./assets/TYPOGRAPHY/adineue PRO/adineue PRO KZ Light.ttf');
-    src: url('./assets/TYPOGRAPHY/adineue PRO/adineue PRO.ttf');
- }
+  font-family: GT Walsheim PRO;
+  // src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Black.ttf");
+  // src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Bold.ttf");
+  // src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Light.ttf");
+  // src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Medium.ttf");
+  // src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Regular.ttf");
+  // src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Thin.ttf");
+  src: url("/fonts/adineue PRO/adineue PRO Bold Web Regular.ttf");
+  src: url("/fonts/adineue PRO/adineue PRO Bold.ttf");
+  src: url("/fonts/adineue PRO/adineue PRO KZ Bold.ttf");
+  src: url("/fonts/adineue PRO/adineue PRO KZ Light.ttf");
+  src: url("/fonts/adineue PRO/adineue PRO.ttf");
+}
 
- body {
-     width: 100%;
- }
+@layer base {
+  @font-face {
+    font-family: 'GT Walsheim Pro';
+    font-weight: 300;
+    src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Light.woff2") format('woff2'),
+    url("/fonts/GT Walsheim Pro/GTWalsheimPro-Light.woff") format('woff');
+  }
+  @font-face {
+    font-family: 'GT Walsheim Pro';
+    font-weight: 400;
+    src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Regular.woff2") format('woff2'),
+    url("/fonts/GT Walsheim Pro/GTWalsheimPro-Regular.woff") format('woff');
+  }
+  @font-face {
+    font-family: 'GT Walsheim Pro';
+    font-weight: 700;
+    src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Bold.woff2") format('woff2'),
+    url("/fonts/GT Walsheim Pro/GTWalsheimPro-Bold.woff") format('woff');
+  }
+}
+
+body {
+  width: 100%;
+  font-family: "GT Walsheim Pro", sans-serif;
+}
 
 .auth-main {
-  background: url(./assets/img/background.png);
+  background: url(/img/background.png);
   height: 100vh;
   overflow-y: auto;
   display: flex;
