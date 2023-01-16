@@ -24,7 +24,6 @@ export default function OrderDetailsModal({ show, setShow, itemStatus, setItemSt
     const [agentSearch, setAgentSearch] = useState("");
     const [agents, setAgents] = useState(agentsData)
 
-    // TODO: fix this
     const handleModal = (status) => {
         setSearchResult(false);
         setAgentSearch("");

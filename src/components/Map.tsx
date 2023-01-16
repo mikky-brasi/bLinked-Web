@@ -109,7 +109,7 @@ const MapComponent = (props: IProvidedProps) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover id="inactive-agents" className='py-2 px-3 text-center text-20'>
+                                    <Popover className='py-2 px-3 text-center text-20'>
                                         <span className='d-block mb-1 home-agent-type'>Inactive Agents</span>
                                         <span className='home-agent-text-grey'>300</span>
                                     </Popover>
@@ -123,7 +123,7 @@ const MapComponent = (props: IProvidedProps) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover id="unavailable-agents" className='py-2 px-3 text-center text-16'>
+                                    <Popover className='py-2 px-3 text-center text-16'>
                                         <span className='d-block mb-1 home-agent-type'>Unavailable Agents</span>
                                         <span className='home-agent-text-pink'>130</span>
                                     </Popover>
@@ -139,7 +139,7 @@ const MapComponent = (props: IProvidedProps) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover id="available-agents" className='py-2 px-3 text-center text-16'>
+                                    <Popover className='py-2 px-3 text-center text-16'>
                                         <span className='d-block mb-1 home-agent-type'>Available Agents</span>
                                         <span className='home-agent-text-green'>500</span>
                                     </Popover>
@@ -153,7 +153,7 @@ const MapComponent = (props: IProvidedProps) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover id="active-agents" className='py-2 px-3 text-center text-16'>
+                                    <Popover className='py-2 px-3 text-center text-16'>
                                         <span className='d-block mb-1 home-agent-type'>Active Agents</span>
                                         <span className='home-agent-text-blue'>100</span>
                                     </Popover>

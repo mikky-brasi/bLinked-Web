@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // Icons
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
-import { MdAdd } from "react-icons/md";
+import { MdAdd } from 'react-icons/md'
 import { ImSearch } from "react-icons/im";
 // Components
 import RatingCard from "../components/RatingCard";
@@ -20,20 +20,16 @@ const AgentsPage = () => {
     const [show, setShow] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const [selectedAgent, setSelectedAgent] = useState(null);
-    const [modalAction, setModalAction] = useState("");
+    const [modalAction, setModalAction] = useState('');
     const [itemStatus, setItemStatus] = useState("New");
     const [agents, setAgents] = useState(agent);
 
     const [filter, setFilter] = useState("All");
     const [agentSearch, setOrderSearch] = useState("");
 
-    const handleOrderSearch = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setOrderSearch(e.target.value);
+    const handleOrderSearch = (e: React.ChangeEvent<HTMLInputElement>) => setOrderSearch(e.target.value);
 
-    useEffect(
-        () => setAgents(filterAgents(agent, agentSearch, filter)),
-        [agentSearch, filter]
-    );
+    useEffect(() => setAgents(filterAgents(agent, agentSearch, filter)), [agentSearch, filter]);
 
     return (
         <Dashboard title="Agents">
@@ -81,37 +77,22 @@ const AgentsPage = () => {
                     <div className="orders-container py-4 ">
                         <div className="d-md-flex justify-content-between px-4 align-items-center">
                             <div className="d-md-flex">
-                                <FilterOrdersDropdown
-                                    setFilter={setFilter}
-                                    page="agents"
-                                />
+                                <FilterOrdersDropdown setFilter={setFilter} page="agents" />
 
                                 <div className="orders-orderSearch-input mt-md-0 mb-3 mb-md-0">
-                                    <span>
-                                        <ImSearch size={15} color="#A3A3C2" />
-                                    </span>
-                                    <input
-                                        type="text"
-                                        placeholder="Search agents"
-                                        value={agentSearch}
-                                        onChange={handleOrderSearch}
-                                    />
+                                    <span><ImSearch size={15} color="#A3A3C2" /></span>
+                                    <input type="text" placeholder="Search agents" value={agentSearch} onChange={handleOrderSearch} />
                                 </div>
                             </div>
                             <div>
                                 <button
                                     className="filter-btn d-flex justify-content-between align-items-center"
                                     onClick={() => {
-                                        setModalAction("Add");
+                                        setModalAction('Add');
                                         setShow(true);
                                     }}
                                 >
-                                    <MdAdd
-                                        color="#FFF"
-                                        fontWeight={700}
-                                        size={24}
-                                    />
-                                    &nbsp;Add Agent
+                                    <MdAdd color="#FFF" fontWeight={700} size={24} />&nbsp;Add Agent
                                 </button>
                             </div>
                         </div>
@@ -128,7 +109,8 @@ const AgentsPage = () => {
                                 setModalAction={setModalAction}
                             />
                         </div>
-                        <div className="order-pagination-container px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
+                        <div
+                            className="order-pagination-container px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
                             <div className="my-2">Showing 9 of 290 agents</div>
                             <div className="d-md-flex">
                                 <div className="d-flex align-items-center">
@@ -165,12 +147,7 @@ const AgentsPage = () => {
 
                 <div className="px-md-4 px-2 mb-4"></div>
 
-                <AgentActionModal
-                    show={show}
-                    setShow={setShow}
-                    action={modalAction}
-                    selected={selectedAgent}
-                />
+                <AgentActionModal show={show} setShow={setShow} action={modalAction} selected={selectedAgent}/>
             </div>
         </Dashboard>
     );

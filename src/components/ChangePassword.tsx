@@ -13,7 +13,7 @@ const SettingsChangePassword = () => {
   const [userErr, setUserErr] = useState({
     currentpasswordErr: false,
     newpasswordErr: false,
-    confirmpasswordErr: false,
+    confirmpasswordErr: false
   });
 
   const [userFocus, setUserFocus] = useState({
@@ -23,9 +23,9 @@ const SettingsChangePassword = () => {
   });
 
   const [passwordType, setPasswordType] = useState({
-    currentpasswordType: "password",
-    newpasswordType: "password",
-    confirmpasswordType: "password",
+    currentpasswordType: 'password',
+    newpasswordType: 'password',
+    confirmpasswordType: 'password'
   });
 
   const [newPasswordError, setNewPasswordError] = useState("");
@@ -47,19 +47,23 @@ const SettingsChangePassword = () => {
     if (name === "currentpassword") {
       if (!value) {
         setUserErr({ ...userErr, currentpasswordErr: true });
-      } else if (!validator.isStrongPassword(value)) {
+      }
+      else if (!validator.isStrongPassword(value)) {
         setUserErr({ ...userErr, currentpasswordErr: true });
-        setNewPasswordError("");
+        setNewPasswordError("")
       } else {
         setUserErr({ ...userErr, currentpasswordErr: false });
       }
-    } else if (name === "newpassword") {
+    }
+    else if (name === 'newpassword') {
       if (!value) {
         setUserErr({ ...userErr, newpasswordErr: true });
-      } else if (value === user.currentpassword) {
+      }
+      else if (value === user.currentpassword) {
         setUserErr({ ...userErr, newpasswordErr: true });
         setNewPasswordError("New password cannot be the same as old password");
-      } else if (!validator.isStrongPassword(value)) {
+      }
+      else if (!validator.isStrongPassword(value)) {
         setUserErr({ ...userErr, newpasswordErr: true });
         setNewPasswordError(`Enter a strong password containing at least 8 characters with
         1 lower case letter, 1 upper case letter, 1 number and 1 special character`);
@@ -69,7 +73,8 @@ const SettingsChangePassword = () => {
     } else {
       if (!value && user.newpassword !== null) {
         setUserErr({ ...userErr, confirmpasswordErr: true });
-      } else if (value !== user.newpassword) {
+      }
+      else if (value !== user.newpassword) {
         setUserErr({ ...userErr, confirmpasswordErr: true });
       } else {
         setUserErr({ ...userErr, confirmpasswordErr: false });
@@ -77,31 +82,29 @@ const SettingsChangePassword = () => {
     }
   };
 
-  const handlePassType = (
-    e: React.MouseEvent<HTMLImageElement, MouseEvent>
-  ) => {
+  const handlePassType = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     const { id } = e.target as HTMLImageElement;
 
-    if (id === "currentpassword") {
-      if (passwordType.currentpasswordType === "password") {
-        setPasswordType({ ...passwordType, currentpasswordType: "text" });
+    if (id === 'currentpassword') {
+      if (passwordType.currentpasswordType === 'password') {
+        setPasswordType({ ...passwordType, currentpasswordType: 'text' })
       } else {
-        setPasswordType({ ...passwordType, currentpasswordType: "password" });
+        setPasswordType({ ...passwordType, currentpasswordType: 'password' })
       }
-    } else if (id === "newpassword") {
-      if (passwordType.newpasswordType === "password") {
-        setPasswordType({ ...passwordType, newpasswordType: "text" });
+    } else if (id === 'newpassword') {
+      if (passwordType.newpasswordType === 'password') {
+        setPasswordType({ ...passwordType, newpasswordType: 'text' })
       } else {
-        setPasswordType({ ...passwordType, newpasswordType: "password" });
+        setPasswordType({ ...passwordType, newpasswordType: 'password' })
       }
     } else {
-      if (passwordType.confirmpasswordType === "password") {
-        setPasswordType({ ...passwordType, confirmpasswordType: "text" });
+      if (passwordType.confirmpasswordType === 'password') {
+        setPasswordType({ ...passwordType, confirmpasswordType: 'text' })
       } else {
-        setPasswordType({ ...passwordType, confirmpasswordType: "password" });
+        setPasswordType({ ...passwordType, confirmpasswordType: 'password' })
       }
     }
-  };
+  }
 
   const handleClick = () => {
     const { currentpassword, newpassword, confirmpassword } = user;
@@ -114,18 +117,18 @@ const SettingsChangePassword = () => {
       setUserErr({
         ...userErr,
         newpasswordErr: !newpassword ? true : false,
-      });
+      })
       setNewPasswordError(`Enter a strong password containing at least 8 characters with
         1 lower case letter, 1 upper case letter, 1 number and 1 special character`);
     } else if (!confirmpassword && !userErr.confirmpasswordErr) {
       setUserErr({
         ...userErr,
         confirmpasswordErr: !confirmpassword ? true : false,
-      });
+      })
     } else if (userErr.newpasswordErr || userErr.confirmpasswordErr) {
       return;
     }
-  };
+  }
 
   return (
     <>
@@ -141,22 +144,16 @@ const SettingsChangePassword = () => {
               <div
                 className={
                   userFocus.currentpassword
-                    ? userErr.currentpasswordErr
-                      ? "input-box active w-100 forgot-email-border"
+                    ? userErr.currentpasswordErr ?
+                      "input-box active w-100 forgot-email-border"
                       : "input-box active w-100"
                     : userErr.currentpasswordErr
-                    ? "input-box w-100 forgot-email-border"
-                    : "input-box w-100"
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <div>
-                  <Image
-                    src={eye}
-                    alt="Eye"
-                    className="img-fluid"
-                    id="currentpassword"
-                    onClick={handlePassType}
-                  />
+                  <Image src={eye} alt="Eye" className="img-fluid" id="currentpassword" onClick={handlePassType} />
                 </div>
                 <label>Current password</label>
                 <input
@@ -184,30 +181,23 @@ const SettingsChangePassword = () => {
                   : "d-none"
               }
             >
-              Enter a strong password containing at least 8 characters with 1
-              lower case letter, 1 upper case letter, 1 number and 1 special
-              character
+              Enter a strong password containing at least 8 characters with
+              1 lower case letter, 1 upper case letter, 1 number and 1 special character
             </div>
             <div className="col-lg-12 mt-md-4 mt-4 auth-input-container">
               <div
                 className={
                   userFocus.newpassword
-                    ? userErr.newpasswordErr
-                      ? "input-box active w-100 forgot-email-border"
+                    ? userErr.newpasswordErr ?
+                      "input-box active w-100 forgot-email-border"
                       : "input-box active w-100"
                     : userErr.newpasswordErr
-                    ? "input-box w-100 forgot-email-border"
-                    : "input-box w-100"
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <div>
-                  <Image
-                    src={eye}
-                    alt="Eye"
-                    className="img-fluid"
-                    id="newpassword"
-                    onClick={handlePassType}
-                  />
+                  <Image src={eye} alt="Eye" className="img-fluid" id="newpassword" onClick={handlePassType} />
                 </div>
                 <label>New password</label>
                 <input
@@ -241,22 +231,16 @@ const SettingsChangePassword = () => {
               <div
                 className={
                   userFocus.confirmpassword
-                    ? userErr.confirmpasswordErr
-                      ? "input-box active w-100 forgot-email-border"
+                    ? userErr.confirmpasswordErr ?
+                      "input-box active w-100 forgot-email-border"
                       : "input-box active w-100"
                     : userErr.confirmpasswordErr
-                    ? "input-box w-100 forgot-email-border"
-                    : "input-box w-100"
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <div>
-                  <Image
-                    src={eye}
-                    alt="Eye"
-                    className="img-fluid"
-                    id="confirmpassword"
-                    onClick={handlePassType}
-                  />
+                  <Image src={eye} alt="Eye" className="img-fluid" id="confirmpassword" onClick={handlePassType} />
                 </div>
                 <label>Confirm password</label>
                 <input

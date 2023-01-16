@@ -6,11 +6,11 @@
   // src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Medium.ttf");
   // src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Regular.ttf");
   // src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Thin.ttf");
-  src: url("/fonts/adineue PRO/adineue PRO Bold Web Regular.ttf");
-  src: url("/fonts/adineue PRO/adineue PRO Bold.ttf");
-  src: url("/fonts/adineue PRO/adineue PRO KZ Bold.ttf");
-  src: url("/fonts/adineue PRO/adineue PRO KZ Light.ttf");
-  src: url("/fonts/adineue PRO/adineue PRO.ttf");
+  src: url('/fonts/adineue PRO/adineue PRO Bold Web Regular.ttf');
+  src: url('/fonts/adineue PRO/adineue PRO Bold.ttf');
+  src: url('/fonts/adineue PRO/adineue PRO KZ Bold.ttf');
+  src: url('/fonts/adineue PRO/adineue PRO KZ Light.ttf');
+  src: url('/fonts/adineue PRO/adineue PRO.ttf');
 }
 
  body {
@@ -18,7 +18,7 @@
  }
 
 .auth-main {
-  background: url("/img/background.png");
+  background: url('/img/background.png');
   height: 100vh;
   overflow-y: auto;
   display: flex;

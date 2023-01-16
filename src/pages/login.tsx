@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import validator from "validator";
-import { google, eye, hiddenEye, partical, partical2, partical3, partical4, partical5, loginVectorA, validemail } from "../../assets/img";
-import bLinkedLogo from '../../assets/landing/bLinkedLogo.svg';
+import { google, eye, hiddenEye, partical, partical2, partical3, partical4, partical5, loginVectorA, validemail } from "../../public/img";
+import bLinkedLogo from '../../public/landing/bLinkedLogo.svg';
 import GoogleLogin, { GoogleLoginProps, GoogleLoginResponse } from "react-google-login";
 import { OAuth2Client } from "google-auth-library";
 import Image from "next/image";
@@ -73,15 +73,17 @@ const SignInPage = () => {
     const handleCreateAC = () => router.push("/auth/sign_up1");
 
     useEffect(() => {
-      (async function load() {
+      (async () => {
         const { gapi } = await gapiImport;
-  
-        gapi.load("client:auth2", () => {
+
+        function start() {
           gapi.client.init({
             clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-            scope: "email",
+            scope: 'email',
           });
-        });
+        }
+    
+        gapi.load('client:auth2', start);
       })();
       }, []);
       

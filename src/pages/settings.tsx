@@ -3,6 +3,7 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import Dashboard from "../components/Dashboard";
 import SettingsChangePassword from "../components/ChangePassword";
 import UserProfile from "../components/UserProfile";
+import { withAuthRequired } from "../hocs/withAuthRequired";
 
 const SettingsPage = () => {
     const [menuActive, setMenuActive] = useState(false);
@@ -79,4 +80,4 @@ const SettingsPage = () => {
     );
 };
 
-export default SettingsPage;
+export default withAuthRequired(SettingsPage);

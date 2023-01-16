@@ -5,6 +5,7 @@ import validator from "validator";
 import { validemail } from "../../public/img";
 
 const UserProfile = () => {
+
   const [user, setUser] = useState({
     fname: "",
     lname: "",
@@ -118,7 +119,7 @@ const UserProfile = () => {
 
   const onEditClick = () => {
     inputFile.current?.click();
-    console.log(inputFile);
+    console.log(inputFile)
   };
 
   return (
@@ -132,13 +133,7 @@ const UserProfile = () => {
         <div className="setting-user-picture mt-4">
           <div>BL</div>
           <div className="setting-edit-picture-btn mx-4">
-            <input
-              type="file"
-              accept="image/*"
-              id="file"
-              ref={inputFile}
-              style={{ display: "none" }}
-            />
+            <input type="file" accept="image/*" id="file" ref={inputFile} style={{ display: 'none' }} />
             <button onClick={onEditClick}>Edit photo </button>
           </div>
         </div>
@@ -158,8 +153,8 @@ const UserProfile = () => {
                   userFocus.fname
                     ? "input-box active w-100"
                     : userErr.fnameErr
-                    ? "input-box w-100 forgot-email-border"
-                    : "input-box w-100"
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <label>First Name</label>
@@ -187,8 +182,8 @@ const UserProfile = () => {
                   userFocus.lname
                     ? "input-box active w-100"
                     : userErr.lnameErr
-                    ? "input-box w-100 forgot-email-border"
-                    : "input-box w-100"
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <label>Last Name</label>
@@ -216,12 +211,12 @@ const UserProfile = () => {
               <div
                 className={
                   userFocus.email
-                    ? userErr.emailErr
-                      ? "input-box active w-100 forgot-email-border"
+                    ? userErr.emailErr ?
+                      "input-box active w-100 forgot-email-border"
                       : "input-box active w-100"
                     : userErr.emailErr
-                    ? "input-box w-100 forgot-email-border"
-                    : "input-box w-100"
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <div className={!validator.isEmail(user.email) ? "d-none" : ""}>
@@ -265,8 +260,8 @@ const UserProfile = () => {
                   userFocus.phonenumber
                     ? "input-box active w-100"
                     : userErr.phonenumberErr
-                    ? "input-box w-100 forgot-email-border"
-                    : "input-box w-100"
+                      ? "input-box w-100 forgot-email-border"
+                      : "input-box w-100"
                 }
               >
                 <label>Phone number</label>

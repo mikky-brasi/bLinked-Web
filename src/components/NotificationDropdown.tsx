@@ -24,7 +24,7 @@ export default function NotificationDropdown() {
                         <h4>Your notifications</h4>
                     </Dropdown.Header>
                     <Image src={NoNotificationsIcon} alt="No notification" className="image"/>
-                    <p className="text">You{"'"}ve no notifications  🎉</p>
+                    <p className="text">You've no notifications  🎉</p>
                     <p className="subtext">When you have one, they will appear here</p>
                 </Dropdown.Menu>
             }
