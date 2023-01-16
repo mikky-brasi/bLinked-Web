@@ -14,19 +14,21 @@ import "@/styles/pages/Forgot.scss";
 
 // Dashboard SCSS Start
 import "../components/Dashboard.scss";
+import "@/styles/pages/Home.scss";
+import "@/styles/pages/Settings.scss";
+import "@/styles/pages/Orders.scss";
+import "@/styles/pages/Agents.scss";
+import "@/styles/pages/Feedback.scss";
+import "@/styles/pages/Landing.scss";
+
 import "../components/NotificationDropdown.scss";
 import "../components/Toast.scss";
 import "../components/LoadingState.scss";
-import "@/styles/pages/Home.scss";
-import "@/styles/pages/Orders.scss";
-import "@/styles/pages/Landing.scss";
-import "@/styles/pages/Feedback.scss";
-import "@/styles/pages/Settings.scss";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { GlobalProvider } from "../context/GlobalState";
-import Toast from "../components/Toast";
+import AlertToast from "../components/Toast";
 import LoadingState from "../components/LoadingState";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -39,7 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#000000" />
       </Head>
 
-      <Toast />
+      <AlertToast />
       <LoadingState />
       <Component {...pageProps} />
     </GlobalProvider>
