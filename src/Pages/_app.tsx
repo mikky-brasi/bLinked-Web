@@ -1,8 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/globals.scss";
 
+// Auth SCSS Start
+import "../components/Footer.scss";
+import "@/styles/_input_box.scss";
+import "@/styles/pages/SignIn.scss";
+import "@/styles/pages/SignUp.scss";
+import "@/styles/pages/Forgot.scss";
+
 // Dashboard SCSS Start
-import "@/styles/LandingPage.scss";
+import "@/styles/pages/Landing.scss";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";

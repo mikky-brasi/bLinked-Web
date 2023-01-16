@@ -370,7 +370,6 @@ main {
               max-width: 50%;
               .image {
                   max-width: 100%;
-                  height: auto;
               }
           }
       }
@@ -475,7 +474,7 @@ main {
   section.fifth-section {
       padding: 88px 165px 64px;
       .background {
-          background: url(/landing/bg-mask.png);
+          background: url("/landing/bg-mask.png");
           background-repeat: no-repeat;
           background-size: cover;
           border-radius: 16px;
