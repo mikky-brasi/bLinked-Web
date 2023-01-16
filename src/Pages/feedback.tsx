@@ -4,28 +4,33 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { ImSearch } from "react-icons/im";
 // Components
-import RatingCard from "../../Components/RatingCard";
-import Table from "../../Components/Table";
-import Dashboard from "../../Components/Dashboard";
-import FilterOrdersDropdown from "../../Components/FilterOrdersDropdown";
-import FeedbackModal from "../../Components/FeedbackModal";
+import RatingCard from "../components/RatingCard";
+import Table from "../components/Table";
+import Dashboard from "../components/Dashboard";
+import FilterOrdersDropdown from "../components/FilterOrdersDropdown";
+import FeedbackModal from "../components/FeedbackModal";
 // Data
-import feedback from "../../mockData/feedback.json";
+import feedback from "../mockData/feedback.json";
 // Helpers
-import { filterFeedback } from "../../helpers/filterFeedback";
-
+import { filterFeedback } from "../helpers/filterFeedback";
+import { withAuthRequired } from "../hocs/withAuthRequired";
+import { Order } from "../types/Order";
 
 const FeedbackPage = () => {
     const [show, setShow] = useState(false);
-    const [selectedOrder, setSelectedOrder] = useState(null);
+    const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
     const [orders, setOrders] = useState(feedback);
 
     const [filter, setFilter] = useState("All");
     const [feedbackSearch, setFeedbackSearch] = useState("");
 
-    const handleFeedbackSearch = (e) => setFeedbackSearch(e.target.value);
+    const handleFeedbackSearch = (e: React.ChangeEvent<HTMLInputElement>) =>
+        setFeedbackSearch(e.target.value);
 
-    useEffect(() => setOrders(filterFeedback(feedback, feedbackSearch, filter)), [feedbackSearch, filter]);
+    useEffect(
+        () => setOrders(filterFeedback(feedback, feedbackSearch, filter)),
+        [feedbackSearch, filter]
+    );
 
     return (
         <Dashboard title="Feedback">
@@ -65,11 +70,21 @@ const FeedbackPage = () => {
                     <div className="orders-container py-4 ">
                         <div className="d-md-flex justify-content-between px-4 align-items-center">
                             <div className="d-md-flex">
-                                <FilterOrdersDropdown setFilter={setFilter} page="feedback" />
+                                <FilterOrdersDropdown
+                                    setFilter={setFilter}
+                                    page="feedback"
+                                />
 
                                 <div className="orders-orderSearch-input mt-md-0">
-                                    <span><ImSearch size={15} color="#A3A3C2" /></span>
-                                    <input type="text" placeholder="Search orders" value={feedbackSearch} onChange={handleFeedbackSearch} />
+                                    <span>
+                                        <ImSearch size={15} color="#A3A3C2" />
+                                    </span>
+                                    <input
+                                        type="text"
+                                        placeholder="Search orders"
+                                        value={feedbackSearch}
+                                        onChange={handleFeedbackSearch}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -82,8 +97,7 @@ const FeedbackPage = () => {
                                 setSelected={setSelectedOrder}
                             />
                         </div>
-                        <div
-                            className="order-pagination-container px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
+                        <div className="order-pagination-container px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
                             <div className="my-2">Showing 9 of 290 orders</div>
                             <div className="d-md-flex">
                                 <div className="d-flex align-items-center">
@@ -119,12 +133,16 @@ const FeedbackPage = () => {
                 </div>
 
                 <div className="px-md-4 px-2 mb-4"></div>
-                {show &&
-                <FeedbackModal show={show} setShow={setShow} selected={selectedOrder}/>
-                }
+                {show && (
+                    <FeedbackModal
+                        show={show}
+                        setShow={setShow}
+                        selected={selectedOrder}
+                    />
+                )}
             </div>
         </Dashboard>
     );
 };
 
-export default FeedbackPage;
+export default withAuthRequired(FeedbackPage);

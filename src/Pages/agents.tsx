@@ -14,6 +14,7 @@ import agent from "../mockData/agents.json";
 // Helpers
 import { filterAgents } from "../helpers/filterAgents";
 import AgentActionModal from "../components/AgentActionModal";
+import { withAuthRequired } from "../hocs/withAuthRequired";
 
 const AgentsPage = () => {
     const [show, setShow] = useState(false);
@@ -175,4 +176,4 @@ const AgentsPage = () => {
     );
 };
 
-export default AgentsPage;
+export default withAuthRequired(AgentsPage);

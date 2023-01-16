@@ -19,6 +19,7 @@ import "../components/LoadingState.scss";
 import "@/styles/pages/Home.scss";
 import "@/styles/pages/Orders.scss";
 import "@/styles/pages/Landing.scss";
+import "@/styles/pages/Feedback.scss";
 import "@/styles/pages/Settings.scss";
 
 import type { AppProps } from "next/app";

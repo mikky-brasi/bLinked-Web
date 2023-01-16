@@ -16,7 +16,7 @@ type AgentActionModalProps = {
         email: string;
         image: string;
         agentN: string;
-    };
+    } | null;
 };
 
 export default function AgentActionModal({
