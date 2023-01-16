@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { CustomToggle } from './CustomToggle';
 import { GoChevronDown } from "react-icons/go";
-import { calenderIcon } from "../assets/img";
+import { calenderIcon } from "../../public/img";
 import { DateRangePicker } from 'react-date-range';
+import Image from 'next/image';
 
-export default function DateDropdown({ fromDate, setFromDate, toDate, setToDate }) {
+type DateDropdownProps = {
+    fromDate: Date;
+    setFromDate: (value: Date) => void;
+    toDate: Date;
+    setToDate: (value: Date) => void;
+}
+
+export default function DateDropdown({ fromDate, setFromDate, toDate, setToDate }: DateDropdownProps) {
     const lastMoth = new Date();
     lastMoth.setDate(lastMoth.getDate() - 28);
     const [title, setTitle] = useState('Last 28 days');
@@ -17,7 +25,7 @@ export default function DateDropdown({ fromDate, setFromDate, toDate, setToDate 
             <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
                 <div className="dashboard-date mt-md-0 mt-4 shadow-sm">
                     <div className="d-flex align-items-center">
-                        <img
+                        <Image
                             src={calenderIcon}
                             alt="Calender"
                             className="img-fluid"
@@ -85,9 +93,9 @@ export default function DateDropdown({ fromDate, setFromDate, toDate, setToDate 
                         focusedRange={[0, 0]}
                         weekStartsOn={1}
                         onChange={e => {
-                            setFromDate(e.range1.startDate);
-                            setToDate(e.range1.endDate);
-                            setRange(`${e.range1.startDate.toDateString().substring(4)} - ${e.range1.endDate.toDateString().substring(4)}`);
+                            setFromDate(e.range1.startDate!);
+                            setToDate(e.range1.endDate!);
+                            setRange(`${e.range1.startDate!.toDateString().substring(4)} - ${e.range1.endDate!.toDateString().substring(4)}`);
                             setIsCustom(false)
                         }} />
                 </Dropdown.Menu>

@@ -1,8 +1,15 @@
 import React from "react";
 import { getOrderStyle } from "../helpers/getRowStyles";
 import { BsThreeDots } from "react-icons/bs";
+import { Order } from "../types/Order";
 
-const PendingOrderBox = ({ item, setShow, setSelected }) => {
+type PendingOrderBoxProps = {
+    item: Order;
+    setShow: (show: boolean) => void;
+    setSelected: (order: Order) => void;
+};
+
+const PendingOrderBox = ({ item, setShow, setSelected }: PendingOrderBoxProps) => {
     const { name, from, to, price, status } = item;
     return (
         <div className="home-pending-order-grid-box py-4">

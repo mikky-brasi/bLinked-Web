@@ -1,4 +1,6 @@
-export const getOrderStyle = (itemStatus) => {
+// TODO: type item status
+
+export const getOrderStyle = (itemStatus: string) => {
     switch (itemStatus) {
         case "Delivered": return { background: "#D4F2FF", color: "#1752FF" }
         case "New": return { background: "#FFEBEC", color: "#FF4554" }
@@ -9,7 +11,7 @@ export const getOrderStyle = (itemStatus) => {
     }
 };
 
-export const getAgentStyle = (itemStatus) => {
+export const getAgentStyle = (itemStatus: string) => {
     switch (itemStatus) {
         case "available": return { background: "#EDFAF0", color: "#288F40" }
         default: return { background: "#EBEBFF", color: "#3842B0" }

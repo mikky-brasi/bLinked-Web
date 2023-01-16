@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
-const Dashboard = ({ children, title }) => {
+type DashboardProps = {
+    children: React.ReactNode;
+    title: string;
+};
+
+const Dashboard = ({ children, title }: DashboardProps) => {
     const [activeSidebar, setActiveSidebar] = useState(false);
     return (
         <div className="dashboard-main">

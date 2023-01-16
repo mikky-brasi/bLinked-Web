@@ -1,8 +1,17 @@
 import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 
-export default function AgentDropdown({ setShow, setModalAction, setShowDropdown }) {
-    const handleClick = (action) => {
+const AgentDropdownActions = ["Edit", "Suspend", "Remove"] as const;
+type AgentDropdownAction = typeof AgentDropdownActions[number];
+
+type AgentDropdownProps = {
+    setShow: (show: boolean) => void;
+    setModalAction: (action: AgentDropdownAction) => void;
+    setShowDropdown: (show: boolean) => void;
+};
+
+export default function AgentDropdown({ setShow, setModalAction, setShowDropdown }: AgentDropdownProps) {
+    const handleClick = (action: AgentDropdownAction) => {
         setShow(true);
         setShowDropdown(false);
         setModalAction(action)

@@ -1,14 +1,13 @@
 import React, { useRef, useState } from 'react';
-import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
+import { GoogleApiWrapper, IMarkerProps, InfoWindow, IProvidedProps, Map, Marker } from "google-maps-react";
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { GoogleLocate, MapMarker, MapMarkerGreen, MapMarkerGray, MapMarkerRed } from "../assets/img";
+import { GoogleLocate, MapMarker, MapMarkerGreen, MapMarkerGray, MapMarkerRed } from "../../public/img";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
-import Tooltip from 'react-bootstrap/Tooltip';
-import Button from 'react-bootstrap/Button';
+import Image from 'next/image';
 
-const MapComponent = (props) => {
-    const mapRef = useRef(null);
+const MapComponent = (props: IProvidedProps) => {
+    const mapRef = useRef<Map>(null);
     const [zoom, setZoom] = useState(12);
     const [mapCenter, setMapCenter] = useState({ lat: 6.45567900007564, lng: 3.388292095013091 })
     const [activeMarker, setActiveMarker] = useState({});
@@ -26,7 +25,7 @@ const MapComponent = (props) => {
         position: "relative"
     }
 
-    const onMarkerClick = (props, marker) => {
+    const onMarkerClick: IMarkerProps["onClick"] = (props, marker) => {
         setShowInfoWindow(true);
         setActiveMarker(marker);
     };
@@ -50,7 +49,7 @@ const MapComponent = (props) => {
                             >
                                 <div className="google-map-controller-main">
                                     <button onClick={() => setZoom(12)}>
-                                        <img src={GoogleLocate} alt="" className="img-fluid" />
+                                        <Image src={GoogleLocate} alt="" className="img-fluid" />
                                     </button>
                                     <div className="google-controller-line" />
                                     <button
@@ -87,7 +86,7 @@ const MapComponent = (props) => {
                                             <img className="profile_image" alt="" />
                                             <p className="agent_name">Tajao Bullaha</p>
                                             <div className="info_address">
-                                                <img src={MapMarker} alt="" />
+                                                <Image src={MapMarker} alt="" />
                                                 <p className="agent_location">Ire-akari Estate Isolo, Lagos State</p>
                                             </div>
                                             <span className="info_status">Enroute Dropoff</span>
@@ -110,7 +109,7 @@ const MapComponent = (props) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover className='py-2 px-3 text-center text-20'>
+                                    <Popover id="inactive-agents" className='py-2 px-3 text-center text-20'>
                                         <span className='d-block mb-1 home-agent-type'>Inactive Agents</span>
                                         <span className='home-agent-text-grey'>300</span>
                                     </Popover>
@@ -124,7 +123,7 @@ const MapComponent = (props) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover className='py-2 px-3 text-center text-16'>
+                                    <Popover id="unavailable-agents" className='py-2 px-3 text-center text-16'>
                                         <span className='d-block mb-1 home-agent-type'>Unavailable Agents</span>
                                         <span className='home-agent-text-pink'>130</span>
                                     </Popover>
@@ -140,7 +139,7 @@ const MapComponent = (props) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover className='py-2 px-3 text-center text-16'>
+                                    <Popover id="available-agents" className='py-2 px-3 text-center text-16'>
                                         <span className='d-block mb-1 home-agent-type'>Available Agents</span>
                                         <span className='home-agent-text-green'>500</span>
                                     </Popover>
@@ -154,7 +153,7 @@ const MapComponent = (props) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover className='py-2 px-3 text-center text-16'>
+                                    <Popover id="active-agents" className='py-2 px-3 text-center text-16'>
                                         <span className='d-block mb-1 home-agent-type'>Active Agents</span>
                                         <span className='home-agent-text-blue'>100</span>
                                     </Popover>

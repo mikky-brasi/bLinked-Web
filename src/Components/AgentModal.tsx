@@ -1,8 +1,14 @@
+import Image from "next/image";
 import React from "react";
-import { location } from "../assets/img";
+import { location } from "../../public/img";
 import { getAgentStyle } from "../helpers/getRowStyles";
 
-export const AgentModal = ({ item, onClick }) => {
+type AgentModalProps = {
+    item: any;
+    onClick: () => void;
+};
+
+export const AgentModal = ({ item, onClick }: AgentModalProps) => {
     return (
         <li className="d-md-flex justify-content-between" onClick={onClick}>
             <div className="d-flex align-items-center">
@@ -10,7 +16,7 @@ export const AgentModal = ({ item, onClick }) => {
                 <div className="order-agent-name-loc">
                     <span>{item.agentName}</span>
                     <span className="my-1">
-                        <img src={location} alt="" />
+                        <Image src={location} alt="" />
                         <span className="mx-1">{item.location}</span>
                     </span>
                     <div className="rounded-pill d-md-none d-flex">

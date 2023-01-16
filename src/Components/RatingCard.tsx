@@ -1,7 +1,14 @@
 import React from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 
-const RatingCard = ({ title, total, rating, desc }) => {
+type RatingCardProps = {
+  title: string;
+  total: string;
+  rating: string;
+  desc: string;
+};
+
+const RatingCard = ({ title, total, rating, desc }: RatingCardProps) => {
   return (
     <div className="total-rating-card p-4">
       <div className="total-rating-card-title">{title}</div>

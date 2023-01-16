@@ -3,7 +3,19 @@ import { getOrderStyle } from "../helpers/getRowStyles";
 import { BsThreeDots } from "react-icons/bs";
 import AgentDropdown from './AgentDropdown';
 
-export default function Table({ items, page, setShow, showDropdown, setShowDropdown, setItemStatus, setModalAction, selected, setSelected }) {
+type TableProps = {
+    items: any[]; // TODO: type
+    page: string;
+    setShow: (show: boolean) => void;
+    showDropdown?: boolean;
+    setShowDropdown: (show: boolean) => void;
+    setItemStatus: (status: string) => void;
+    setModalAction: (action: string) => void;
+    selected: any;
+    setSelected: (item: any) => void;
+}
+
+export default function Table({ items, page, setShow, showDropdown, setShowDropdown, setItemStatus, setModalAction, selected, setSelected }: TableProps) {
     if (page === 'home') {
         return (
             <table className="mt-4">

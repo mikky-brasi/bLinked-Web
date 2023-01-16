@@ -9,6 +9,8 @@ import "@/styles/pages/SignUp.scss";
 import "@/styles/pages/Forgot.scss";
 
 // Dashboard SCSS Start
+import "../components/Dashboard.scss";
+import "../components/NotificationDropdown.scss";
 import "@/styles/pages/Landing.scss";
 
 import type { AppProps } from "next/app";

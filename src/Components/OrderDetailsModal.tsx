@@ -9,7 +9,14 @@ import agentsData from "../mockData/agents.json";
 // Helpers
 import { getOrderStyle } from '../helpers/getRowStyles';
 
-export default function OrderDetailsModal({ show, setShow, itemStatus, setItemStatus }) {
+type OrderDetailsModalProps = {
+    show: boolean;
+    setShow: (show: boolean) => void;
+    itemStatus: string;
+    setItemStatus?: (status: string) => void;
+};
+
+export default function OrderDetailsModal({ show, setShow, itemStatus, setItemStatus }: OrderDetailsModalProps) {
     const [agentErr, setAgentErr] = useState(false);
     const [agentsFocus, setAgentsFocus] = useState(false);
     const [selectedAgent, setSelectedAgent] = useState("");
@@ -17,13 +24,14 @@ export default function OrderDetailsModal({ show, setShow, itemStatus, setItemSt
     const [agentSearch, setAgentSearch] = useState("");
     const [agents, setAgents] = useState(agentsData)
 
+    // TODO: fix this
     const handleModal = (status) => {
         setSearchResult(false);
         setAgentSearch("");
         setAgentErr(false);
         setShow(!show);
         setAgentsFocus(false);
-        if (!show) setItemStatus(status);
+        if (!show) setItemStatus?.(status);
     };
 
     const handleAgentSearch = (e) => setAgentSearch(e.target.value);
