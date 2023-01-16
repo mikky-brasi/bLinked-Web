@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images:{
+    // Needed to run `next export`.
+    unoptimized: true,
+  },
   webpack: (config) => {
     config.resolve.fallback = {
       // these are needed for google-auth-library to compile.
