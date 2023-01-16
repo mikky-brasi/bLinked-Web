@@ -1,4 +1,4 @@
-export const filterAgents = (agents, search, filter) => {
+export const filterAgents = (agents: any[], search: string, filter: string) => {
     const value = search.trim().toLowerCase();
 
     if (search === '' && filter === 'All') return agents;
