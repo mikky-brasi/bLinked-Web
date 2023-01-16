@@ -47,7 +47,7 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
             src={bLinkedLogo}
             alt="Logo"
             className="img-fluid"
-            style={{ margin: "-12rem 0", maxHeight: "150px" }}
+            style={{ margin: "-12rem 0", maxHeight: "150px", width: "auto" }}
             onClick={() => router.push("/home")}
           />
           <div

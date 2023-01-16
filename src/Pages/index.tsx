@@ -88,6 +88,7 @@ export default function Landing() {
               className="image"
               src={MainImage}
               alt="Man having a video conference"
+              style={{height: "auto"}}
             />
             <p className="text">
               An API that provides infrastructure for connecting people and
@@ -122,7 +123,7 @@ export default function Landing() {
 
         <section className="third-section">
           <div className="first-col">
-            <Image {...People} alt="People" className="image" />
+            <Image {...People} alt="People" className="image" style={{height: "auto"}} />
           </div>
           <div className="second-col">
             <h2 className="title">
