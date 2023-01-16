@@ -13,6 +13,7 @@ import FilterOrdersDropdown from "../components/FilterOrdersDropdown";
 import order from "../mockData/orders.json";
 // Helpers
 import { filterOrders } from "../helpers/filterOrders";
+import { withAuthRequired } from "../hocs/withAuthRequired";
 
 const OrdersPage = () => {
   const [show, setShow] = useState(false);
@@ -147,4 +148,4 @@ const OrdersPage = () => {
   );
 };
 
-export default OrdersPage;
+export default withAuthRequired(OrdersPage);
