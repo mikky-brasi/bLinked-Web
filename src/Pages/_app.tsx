@@ -1,4 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+
 import "@/styles/globals.scss";
 
 // Auth SCSS Start
@@ -13,6 +16,7 @@ import "../components/Dashboard.scss";
 import "../components/NotificationDropdown.scss";
 import "../components/Toast.scss";
 import "../components/LoadingState.scss";
+import "@/styles/pages/Home.scss";
 import "@/styles/pages/Landing.scss";
 
 import type { AppProps } from "next/app";
