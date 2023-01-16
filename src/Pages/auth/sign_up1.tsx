@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import validator from "validator";
 // Assets
 import { eye, hiddenEye, validemail } from "../../../public/img";
-import bLinkedLogo from "../../public/landing/bLinkedLogo.svg";
+import bLinkedLogo from "../../../public/landing/bLinkedLogo.svg";
 // Components
 import Footer from "../../components/Footer";
 import { useRouter } from "next/router";

@@ -1,19 +1,20 @@
+import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import validator from "validator";
-import { useHistory } from "react-router-dom";
 
-import { logo, validemail } from "../../assets/img";
-import Footer from "../../Components/Footer";
+import { logo, validemail } from "../../../public/img";
+import Footer from "../../components/Footer";
 
 const ForgotEmailScreen = () => {
-    const history = useHistory()
+    const router = useRouter();
     const [email, setEmail] = useState("");
     const [emailErr, setEmailErr] = useState(false);
     const [emailFocus, setEmailFocus] = useState(false);
 
     const inputFocus = () => setEmailFocus(true);
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
         setEmail(value);
 
@@ -40,18 +41,18 @@ const ForgotEmailScreen = () => {
             setEmailErr(true);
         } else {
             setEmailErr(false);
-            history.push("/auth/otp")
+            router.push("/auth/otp")
         }
     };
 
     const handleLogin = () => {
-        history.push("/")
+        router.push("/")
     }
 
     return (
         <div className="auth-main">
             <div className="container auth-cmn-main">
-                <img src={logo} alt="Logo" className="img-fluid my-5" />
+                <Image src={logo} alt="Logo" className="img-fluid my-5" />
                 <div className="auth-cmn-subcontainer px-md-5 py-5">
                     <div className="auth-cmn-title">Forget password, 🔐</div>
                     <div className="row justify-content-center">
@@ -75,7 +76,7 @@ const ForgotEmailScreen = () => {
                                 }
                             >
                                 <div className={!validator.isEmail(email) ? "d-none" : ""}>
-                                    <img
+                                    <Image
                                         src={validemail}
                                         alt="Valid Email"
                                         className="img-fluid"
