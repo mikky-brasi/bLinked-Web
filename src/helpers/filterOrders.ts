@@ -1,4 +1,6 @@
-export const filterOrders = (orders, search, filter) => {
+import { Order } from "../types/Order";
+
+export const filterOrders = (orders: Order[], search: string, filter: string) => {
     if (search === '' && filter === 'All') return orders;
     if (search !== '' && filter === 'All') {
         return orders.filter(row => (
@@ -20,4 +22,6 @@ export const filterOrders = (orders, search, filter) => {
             row.status.toLowerCase() === filter.toLowerCase()
         ));
     };
+
+    return orders;
 };

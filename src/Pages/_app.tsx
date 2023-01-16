@@ -17,6 +17,7 @@ import "../components/NotificationDropdown.scss";
 import "../components/Toast.scss";
 import "../components/LoadingState.scss";
 import "@/styles/pages/Home.scss";
+import "@/styles/pages/Orders.scss";
 import "@/styles/pages/Landing.scss";
 
 import type { AppProps } from "next/app";

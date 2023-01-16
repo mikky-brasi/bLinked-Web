@@ -5,4 +5,5 @@ export type Order = {
   to: string;
   price: string;
   status: string;
+  image: string;
 };
