@@ -29,7 +29,7 @@ const UserProfile = () => {
     choosepermission: false,
   });
 
-  const inputFile = useRef<HTMLInputElement>(null);
+  const inputFile = useRef<HTMLInputElement>(null)
 
   const inputFocus = (name: string) => {
     setUserFocus({
@@ -45,11 +45,12 @@ const UserProfile = () => {
       [name]: value,
     });
 
-    if (name === "email") {
+    if (name === 'email') {
+
       if (!value) {
         setUserErr({
           ...userErr,
-          emailErr: true,
+          emailErr: true
         });
       }
 
@@ -68,12 +69,12 @@ const UserProfile = () => {
         ) {
           setUserErr({
             ...userErr,
-            emailErr: true,
+            emailErr: true
           });
         } else {
           setUserErr({
             ...userErr,
-            emailErr: false,
+            emailErr: false
           });
         }
       }
