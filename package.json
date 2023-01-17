@@ -16,7 +16,6 @@
     "bootstrap": "^5.1.1",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.2",
-    "gapi-script": "^1.2.0",
     "google-auth-library": "^8.7.0",
     "google-maps-react": "^2.0.6",
     "moment": "^2.29.4",
@@ -33,6 +32,7 @@
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.30.0",
+    "@types/gapi": "^0.0.43",
     "@types/react-date-range": "^1.4.4",
     "@types/validator": "^13.7.10",
     "eslint-config-prettier": "^8.6.0",

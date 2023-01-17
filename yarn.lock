@@ -369,6 +369,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@types/gapi@^0.0.43":
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/@types/gapi/-/gapi-0.0.43.tgz#5291ae831006240e3484bdef3fff8dd69baf5947"
+  integrity sha512-GbnoTC1psXR1XlBE76LW0eanE/a56iGUzbUOImEI8/xXHuppdbhhIKX9Z71mTut2XoFADh58PgfRg1cyD7TnTw==
+
 "@types/invariant@^2.2.33":
   version "2.2.35"
   resolved "https://registry.npmjs.org/@types/invariant/-/invariant-2.2.35.tgz"
@@ -1485,11 +1490,6 @@ functions-have-names@^1.2.2:
   version "1.2.3"
   resolved "https://registry.npmjs.org/functions-have-names/-/functions-have-names-1.2.3.tgz"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
-
-gapi-script@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/gapi-script/-/gapi-script-1.2.0.tgz"
-  integrity sha512-NKTVKiIwFdkO1j1EzcrWu/Pz7gsl1GmBmgh+qhuV2Ytls04W/Eg5aiBL91SCiBM9lU0PMu7p1hTVxhh1rPT5Lw==
 
 gaxios@^5.0.0, gaxios@^5.0.1:
   version "5.0.2"
