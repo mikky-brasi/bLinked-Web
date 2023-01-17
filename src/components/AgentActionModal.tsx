@@ -103,7 +103,7 @@ export default function AgentActionModal({
             setPhone("");
             setImage(null);
         }
-    }, [action]);
+    }, [action, selected]);
 
     const handleReaderLoaded = (readerEvt: ProgressEvent<FileReader>) => {
         if (readerEvt.target === null) return;

@@ -18,18 +18,6 @@ const Header = ({ handleSideBar, title }: HeaderProps) => {
     const router = useRouter();
     const [show, setShow] = useState(false);
 
-    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-        <span
-            ref={ref}
-            onClick={(e) => {
-                e.preventDefault();
-                onClick(e);
-            }}
-        >
-            {children}
-        </span>
-    ));
-
     const handleLogout = () => {
         localStorage.removeItem("accessToken");
         router.push("/");
@@ -104,3 +92,24 @@ const Header = ({ handleSideBar, title }: HeaderProps) => {
 };
 
 export default Header;
+
+type CustomToggleProps = {
+    children: React.ReactNode;
+    onClick: (e: React.MouseEvent) => void;
+};
+
+const CustomToggle = React.forwardRef<HTMLSpanElement, CustomToggleProps>(
+    function CustomToggleRender({ children, onClick }, ref) {
+        return (
+            <span
+                ref={ref}
+                onClick={(e) => {
+                    e.preventDefault();
+                    onClick(e);
+                }}
+            >
+                {children}
+            </span>
+        );
+    },
+);

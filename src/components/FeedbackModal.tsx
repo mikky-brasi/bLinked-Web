@@ -98,7 +98,11 @@ export default function FeedbackModal({ show, setShow, selected }: FeedbackModal
                         <div className="comment-section">
                             {comments.map((comment, index) => (
                                 <div key={index} className="comment">
-                                    <Image className="image" src={AvatarPlaceholder} />
+                                    <Image
+                                        className="image"
+                                        src={AvatarPlaceholder}
+                                        alt="Author avatar"
+                                    />
                                     <div className="content">
                                         <div className="user-info">
                                             <p>{comment.user}</p>
@@ -111,7 +115,7 @@ export default function FeedbackModal({ show, setShow, selected }: FeedbackModal
                         </div>
                     )}
                     <div className="input">
-                        <Image className="image" src={AvatarPlaceholder} />
+                        <Image className="image" src={AvatarPlaceholder} alt="User avatar" />
                         <textarea
                             className="textarea"
                             placeholder="Add a comment"

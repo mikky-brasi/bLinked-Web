@@ -119,7 +119,11 @@ const MapComponent = (props: IProvidedProps) => {
                                 {showInfoWindow && (
                                     <InfoWindow marker={activeMarker} visible={showInfoWindow}>
                                         <div className="info_window">
-                                            <img className="profile_image" alt="" />
+                                            <div
+                                                // TODO: change div for Image
+                                                className="profile_image"
+                                            />
+
                                             <p className="agent_name">Tajao Bullaha</p>
                                             <div className="info_address">
                                                 <Image src={MapMarker} alt="" />

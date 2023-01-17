@@ -73,7 +73,7 @@ const SignUpPage2 = () => {
                     style={{ maxHeight: "150px" }}
                 />
                 <div className="auth-cmn-subcontainer px-md-5 py-5">
-                    <div className="auth-cmn-title">It's time to Grow your Business,</div>
+                    <div className="auth-cmn-title">It{"'"}s time to Grow your Business,</div>
                     <div className="auth-cmn-subtitle">
                         You’re almost there! Quickly tell us about your business{" "}
                     </div>

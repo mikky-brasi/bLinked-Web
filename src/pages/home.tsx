@@ -73,7 +73,7 @@ const HomePage = () => {
                         <div className="dashboard-title"> Welcome back, Assurance 🌤</div>
                         <div className="dashboard-subtitle mt-2">
                             <div className="tag-line">
-                                Here is what's happening with your business today!
+                                Here is what{"'"}s happening with your business today!
                             </div>
                             <DateDropdown
                                 fromDate={fromDate}
