@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { GoChevronDown } from "react-icons/go";
-import { CgMenuLeftAlt } from "react-icons/cg";
+import React, { useState } from "react";
 import { Dropdown } from "react-bootstrap";
+import { CgMenuLeftAlt } from "react-icons/cg";
+import { GoChevronDown } from "react-icons/go";
 
-import { notificationIcon } from "../../public/img";
-import NotificationDropdown from "./NotificationDropdown";
 import { ImSearch } from "react-icons/im";
+import NotificationDropdown from "./NotificationDropdown";
 import SearchModal from "./SearchModal";
 
 type HeaderProps = {
@@ -17,18 +16,6 @@ type HeaderProps = {
 const Header = ({ handleSideBar, title }: HeaderProps) => {
     const router = useRouter();
     const [show, setShow] = useState(false);
-
-    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-        <span
-            ref={ref}
-            onClick={(e) => {
-                e.preventDefault();
-                onClick(e);
-            }}
-        >
-            {children}
-        </span>
-    ));
 
     const handleLogout = () => {
         localStorage.removeItem("accessToken");
@@ -104,3 +91,24 @@ const Header = ({ handleSideBar, title }: HeaderProps) => {
 };
 
 export default Header;
+
+type CustomToggleProps = {
+    children: React.ReactNode;
+    onClick: (e: React.MouseEvent) => void;
+};
+
+const CustomToggle = React.forwardRef<HTMLSpanElement, CustomToggleProps>(
+    function CustomToggleRender({ children, onClick }, ref) {
+        return (
+            <span
+                ref={ref}
+                onClick={(e) => {
+                    e.preventDefault();
+                    onClick(e);
+                }}
+            >
+                {children}
+            </span>
+        );
+    },
+);

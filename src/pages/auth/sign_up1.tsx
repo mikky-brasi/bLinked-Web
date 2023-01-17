@@ -71,7 +71,7 @@ const SignUpPage1 = () => {
     const handleSignup = () => {
         const { fname, lname, email, password } = user;
         if (!fname && !userErr.fname) return setUserErr({ ...userErr, fname: true });
-        if (!lname && !userErr.lname) return setUserErr({ ...userErr, flame: true });
+        if (!lname && !userErr.lname) return setUserErr({ ...userErr, lname: true });
         if (!email && !userErr.email) return setUserErr({ ...userErr, email: true });
         if (!password && !userErr.password) return setUserErr({ ...userErr, password: true });
         if (Object.values(userErr).some((value) => value)) return;

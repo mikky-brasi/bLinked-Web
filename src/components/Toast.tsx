@@ -10,18 +10,20 @@ export default function Toast() {
     } = useGlobalContext();
 
     useEffect(() => {
-        if (open) {
-            setTimeout(() => {
-                setToastData({ open: false, text: "", color: "" });
-            }, 3000);
-        }
+        if (!open) return;
+
+        setTimeout(() => {
+            setToastData({ open: false, text: "", color: "" });
+        }, 3000);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open]);
 
     return (
         <div className={`toast ${open ? "open" : "closed"}`} style={{ backgroundColor: color }}>
             <div className="image-bg">
-                <Image src={AlertImage1} />
-                <Image src={AlertImage2} />
+                <Image src={AlertImage1} alt="" />
+                <Image src={AlertImage2} alt="" />
             </div>
             <p>{text}</p>
         </div>

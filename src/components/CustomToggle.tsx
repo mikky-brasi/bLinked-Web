@@ -1,12 +1,12 @@
 import React from "react";
 
-export const CustomToggle = React.forwardRef<
+const CustomToggleRender: React.ForwardRefRenderFunction<
     HTMLSpanElement,
     {
         children: React.ReactNode;
         onClick: React.MouseEventHandler<HTMLSpanElement>;
     }
->(({ children, onClick }, ref) => (
+> = ({ children, onClick }, ref) => (
     <span
         ref={ref}
         onClick={(e) => {
@@ -16,4 +16,6 @@ export const CustomToggle = React.forwardRef<
     >
         {children}
     </span>
-));
+);
+
+export const CustomToggle = React.forwardRef(CustomToggleRender);

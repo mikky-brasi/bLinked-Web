@@ -9,7 +9,7 @@ import { Dropdown } from "react-bootstrap";
 import RatingCard from "../components/RatingCard";
 import PendingOrder from "../components/PendingOrder";
 import MapComponent from "../components/Map";
-import Table from "../components/Table";
+import Table, { HomeItem } from "../components/Table";
 import Dashboard from "../components/Dashboard";
 import { CustomToggle } from "../components/CustomToggle";
 import DateDropdown from "../components/DateDropdown";
@@ -20,7 +20,6 @@ import { orderEmpty } from "../../public/img";
 // Helpers
 import OrderDetailsModal from "../components/OrderDetailsModal";
 import Image from "next/image";
-import { Order } from "../types/Order";
 import { withAuthRequired } from "../hocs/withAuthRequired";
 
 const HomePage = () => {
@@ -28,18 +27,25 @@ const HomePage = () => {
     const [activeView, setActiveView] = useState("grid");
     // const [showInfoWindow, setShowInfoWinidow] = useState(false);
     const [show, setShow] = useState(false);
-    const [selected, setSelected] = useState<Order | null>(null);
+    const [
+        ,
+        // selected
+        setSelected,
+    ] = useState<HomeItem | null>(null);
     // const [target, setTarget] = useState(null);
     // const [selectPlace, setSelectPlace] = useState({});
     const from = new Date();
     from.setMonth(new Date().getMonth() - 1);
     const [fromDate, setFromDate] = useState(from);
     const [toDate, setToDate] = useState(new Date());
-    const [orders, setOrders] = useState(order);
+    const [
+        orders,
+        // setOrders
+    ] = useState(order);
     const [search, setSearch] = useState("");
-    const [status, setStatus] = useState("All");
-    const [searchFromDate, setSearchFromDate] = useState(from);
-    const [searchToDate, setSearchToDate] = useState(new Date());
+    // const [status, setStatus] = useState("All");
+    // const [searchFromDate, setSearchFromDate] = useState(from);
+    // const [searchToDate, setSearchToDate] = useState(new Date());
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -73,7 +79,7 @@ const HomePage = () => {
                         <div className="dashboard-title"> Welcome back, Assurance 🌤</div>
                         <div className="dashboard-subtitle mt-2">
                             <div className="tag-line">
-                                Here is what's happening with your business today!
+                                Here is what{"'"}s happening with your business today!
                             </div>
                             <DateDropdown
                                 fromDate={fromDate}

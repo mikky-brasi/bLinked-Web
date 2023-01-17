@@ -3,30 +3,78 @@ import { getOrderStyle } from "../helpers/getRowStyles";
 import { BsThreeDots } from "react-icons/bs";
 import AgentDropdown from "./AgentDropdown";
 
-type TableProps = {
-    items: any[]; // TODO: type
-    page: string;
-    setShow: (show: boolean) => void;
-    showDropdown?: boolean;
-    setShowDropdown: (show: boolean) => void;
-    setItemStatus: (status: string) => void;
-    setModalAction: (action: string) => void;
-    selected: any;
-    setSelected: (item: any) => void;
+export type FeedbackItem = {
+    id: number;
+    agentName: string;
+    orderId: string;
+    customerName: string;
+    budget: string;
+    status: string;
 };
 
-export default function Table({
-    items,
-    page,
-    setShow,
-    showDropdown,
-    setShowDropdown,
-    setItemStatus,
-    setModalAction,
-    selected,
-    setSelected,
-}: TableProps) {
-    if (page === "home") {
+export type OrderItem = {
+    id: number;
+    name: string;
+    from: string;
+    to: string;
+    price: string;
+    status: string;
+    image: string;
+};
+
+export type HomeItem = {
+    id: number;
+    name: string;
+    from: string;
+    to: string;
+    price: string;
+    status: string;
+};
+
+export type AgentItem = {
+    id: number;
+    agentName: string;
+    location: string;
+    revenue: string;
+    orders: number;
+    status: string;
+};
+
+type TableProps =
+    | {
+          items: HomeItem[];
+          page: "home";
+          setShow: (show: boolean) => void;
+          setSelected: (item: HomeItem) => void;
+      }
+    | {
+          items: OrderItem[];
+          page: "orders";
+          setShow: (show: boolean) => void;
+          setItemStatus: (status: string) => void;
+      }
+    | {
+          items: AgentItem[];
+          page: "agents";
+          setShow: (show: boolean) => void;
+          showDropdown?: boolean;
+          setShowDropdown: (show: boolean) => void;
+          setItemStatus: (status: string) => void;
+          setModalAction: (action: string) => void;
+          selected: AgentItem | null;
+          setSelected: (item: AgentItem) => void;
+      }
+    | {
+          items: FeedbackItem[];
+          page: "feedback";
+          setShow: (show: boolean) => void;
+          setSelected: (item: FeedbackItem) => void;
+      };
+
+export default function Table<TItem>(props: TableProps) {
+    if (props.page === "home") {
+        const { items, setShow, setSelected } = props;
+
         return (
             <table className="mt-4">
                 <thead>
@@ -73,7 +121,9 @@ export default function Table({
         );
     }
 
-    if (page === "orders") {
+    if (props.page === "orders") {
+        const { items, setShow, setItemStatus } = props;
+
         return (
             <table className="table">
                 <thead>
@@ -131,7 +181,18 @@ export default function Table({
         );
     }
 
-    if (page === "agents") {
+    if (props.page === "agents") {
+        const {
+            items,
+            selected,
+            setItemStatus,
+            setModalAction,
+            setSelected,
+            setShow,
+            setShowDropdown,
+            showDropdown,
+        } = props;
+
         return (
             <table className="table">
                 <thead>
@@ -182,7 +243,7 @@ export default function Table({
                                     onBlur={() => setShowDropdown(false)}
                                 >
                                     <BsThreeDots color="#727E8F" size={23} />
-                                    {showDropdown && selected.id === id && (
+                                    {showDropdown && selected && selected.id === id && (
                                         <AgentDropdown
                                             setShow={setShow}
                                             setModalAction={setModalAction}
@@ -198,7 +259,9 @@ export default function Table({
         );
     }
 
-    if (page === "feedback") {
+    if (props.page === "feedback") {
+        const { items, setSelected, setShow } = props;
+
         return (
             <table className="table">
                 <thead>
@@ -245,7 +308,6 @@ export default function Table({
                                         setSelected(item);
                                         setShow(true);
                                     }}
-                                    onBlur={() => setShowDropdown(false)}
                                 >
                                     <BsThreeDots color="#727E8F" size={23} />
                                 </td>
@@ -256,5 +318,6 @@ export default function Table({
             </table>
         );
     }
+
     return null;
 }

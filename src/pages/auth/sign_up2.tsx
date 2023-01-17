@@ -36,7 +36,7 @@ const SignUpPage2 = () => {
         setCmp({ ...cmp, [name]: value });
         if (!value) return setCmpErr({ ...cmpErr, [name]: true });
 
-        if (typeof value !== "undefined" && name === "email") {
+        if (typeof value !== "undefined" && name === "cemail") {
             const lastAtPos = value.lastIndexOf("@");
             const lastDotPos = value.lastIndexOf(".");
             const validEmail =
@@ -73,7 +73,7 @@ const SignUpPage2 = () => {
                     style={{ maxHeight: "150px" }}
                 />
                 <div className="auth-cmn-subcontainer px-md-5 py-5">
-                    <div className="auth-cmn-title">It's time to Grow your Business,</div>
+                    <div className="auth-cmn-title">It{"'"}s time to Grow your Business,</div>
                     <div className="auth-cmn-subtitle">
                         You’re almost there! Quickly tell us about your business{" "}
                     </div>
@@ -151,7 +151,7 @@ const SignUpPage2 = () => {
                         </div>
                         <div
                             className={
-                                cmpErr.emailErr
+                                cmpErr.cemail
                                     ? "col-lg-12 text-start px-4 forgot-email-err"
                                     : "d-none"
                             }

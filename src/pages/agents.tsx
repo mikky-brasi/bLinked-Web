@@ -6,7 +6,7 @@ import { MdAdd } from "react-icons/md";
 import { ImSearch } from "react-icons/im";
 // Components
 import RatingCard from "../components/RatingCard";
-import Table from "../components/Table";
+import Table, { AgentItem } from "../components/Table";
 import Dashboard from "../components/Dashboard";
 import FilterOrdersDropdown from "../components/FilterOrdersDropdown";
 // Data
@@ -19,9 +19,13 @@ import { withAuthRequired } from "../hocs/withAuthRequired";
 const AgentsPage = () => {
     const [show, setShow] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
-    const [selectedAgent, setSelectedAgent] = useState(null);
+    const [selectedAgent, setSelectedAgent] = useState<AgentItem | null>(null);
     const [modalAction, setModalAction] = useState("");
-    const [itemStatus, setItemStatus] = useState("New");
+    const [
+        ,
+        // itemStatus
+        setItemStatus,
+    ] = useState("New");
     const [agents, setAgents] = useState(agent);
 
     const [filter, setFilter] = useState("All");
