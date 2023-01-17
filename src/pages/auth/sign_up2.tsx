@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import validator from "validator";
 // Assets
 import { validemail } from "../../../public/img";
-import bLinkedLogo from '../../../public/landing/bLinkedLogo.svg';
+import bLinkedLogo from "../../../public/landing/bLinkedLogo.svg";
 // Components
 import Footer from "../../components/Footer";
 import Image from "next/image";
@@ -34,21 +34,20 @@ const SignUpPage2 = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setCmp({ ...cmp, [name]: value });
-        if (!value) return setCmpErr({ ...cmpErr, [name]: true })
+        if (!value) return setCmpErr({ ...cmpErr, [name]: true });
 
-        if (typeof value !== "undefined" && name === 'email') {
+        if (typeof value !== "undefined" && name === "email") {
             const lastAtPos = value.lastIndexOf("@");
             const lastDotPos = value.lastIndexOf(".");
-            const validEmail = (
+            const validEmail =
                 lastAtPos < lastDotPos &&
                 lastAtPos > 0 &&
                 value.indexOf("@@") === -1 &&
                 lastDotPos > 2 &&
-                value.length - lastDotPos > 2
-            );
+                value.length - lastDotPos > 2;
 
             if (!validEmail) return setCmpErr({ ...cmpErr, [name]: true });
-        };
+        }
         return setCmpErr({ ...cmpErr, [name]: false });
     };
 
@@ -60,14 +59,19 @@ const SignUpPage2 = () => {
         if (cmpErr.cname) return;
         localStorage.setItem("accessToken", cemail);
         return router.push("/home");
-    }
+    };
 
     const handleLogin = () => router.push("/login");
 
     return (
         <div className="auth-main">
             <div className="container auth-cmn-main">
-                <Image src={bLinkedLogo} alt="Logo" className="img-fluid" style={{maxHeight: '150px'}} />
+                <Image
+                    src={bLinkedLogo}
+                    alt="Logo"
+                    className="img-fluid"
+                    style={{ maxHeight: "150px" }}
+                />
                 <div className="auth-cmn-subcontainer px-md-5 py-5">
                     <div className="auth-cmn-title">It's time to Grow your Business,</div>
                     <div className="auth-cmn-subtitle">
@@ -81,8 +85,8 @@ const SignUpPage2 = () => {
                                     cmpFocus.cname
                                         ? "input-box active w-100"
                                         : cmpErr.cname
-                                            ? "input-box w-100 forgot-email-border"
-                                            : "input-box w-100"
+                                        ? "input-box w-100 forgot-email-border"
+                                        : "input-box w-100"
                                 }
                             >
                                 <label>Company name</label>
@@ -111,12 +115,12 @@ const SignUpPage2 = () => {
                             <div
                                 className={
                                     cmpFocus.cemail
-                                        ? cmpErr.cemail ?
-                                            "input-box active w-100 forgot-email-border"
+                                        ? cmpErr.cemail
+                                            ? "input-box active w-100 forgot-email-border"
                                             : "input-box active w-100"
                                         : cmpErr.cemail
-                                            ? "input-box w-100 forgot-email-border"
-                                            : "input-box w-100"
+                                        ? "input-box w-100 forgot-email-border"
+                                        : "input-box w-100"
                                 }
                             >
                                 <div className={!validator.isEmail(cmp.cemail) ? "d-none" : ""}>
@@ -145,7 +149,13 @@ const SignUpPage2 = () => {
                                 />
                             </div>
                         </div>
-                        <div className={cmpErr.emailErr ? "col-lg-12 text-start px-4 forgot-email-err" : "d-none"}>
+                        <div
+                            className={
+                                cmpErr.emailErr
+                                    ? "col-lg-12 text-start px-4 forgot-email-err"
+                                    : "d-none"
+                            }
+                        >
                             Enter a valid email address
                         </div>
                     </div>
@@ -156,8 +166,8 @@ const SignUpPage2 = () => {
                                     cmpFocus.cphone
                                         ? "input-box active w-100"
                                         : cmpErr.cphone
-                                            ? "input-box w-100 forgot-email-border"
-                                            : "input-box w-100"
+                                        ? "input-box w-100 forgot-email-border"
+                                        : "input-box w-100"
                                 }
                             >
                                 <label>Company phone</label>
@@ -182,7 +192,9 @@ const SignUpPage2 = () => {
                     </div>
 
                     <div className="px-2 auth-cmn-btn mt-5">
-                        <button className="w-100" onClick={handleSignUp}>Sign up</button>
+                        <button className="w-100" onClick={handleSignUp}>
+                            Sign up
+                        </button>
                     </div>
 
                     <div className="auth-cmn-signin mt-4">

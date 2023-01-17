@@ -1,12 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { useGlobalContext } from '../context/GlobalState';
-import { Loading1, Loading2, Loading3 } from '../../public/img/index';
+import React, { useContext, useState, useEffect } from "react";
+import { useGlobalContext } from "../context/GlobalState";
+import { Loading1, Loading2, Loading3 } from "../../public/img/index";
 import Image from "next/image";
 
 export default function LoadingState() {
     const { loading } = useGlobalContext();
-    const [logo, setLogo] = useState(Loading1)
-    
+    const [logo, setLogo] = useState(Loading1);
+
     useEffect(() => {
         if (loading) {
             setTimeout(() => {
@@ -15,11 +15,11 @@ export default function LoadingState() {
                 if (logo === Loading3) return setLogo(Loading1);
             }, 500);
         }
-    }, [loading, logo])
+    }, [loading, logo]);
 
     return (
-        <div className='loading-state' style={{ display: loading ? 'flex' : 'none' }}>
+        <div className="loading-state" style={{ display: loading ? "flex" : "none" }}>
             <Image src={logo} alt="logo" />
         </div>
-    )
-};
+    );
+}

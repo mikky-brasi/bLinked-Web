@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { getOrderStyle } from "../helpers/getRowStyles";
 import { BsThreeDots } from "react-icons/bs";
-import AgentDropdown from './AgentDropdown';
+import AgentDropdown from "./AgentDropdown";
 
 type TableProps = {
     items: any[]; // TODO: type
@@ -13,10 +13,20 @@ type TableProps = {
     setModalAction: (action: string) => void;
     selected: any;
     setSelected: (item: any) => void;
-}
+};
 
-export default function Table({ items, page, setShow, showDropdown, setShowDropdown, setItemStatus, setModalAction, selected, setSelected }: TableProps) {
-    if (page === 'home') {
+export default function Table({
+    items,
+    page,
+    setShow,
+    showDropdown,
+    setShowDropdown,
+    setItemStatus,
+    setModalAction,
+    selected,
+    setSelected,
+}: TableProps) {
+    if (page === "home") {
         return (
             <table className="mt-4">
                 <thead>
@@ -39,11 +49,15 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                                 <td>{to}</td>
                                 <td>₦{parseInt(price).toFixed(2)}</td>
                                 <td className="home-pending-order-list-status">
-                                    <span className="px-2 py-1 rounded-pill" style={getOrderStyle(status)}>
+                                    <span
+                                        className="px-2 py-1 rounded-pill"
+                                        style={getOrderStyle(status)}
+                                    >
                                         {status}
                                     </span>
                                 </td>
-                                <td className="three_dots"
+                                <td
+                                    className="three_dots"
                                     onClick={() => {
                                         setSelected(item);
                                         setShow(true);
@@ -52,14 +66,14 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                                     <BsThreeDots color="#727E8F" size={23} />
                                 </td>
                             </tr>
-                        )
+                        );
                     })}
                 </tbody>
             </table>
-        )
-    };
+        );
+    }
 
-    if (page === 'orders') {
+    if (page === "orders") {
         return (
             <table className="table">
                 <thead>
@@ -83,9 +97,15 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                                         {name}
                                     </span>
                                 </td>
-                                <td><span>{from}</span></td>
-                                <td><span>{to}</span></td>
-                                <td><span>₦{parseInt(price).toFixed(2)}</span></td>
+                                <td>
+                                    <span>{from}</span>
+                                </td>
+                                <td>
+                                    <span>{to}</span>
+                                </td>
+                                <td>
+                                    <span>₦{parseInt(price).toFixed(2)}</span>
+                                </td>
                                 <td className="order-list-status">
                                     <span
                                         className="px-2 py-1 rounded-pill"
@@ -94,10 +114,13 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                                         {status}
                                     </span>
                                 </td>
-                                <td className="three_dots" onClick={() => {
-                                    setShow(true);
-                                    setItemStatus(status);
-                                }}>
+                                <td
+                                    className="three_dots"
+                                    onClick={() => {
+                                        setShow(true);
+                                        setItemStatus(status);
+                                    }}
+                                >
                                     <BsThreeDots color="#727E8F" size={23} />
                                 </td>
                             </tr>
@@ -105,10 +128,10 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                     })}
                 </tbody>
             </table>
-        )
-    };
+        );
+    }
 
-    if (page === 'agents') {
+    if (page === "agents") {
         return (
             <table className="table">
                 <thead>
@@ -132,15 +155,25 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                                         {agentName}
                                     </span>
                                 </td>
-                                <td><span>{location}</span></td>
-                                <td><span>{orders}</span></td>
-                                <td><span>₦{parseInt(revenue).toFixed(2)}</span></td>
+                                <td>
+                                    <span>{location}</span>
+                                </td>
+                                <td>
+                                    <span>{orders}</span>
+                                </td>
+                                <td>
+                                    <span>₦{parseInt(revenue).toFixed(2)}</span>
+                                </td>
                                 <td className="order-list-status">
-                                    <span className="px-2 py-1 rounded-pill" style={getOrderStyle(status)}>
+                                    <span
+                                        className="px-2 py-1 rounded-pill"
+                                        style={getOrderStyle(status)}
+                                    >
                                         {status}
                                     </span>
                                 </td>
-                                <td className="three_dots"
+                                <td
+                                    className="three_dots"
                                     onClick={() => {
                                         setSelected(item);
                                         setShowDropdown(!showDropdown);
@@ -149,17 +182,23 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                                     onBlur={() => setShowDropdown(false)}
                                 >
                                     <BsThreeDots color="#727E8F" size={23} />
-                                    {showDropdown && selected.id === id && <AgentDropdown setShow={setShow} setModalAction={setModalAction} setShowDropdown={setShowDropdown} />}
+                                    {showDropdown && selected.id === id && (
+                                        <AgentDropdown
+                                            setShow={setShow}
+                                            setModalAction={setModalAction}
+                                            setShowDropdown={setShowDropdown}
+                                        />
+                                    )}
                                 </td>
                             </tr>
                         );
                     })}
                 </tbody>
             </table>
-        )
-    };
+        );
+    }
 
-    if (page === 'feedback') {
+    if (page === "feedback") {
         return (
             <table className="table">
                 <thead>
@@ -183,15 +222,25 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                                         {agentName}
                                     </span>
                                 </td>
-                                <td><span>{orderId}</span></td>
-                                <td><span>{customerName}</span></td>
-                                <td><span>₦{parseInt(budget).toFixed(2)}</span></td>
+                                <td>
+                                    <span>{orderId}</span>
+                                </td>
+                                <td>
+                                    <span>{customerName}</span>
+                                </td>
+                                <td>
+                                    <span>₦{parseInt(budget).toFixed(2)}</span>
+                                </td>
                                 <td className="order-list-status">
-                                    <span className="px-2 py-1 rounded-pill" style={getOrderStyle(status)}>
+                                    <span
+                                        className="px-2 py-1 rounded-pill"
+                                        style={getOrderStyle(status)}
+                                    >
                                         {status}
                                     </span>
                                 </td>
-                                <td className="three_dots"
+                                <td
+                                    className="three_dots"
                                     onClick={() => {
                                         setSelected(item);
                                         setShow(true);
@@ -205,7 +254,7 @@ export default function Table({ items, page, setShow, showDropdown, setShowDropd
                     })}
                 </tbody>
             </table>
-        )
-    };
-    return null
-};
+        );
+    }
+    return null;
+}

@@ -3,12 +3,19 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import { useRouter } from "next/router";
-import { agentsMenu, feedbackMenu, homeMenu, logoutMenu, orderMenu, settingMenu } from "../../public/img";
-import bLinkedLogo from '../../public/landing/bLinkedLogo.svg';
+import {
+    agentsMenu,
+    feedbackMenu,
+    homeMenu,
+    logoutMenu,
+    orderMenu,
+    settingMenu,
+} from "../../public/img";
+import bLinkedLogo from "../../public/landing/bLinkedLogo.svg";
 
 type SidebarProps = {
-  activeSidebar: boolean;
-  setActiveSidebar: (activeSidebar: boolean) => void;
+    activeSidebar: boolean;
+    setActiveSidebar: (activeSidebar: boolean) => void;
 };
 
 const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
@@ -22,8 +29,8 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
     const router = useRouter();
 
     const handleLogout = () => {
-        localStorage.removeItem('accessToken');
-        router.push('/');
+        localStorage.removeItem("accessToken");
+        router.push("/");
     };
 
     useEffect(() => {
@@ -33,15 +40,22 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
     return (
         <div className={!activeSidebar ? "" : "sidebar-bg"}>
             <div className={!activeSidebar ? "sidebar-main" : "sidebar-main active"}>
-                <div className="mt-5 position-relative sidebar-logo" style={{ cursor: 'pointer' }}>
+                <div className="mt-5 position-relative sidebar-logo" style={{ cursor: "pointer" }}>
                     <Image
                         src={bLinkedLogo}
                         alt="Logo"
                         className="img-fluid"
-                        style={{ margin: "-12rem 0", maxHeight: '150px', width: "auto" }}
+                        style={{
+                            margin: "-12rem 0",
+                            maxHeight: "150px",
+                            width: "auto",
+                        }}
                         onClick={() => router.push("/home")}
                     />
-                    <div onClick={() => setActiveSidebar(!activeSidebar)} className="d-flex d-md-none">
+                    <div
+                        onClick={() => setActiveSidebar(!activeSidebar)}
+                        className="d-flex d-md-none"
+                    >
                         <MdClose />
                     </div>
                 </div>
@@ -65,11 +79,7 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                         >
                             <div>
                                 <span>
-                                    <Image
-                                        src={orderMenu}
-                                        alt="Order"
-                                        className="img-fluid"
-                                    />
+                                    <Image src={orderMenu} alt="Order" className="img-fluid" />
                                 </span>
                                 <span>Orders</span>
                             </div>
@@ -96,11 +106,7 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                         >
                             <div>
                                 <span>
-                                    <Image
-                                        src={agentsMenu}
-                                        alt="Agent"
-                                        className="img-fluid"
-                                    />
+                                    <Image src={agentsMenu} alt="Agent" className="img-fluid" />
                                 </span>
                                 <span>Agents</span>
                             </div>
@@ -111,11 +117,7 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                         >
                             <div>
                                 <span>
-                                    <Image
-                                        src={settingMenu}
-                                        alt="Setting"
-                                        className="img-fluid"
-                                    />
+                                    <Image src={settingMenu} alt="Setting" className="img-fluid" />
                                 </span>
                                 <span>Settings</span>
                             </div>
@@ -123,11 +125,7 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                         <li onClick={handleLogout}>
                             <div>
                                 <span>
-                                    <Image
-                                        src={logoutMenu}
-                                        alt="Logout"
-                                        className="img-fluid"
-                                    />
+                                    <Image src={logoutMenu} alt="Logout" className="img-fluid" />
                                 </span>
                                 <span>Logout</span>
                             </div>

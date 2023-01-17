@@ -12,9 +12,9 @@ const Dashboard = ({ children, title }: DashboardProps) => {
     return (
         <div className="dashboard-main">
             <div className="d-flex justify-content-end">
-                <Sidebar activeSidebar={activeSidebar} setActiveSidebar={setActiveSidebar}/>
+                <Sidebar activeSidebar={activeSidebar} setActiveSidebar={setActiveSidebar} />
                 <div className="dashboard-container pb-4">
-                    <Header title={title} handleSideBar={() => setActiveSidebar(!activeSidebar)}/>
+                    <Header title={title} handleSideBar={() => setActiveSidebar(!activeSidebar)} />
                     {children}
                 </div>
             </div>

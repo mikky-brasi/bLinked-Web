@@ -21,7 +21,9 @@ const SettingsPage = () => {
                         <ul>
                             <li
                                 className={menu === "profile" ? "active" : ""}
-                                onClick={() => { setMenu("profile") }}
+                                onClick={() => {
+                                    setMenu("profile");
+                                }}
                             >
                                 User profile
                             </li>
@@ -33,7 +35,13 @@ const SettingsPage = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className={menu === "teammember" ? "settings-form-container w-100" : "settings-form-container"}>
+                    <div
+                        className={
+                            menu === "teammember"
+                                ? "settings-form-container w-100"
+                                : "settings-form-container"
+                        }
+                    >
                         <div
                             onClick={handleMenu}
                             className="d-flex d-md-none pb-0 mt-3 justify-content-end"
@@ -50,8 +58,8 @@ const SettingsPage = () => {
                                 <li
                                     className={menu === "profile" ? "active" : ""}
                                     onClick={() => {
-                                        handleMenu()
-                                        setMenu("profile")
+                                        handleMenu();
+                                        setMenu("profile");
                                     }}
                                 >
                                     User profile
@@ -59,8 +67,8 @@ const SettingsPage = () => {
                                 <li
                                     className={menu === "changepassword" ? "active" : ""}
                                     onClick={() => {
-                                        handleMenu()
-                                        setMenu("changepassword")
+                                        handleMenu();
+                                        setMenu("changepassword");
                                     }}
                                 >
                                     Change password
@@ -68,11 +76,7 @@ const SettingsPage = () => {
                             </ul>
                         </div>
 
-                        {menu === "profile" ? (
-                            <UserProfile />
-                        ) :
-                            <SettingsChangePassword />
-                        }
+                        {menu === "profile" ? <UserProfile /> : <SettingsChangePassword />}
                     </div>
                 </div>
             </div>

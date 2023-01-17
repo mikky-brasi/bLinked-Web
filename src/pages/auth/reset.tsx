@@ -24,11 +24,11 @@ const CreatePassword = () => {
     });
 
     const [passwordType, setPasswordType] = useState({
-        npassType: 'password',
-        cpassType: 'password'
+        npassType: "password",
+        cpassType: "password",
     });
 
-    const inputFocus = (name:string) => {
+    const inputFocus = (name: string) => {
         setPassFocus({
             ...passFocus,
             [name]: true,
@@ -42,11 +42,10 @@ const CreatePassword = () => {
             [name]: value,
         });
 
-        if (name === 'npass') {
+        if (name === "npass") {
             if (!value) {
                 setPassErr({ ...passErr, npassErr: true });
-            }
-            else if (!validator.isStrongPassword(value)) {
+            } else if (!validator.isStrongPassword(value)) {
                 setPassErr({ ...passErr, npassErr: true });
             } else {
                 setPassErr({ ...passErr, npassErr: false });
@@ -54,14 +53,13 @@ const CreatePassword = () => {
         } else {
             if (!value && pass.npass !== null) {
                 setPassErr({ ...passErr, cpassErr: true });
-            }
-            else if (value !== pass.npass) {
+            } else if (value !== pass.npass) {
                 setPassErr({ ...passErr, cpassErr: true });
             } else {
                 setPassErr({ ...passErr, cpassErr: false });
             }
         }
-    }
+    };
 
     const handleClick = () => {
         const { npass, cpass } = pass;
@@ -74,7 +72,7 @@ const CreatePassword = () => {
             setPassErr({
                 ...passErr,
                 cpassErr: !cpass ? true : false,
-            })
+            });
         } else if (passErr.npassErr || passErr.cpassErr) {
             return;
         } else {
@@ -85,24 +83,24 @@ const CreatePassword = () => {
     const handlePassType = (e: React.MouseEvent<HTMLImageElement>) => {
         const { id } = e.target as HTMLImageElement;
 
-        if (id === 'cpass') {
-            if (passwordType.cpassType === 'password') {
-                setPasswordType({ ...passwordType, cpassType: 'text' })
+        if (id === "cpass") {
+            if (passwordType.cpassType === "password") {
+                setPasswordType({ ...passwordType, cpassType: "text" });
             } else {
-                setPasswordType({ ...passwordType, cpassType: 'password' })
+                setPasswordType({ ...passwordType, cpassType: "password" });
             }
         } else {
-            if (passwordType.npassType === 'password') {
-                setPasswordType({ ...passwordType, npassType: 'text' })
+            if (passwordType.npassType === "password") {
+                setPasswordType({ ...passwordType, npassType: "text" });
             } else {
-                setPasswordType({ ...passwordType, npassType: 'password' })
+                setPasswordType({ ...passwordType, npassType: "password" });
             }
         }
-    }
+    };
 
     const handleLogin = () => {
         router.push("/");
-    }
+    };
 
     return (
         <div className="auth-main">
@@ -121,16 +119,22 @@ const CreatePassword = () => {
                             <div
                                 className={
                                     passFocus.npass
-                                        ? passErr.npassErr ?
-                                            "input-box active w-100 forgot-email-border"
+                                        ? passErr.npassErr
+                                            ? "input-box active w-100 forgot-email-border"
                                             : "input-box active w-100"
                                         : passErr.npassErr
-                                            ? "input-box w-100 forgot-email-border"
-                                            : "input-box w-100"
+                                        ? "input-box w-100 forgot-email-border"
+                                        : "input-box w-100"
                                 }
                             >
                                 <div>
-                                    <Image src={eye} alt="Eye" className="img-fluid" id="npass" onClick={handlePassType} />
+                                    <Image
+                                        src={eye}
+                                        alt="Eye"
+                                        className="img-fluid"
+                                        id="npass"
+                                        onClick={handlePassType}
+                                    />
                                 </div>
                                 <label>New password</label>
                                 <input
@@ -158,23 +162,29 @@ const CreatePassword = () => {
                                     : "d-none"
                             }
                         >
-                            Enter a strong password containing at least 8 characters with
-                            1 lower case letter, 1 upper case letter, 1 number and 1 special character
+                            Enter a strong password containing at least 8 characters with 1 lower
+                            case letter, 1 upper case letter, 1 number and 1 special character
                         </div>
                         <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container fotgot-pass-border">
                             <div
                                 className={
                                     passFocus.cpass
-                                        ? passErr.cpassErr ?
-                                            "input-box active w-100 forgot-email-border"
+                                        ? passErr.cpassErr
+                                            ? "input-box active w-100 forgot-email-border"
                                             : "input-box active w-100"
                                         : passErr.cpassErr
-                                            ? "input-box w-100 forgot-email-border"
-                                            : "input-box w-100"
+                                        ? "input-box w-100 forgot-email-border"
+                                        : "input-box w-100"
                                 }
                             >
                                 <div>
-                                    <Image src={eye} alt="Eye" className="img-fluid" id="cpass" onClick={handlePassType} />
+                                    <Image
+                                        src={eye}
+                                        alt="Eye"
+                                        className="img-fluid"
+                                        id="cpass"
+                                        onClick={handlePassType}
+                                    />
                                 </div>
                                 <label>Confirm new password</label>
                                 <input

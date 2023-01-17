@@ -23,16 +23,15 @@ const ForgotEmailScreen = () => {
         if (typeof value !== "undefined") {
             const lastAtPos = value.lastIndexOf("@");
             const lastDotPos = value.lastIndexOf(".");
-            const validEmail = (
+            const validEmail =
                 lastAtPos < lastDotPos &&
                 lastAtPos > 0 &&
                 value.indexOf("@@") === -1 &&
                 lastDotPos > 2 &&
-                value.length - lastDotPos > 2
-            );
+                value.length - lastDotPos > 2;
 
             if (!validEmail) return setEmailErr(true);
-        };
+        }
         return setEmailErr(false);
     };
 
@@ -41,13 +40,13 @@ const ForgotEmailScreen = () => {
             setEmailErr(true);
         } else {
             setEmailErr(false);
-            router.push("/auth/otp")
+            router.push("/auth/otp");
         }
     };
 
     const handleLogin = () => {
-        router.push("/")
-    }
+        router.push("/");
+    };
 
     return (
         <div className="auth-main">
@@ -71,8 +70,8 @@ const ForgotEmailScreen = () => {
                                             ? "input-box active w-100 forgot-email-border"
                                             : "input-box active w-100"
                                         : emailErr
-                                            ? "input-box w-100 forgot-email-border"
-                                            : "input-box w-100"
+                                        ? "input-box w-100 forgot-email-border"
+                                        : "input-box w-100"
                                 }
                             >
                                 <div className={!validator.isEmail(email) ? "d-none" : ""}>
@@ -98,7 +97,11 @@ const ForgotEmailScreen = () => {
                                 />
                             </div>
                         </div>
-                        <div className={emailErr ? "col-lg-12 text-start px-4 forgot-email-err" : "d-none"}>
+                        <div
+                            className={
+                                emailErr ? "col-lg-12 text-start px-4 forgot-email-err" : "d-none"
+                            }
+                        >
                             Enter a valid email address
                         </div>
                     </div>
