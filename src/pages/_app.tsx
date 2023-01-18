@@ -34,7 +34,10 @@ import LoadingState from "../components/LoadingState";
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
-        <GoogleOAuthProvider clientId={process.env.CLIENT_ID!} onScriptLoadError={console.error}>
+        <GoogleOAuthProvider
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
+            onScriptLoadError={console.error}
+        >
             <GlobalProvider>
                 <Head>
                     <title>bLinked</title>
