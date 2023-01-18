@@ -22,10 +22,7 @@ import Image from "next/image";
 const MapComponent = (props: IProvidedProps) => {
     const mapRef = useRef<Map>(null);
     const [zoom, setZoom] = useState(12);
-    const [
-        mapCenter,
-        // setMapCenter
-    ] = useState({
+    const [mapCenter, setMapCenter] = useState({
         lat: 6.45567900007564,
         lng: 3.388292095013091,
     });
@@ -68,7 +65,6 @@ const MapComponent = (props: IProvidedProps) => {
                     <div className="mt-2 mb-4">Agent Locations</div>
                     <div>
                         <figure style={{ borderRadius: 8, overflow: "hidden" }}>
-                            {/* @ts-expect-error */}
                             <Map
                                 ref={mapRef}
                                 google={props.google}
@@ -112,7 +108,6 @@ const MapComponent = (props: IProvidedProps) => {
                                         <Marker
                                             key={agent.lat + agent.lng}
                                             onClick={onMarkerClick}
-                                            //  @ts-expect-error
                                             position={{
                                                 lat: agent.lat,
                                                 lng: agent.lng,
@@ -122,7 +117,6 @@ const MapComponent = (props: IProvidedProps) => {
                                     );
                                 })}
                                 {showInfoWindow && (
-                                    // @ts-expect-error
                                     <InfoWindow marker={activeMarker} visible={showInfoWindow}>
                                         <div className="info_window">
                                             <div
@@ -157,10 +151,7 @@ const MapComponent = (props: IProvidedProps) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover
-                                        id="inactive-agents"
-                                        className="py-2 px-3 text-center text-20"
-                                    >
+                                    <Popover className="py-2 px-3 text-center text-20">
                                         <span className="d-block mb-1 home-agent-type">
                                             Inactive Agents
                                         </span>
@@ -176,10 +167,7 @@ const MapComponent = (props: IProvidedProps) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover
-                                        id="unavailable-agents"
-                                        className="py-2 px-3 text-center text-16"
-                                    >
+                                    <Popover className="py-2 px-3 text-center text-16">
                                         <span className="d-block mb-1 home-agent-type">
                                             Unavailable Agents
                                         </span>
@@ -197,10 +185,7 @@ const MapComponent = (props: IProvidedProps) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover
-                                        id="available-agents"
-                                        className="py-2 px-3 text-center text-16"
-                                    >
+                                    <Popover className="py-2 px-3 text-center text-16">
                                         <span className="d-block mb-1 home-agent-type">
                                             Available Agents
                                         </span>
@@ -216,10 +201,7 @@ const MapComponent = (props: IProvidedProps) => {
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
-                                    <Popover
-                                        id="active-agents"
-                                        className="py-2 px-3 text-center text-16"
-                                    >
+                                    <Popover className="py-2 px-3 text-center text-16">
                                         <span className="d-block mb-1 home-agent-type">
                                             Active Agents
                                         </span>
