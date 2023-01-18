@@ -27,29 +27,26 @@ import "../components/LoadingState.scss";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import { withMaybeGoogleOAuthProvider } from "../modules/google-oauth/withMaybeGoogleOAuthProvider";
 import { GlobalProvider } from "../context/GlobalState";
 import AlertToast from "../components/Toast";
 import LoadingState from "../components/LoadingState";
 
-export default function App({ Component, pageProps }: AppProps) {
+export function App({ Component, pageProps }: AppProps) {
     return (
-        <GoogleOAuthProvider
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
-            onScriptLoadError={console.error}
-        >
-            <GlobalProvider>
-                <Head>
-                    <title>bLinked</title>
-                    <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <link rel="icon" href="/icon.png" />
-                    <meta name="theme-color" content="#000000" />
-                </Head>
+        <GlobalProvider>
+            <Head>
+                <title>bLinked</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/icon.png" />
+                <meta name="theme-color" content="#000000" />
+            </Head>
 
-                <AlertToast />
-                <LoadingState />
-                <Component {...pageProps} />
-            </GlobalProvider>
-        </GoogleOAuthProvider>
+            <AlertToast />
+            <LoadingState />
+            <Component {...pageProps} />
+        </GlobalProvider>
     );
 }
+
+export default withMaybeGoogleOAuthProvider(App);
