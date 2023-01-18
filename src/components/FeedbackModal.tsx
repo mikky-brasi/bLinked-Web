@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { MdClose } from "react-icons/md";
 import { AvatarPlaceholder } from "../../public/img/index";
 import { getOrderStyle } from "../helpers/getRowStyles";
-import moment from "moment";
 import Image from "next/image";
+import formatRelative from "date-fns/formatRelative";
 
 type FeedbackModalProps = {
     show: boolean;
@@ -97,20 +97,7 @@ export default function FeedbackModal({ show, setShow, selected }: FeedbackModal
                     {showComments && (
                         <div className="comment-section">
                             {comments.map((comment, index) => (
-                                <div key={index} className="comment">
-                                    <Image
-                                        className="image"
-                                        src={AvatarPlaceholder}
-                                        alt="Author avatar"
-                                    />
-                                    <div className="content">
-                                        <div className="user-info">
-                                            <p>{comment.user}</p>
-                                            <span>{moment(comment.date).calendar()}</span>
-                                        </div>
-                                        <p className="text">{comment.comment}</p>
-                                    </div>
-                                </div>
+                                <Comment comment={comment} key={index} />
                             ))}
                         </div>
                     )}
@@ -134,5 +121,35 @@ export default function FeedbackModal({ show, setShow, selected }: FeedbackModal
                 </button>
             </Modal.Footer>
         </Modal>
+    );
+}
+
+function Comment(props: {
+    comment: {
+        user: string;
+        date: string;
+        comment: string;
+    };
+}) {
+    const { comment } = props;
+
+    const relativeDateText = useMemo(() => {
+        const text = formatRelative(new Date(comment.date), new Date());
+
+        // Capitalize first letter
+        return text.charAt(0).toUpperCase() + text.slice(1);
+    }, [comment.date]);
+
+    return (
+        <div className="comment">
+            <Image className="image" src={AvatarPlaceholder} alt="Author avatar" />
+            <div className="content">
+                <div className="user-info">
+                    <p>{comment.user}</p>
+                    <span>{relativeDateText}</span>
+                </div>
+                <p className="text">{comment.comment}</p>
+            </div>
+        </div>
     );
 }
