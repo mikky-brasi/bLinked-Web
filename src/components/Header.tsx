@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { GoChevronDown } from "react-icons/go";
-import { CgMenuLeftAlt } from "react-icons/cg";
+import React, { useState } from "react";
 import { Dropdown } from "react-bootstrap";
+import { CgMenuLeftAlt } from "react-icons/cg";
+import { GoChevronDown } from "react-icons/go";
 
-import { notificationIcon } from "../../public/img";
-import NotificationDropdown from "./NotificationDropdown";
 import { ImSearch } from "react-icons/im";
+import NotificationDropdown from "./NotificationDropdown";
 import SearchModal from "./SearchModal";
 
 type HeaderProps = {
