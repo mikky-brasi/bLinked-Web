@@ -10,33 +10,22 @@ import { ImSearch } from "react-icons/im";
 import SearchModal from "./SearchModal";
 
 type HeaderProps = {
-  handleSideBar: () => void;
-  title: string;
+    handleSideBar: () => void;
+    title: string;
 };
 
 const Header = ({ handleSideBar, title }: HeaderProps) => {
     const router = useRouter();
     const [show, setShow] = useState(false);
 
-    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-        <span ref={ref}
-            onClick={(e) => {
-                e.preventDefault();
-                onClick(e);
-            }}
-        >
-            {children}
-        </span>
-    ));
-
     const handleLogout = () => {
-        localStorage.removeItem('accessToken');
-        router.push('/');
-    }
+        localStorage.removeItem("accessToken");
+        router.push("/");
+    };
 
     const showSearchModal = () => {
         setShow(true);
-    }
+    };
 
     return (
         <div className="dashboard-header-main px-md-4 px-2">
@@ -44,9 +33,7 @@ const Header = ({ handleSideBar, title }: HeaderProps) => {
                 <span onClick={handleSideBar} className="d-flex d-md-none">
                     <CgMenuLeftAlt size={28} />
                 </span>
-                <span className="mx-2 ">
-                    {title}
-                </span>
+                <span className="mx-2 ">{title}</span>
             </div>
             <div className="dashboard-header-account">
                 <div className="dashboard-header-search" onClick={showSearchModal}>
@@ -79,8 +66,18 @@ const Header = ({ handleSideBar, title }: HeaderProps) => {
                             </div>
                         </Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item className="drop-menu-item" onClick={() => router.push('/settings')}>Profile</Dropdown.Item>
-                        <Dropdown.Item className="drop-menu-item" onClick={() => router.push('/settings')}>Support</Dropdown.Item>
+                        <Dropdown.Item
+                            className="drop-menu-item"
+                            onClick={() => router.push("/settings")}
+                        >
+                            Profile
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                            className="drop-menu-item"
+                            onClick={() => router.push("/settings")}
+                        >
+                            Support
+                        </Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item className="drop-menu-item logout" onClick={handleLogout}>
                             Logout
@@ -89,11 +86,30 @@ const Header = ({ handleSideBar, title }: HeaderProps) => {
                 </Dropdown>
             </div>
 
-            {show &&
-                <SearchModal show={show} setShow={setShow}/>
-            }
+            {show && <SearchModal show={show} setShow={setShow} />}
         </div>
     );
 };
 
 export default Header;
+
+type CustomToggleProps = {
+    children: React.ReactNode;
+    onClick: (e: React.MouseEvent) => void;
+};
+
+const CustomToggle = React.forwardRef<HTMLSpanElement, CustomToggleProps>(
+    function CustomToggleRender({ children, onClick }, ref) {
+        return (
+            <span
+                ref={ref}
+                onClick={(e) => {
+                    e.preventDefault();
+                    onClick(e);
+                }}
+            >
+                {children}
+            </span>
+        );
+    },
+);

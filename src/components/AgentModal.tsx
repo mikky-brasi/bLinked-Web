@@ -38,5 +38,5 @@ export const AgentModal = ({ item, onClick }: AgentModalProps) => {
                 </span>
             </div>
         </li>
-    )
-}
+    );
+};

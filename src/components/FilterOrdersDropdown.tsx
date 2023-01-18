@@ -1,19 +1,19 @@
-import React from 'react';
+import React from "react";
 // Assets
 import { filterIcon } from "../../public/img";
 // Components
-import { Dropdown } from 'react-bootstrap';
-import { CustomToggle } from './CustomToggle';
-import Image from 'next/image';
+import { Dropdown } from "react-bootstrap";
+import { CustomToggle } from "./CustomToggle";
+import Image from "next/image";
 
 type FilterOrdersDropdownProps = {
     setFilter: React.Dispatch<React.SetStateAction<string>>;
     page: string;
-}
+};
 
 export default function FilterOrdersDropdown({ setFilter, page }: FilterOrdersDropdownProps) {
     return (
-        <Dropdown className="filter my-3 my-md-0" >
+        <Dropdown className="filter my-3 my-md-0">
             <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
                 <div className="filter my-3 my-md-0">
                     <button className="px-4">
@@ -22,63 +22,96 @@ export default function FilterOrdersDropdown({ setFilter, page }: FilterOrdersDr
                     </button>
                 </div>
             </Dropdown.Toggle>
-            {page === 'agents' &&
+            {page === "agents" && (
                 <Dropdown.Menu className="p-2">
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('All')}>
+                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter("All")}>
                         All
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Working')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Working")}
+                    >
                         Working
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Available')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Available")}
+                    >
                         Available
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Unavailble')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Unavailble")}
+                    >
                         Unavailable
                     </Dropdown.Item>
                 </Dropdown.Menu>
-            }
-            {page === 'feedback' &&
+            )}
+            {page === "feedback" && (
                 <Dropdown.Menu className="p-2">
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('All')}>
+                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter("All")}>
                         All
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Pending')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Pending")}
+                    >
                         Pending
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Resolved')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Resolved")}
+                    >
                         Resolved
                     </Dropdown.Item>
                 </Dropdown.Menu>
-            }
-            {page === 'orders' &&
+            )}
+            {page === "orders" && (
                 <Dropdown.Menu className="p-2">
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('All')}>
+                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter("All")}>
                         All
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('New')}>
+                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter("New")}>
                         New
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Pending')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Pending")}
+                    >
                         Pending
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Enroute pickup')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Enroute pickup")}
+                    >
                         Enroute Pickup
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Enroute dropoff')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Enroute dropoff")}
+                    >
                         Enroute Dropoff
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Canceled')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Canceled")}
+                    >
                         Canceled
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Assigned')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Assigned")}
+                    >
                         Assigned
                     </Dropdown.Item>
-                    <Dropdown.Item className="drop-menu-item py-3" onClick={() => setFilter('Delivered')}>
+                    <Dropdown.Item
+                        className="drop-menu-item py-3"
+                        onClick={() => setFilter("Delivered")}
+                    >
                         Delivered
                     </Dropdown.Item>
                 </Dropdown.Menu>
-            }
+            )}
         </Dropdown>
-    )
-};
+    );
+}

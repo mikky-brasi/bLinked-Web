@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 // Assets
 import { filterIcon } from "../../public/img";
 // Components
-import { Dropdown } from 'react-bootstrap';
-import { CustomToggle } from './CustomToggle';
+import { Dropdown } from "react-bootstrap";
+import { CustomToggle } from "./CustomToggle";
 import { BiChevronDown } from "react-icons/bi";
-import DateDropdown from './DateDropdown';
-import Image from 'next/image';
+import DateDropdown from "./DateDropdown";
+import Image from "next/image";
 
 type FilterOrdersPanelProps = {
     setFilter: unknown;
@@ -15,11 +15,18 @@ type FilterOrdersPanelProps = {
     setSearchFromDate: (value: Date) => void;
     searchToDate: Date;
     setSearchToDate: (value: Date) => void;
-}
+};
 
-export default function FilterOrdersPanel({ setFilter, page, searchFromDate, setSearchFromDate, searchToDate, setSearchToDate }: FilterOrdersPanelProps) {
+export default function FilterOrdersPanel({
+    setFilter,
+    page,
+    searchFromDate,
+    setSearchFromDate,
+    searchToDate,
+    setSearchToDate,
+}: FilterOrdersPanelProps) {
     return (
-        <Dropdown className="filter my-3 my-md-0" >
+        <Dropdown className="filter my-3 my-md-0">
             <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
                 <div className="filter my-3 my-md-0">
                     <button className="px-4">
@@ -32,7 +39,7 @@ export default function FilterOrdersPanel({ setFilter, page, searchFromDate, set
                 <span>Order status</span>
                 <Dropdown className="my-3">
                     <Dropdown.Toggle as={CustomToggle}>
-                        <div className='input-box'>
+                        <div className="input-box">
                             <div>
                                 <BiChevronDown size={25} color="#A3A3C2" />
                             </div>
@@ -40,17 +47,15 @@ export default function FilterOrdersPanel({ setFilter, page, searchFromDate, set
                         </div>
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu className='dropdown-status'>
+                    <Dropdown.Menu className="dropdown-status">
                         <Dropdown.Item href="#/action-1">New</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Pending</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Enroute Pickup</Dropdown.Item>
                         <Dropdown.Item href="#/action-4">Assigned</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <span className="d-inline-block mb-3">
-                    Date period
-                </span>
-                
+                <span className="d-inline-block mb-3">Date period</span>
+
                 <DateDropdown
                     fromDate={searchFromDate}
                     setFromDate={setSearchFromDate}
@@ -59,5 +64,5 @@ export default function FilterOrdersPanel({ setFilter, page, searchFromDate, set
                 />
             </Dropdown.Menu>
         </Dropdown>
-    )
-};
+    );
+}

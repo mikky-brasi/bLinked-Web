@@ -16,7 +16,8 @@ const PendingOrderBox = ({ item, setShow, setSelected }: PendingOrderBoxProps) =
             <div className="mb-5">
                 <div className="home-pending-order-name">
                     <span>{name}</span>
-                    <span className="three_dots"
+                    <span
+                        className="three_dots"
                         onClick={() => {
                             setSelected(item);
                             setShow(true);
