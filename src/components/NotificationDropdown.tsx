@@ -5,10 +5,7 @@ import { notificationIcon, NoNotificationsIcon } from "../../public/img";
 import Image from "next/image";
 
 export default function NotificationDropdown() {
-    const [
-        notifications,
-        // setNotifications
-    ] = useState([]);
+    const [notifications, setNotifications] = useState([]);
 
     return (
         <Dropdown className="notification-dropdown">

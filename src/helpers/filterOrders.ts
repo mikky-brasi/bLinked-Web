@@ -1,6 +1,6 @@
-import { OrderItem } from "../components/Table";
+import { Order } from "../types/Order";
 
-export const filterOrders = (orders: OrderItem[], search: string, filter: string) => {
+export const filterOrders = (orders: Order[], search: string, filter: string) => {
     if (search === "" && filter === "All") return orders;
     if (search !== "" && filter === "All") {
         return orders.filter(

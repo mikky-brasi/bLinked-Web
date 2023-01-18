@@ -1,9 +1,14 @@
+import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
+import { MdClose } from "react-icons/md";
+import { AvatarPlaceholder } from "../../public/img/index";
+import { getOrderStyle } from "../helpers/getRowStyles";
+import moment from "moment";
 import { History } from "../../public/img";
 
-import Image from "next/image";
 import { ImSearch } from "react-icons/im";
 import history from "../mockData/recentSearch.json";
+import Image from "next/image";
 
 type FeedbackModalProps = {
     show: boolean;

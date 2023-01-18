@@ -20,8 +20,8 @@ export default function OrderDetailsModal({
     show,
     setShow,
     itemStatus,
-}: // setItemStatus, // TODO: Can this be deleted?
-OrderDetailsModalProps) {
+    setItemStatus,
+}: OrderDetailsModalProps) {
     const [agentErr, setAgentErr] = useState(false);
     const [agentsFocus, setAgentsFocus] = useState(false);
     const [selectedAgent, setSelectedAgent] = useState("");
@@ -29,16 +29,16 @@ OrderDetailsModalProps) {
     const [agentSearch, setAgentSearch] = useState("");
     const [agents, setAgents] = useState(agentsData);
 
-    const handleModal = () => {
+    const handleModal = (status) => {
         setSearchResult(false);
         setAgentSearch("");
         setAgentErr(false);
         setShow(!show);
         setAgentsFocus(false);
+        if (!show) setItemStatus?.(status);
     };
 
-    const handleAgentSearch = (e: React.ChangeEvent<HTMLInputElement>) =>
-        setAgentSearch(e.target.value);
+    const handleAgentSearch = (e) => setAgentSearch(e.target.value);
 
     const handleConfirm = () => (!agents ? setAgentErr(true) : handleModal());
 

@@ -1,12 +1,12 @@
 import React from "react";
 import { getOrderStyle } from "../helpers/getRowStyles";
 import { BsThreeDots } from "react-icons/bs";
-import { HomeItem } from "./Table";
+import { Order } from "../types/Order";
 
 type PendingOrderBoxProps = {
-    item: HomeItem;
+    item: Order;
     setShow: (show: boolean) => void;
-    setSelected: (order: HomeItem) => void;
+    setSelected: (order: Order) => void;
 };
 
 const PendingOrderBox = ({ item, setShow, setSelected }: PendingOrderBoxProps) => {
