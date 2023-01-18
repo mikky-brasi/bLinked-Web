@@ -15,11 +15,8 @@ import {
     validemail,
 } from "../../public/img";
 import bLinkedLogo from "../../public/landing/bLinkedLogo.svg";
-import GoogleLogin, { GoogleLoginProps, GoogleLoginResponse } from "react-google-login";
-import { OAuth2Client } from "google-auth-library";
+import { useGoogleLogin, UseGoogleLoginOptionsImplicitFlow } from "@react-oauth/google";
 import Image from "next/image";
-
-const client = new OAuth2Client(process.env.CLIENT_ID);
 
 const SignInPage = () => {
     const router = useRouter();
@@ -92,25 +89,33 @@ const SignInPage = () => {
         gapi.load("client:auth2", start);
     };
 
-    const googleSuccess: GoogleLoginProps["onSuccess"] = async (googleData) => {
-        googleData = googleData as GoogleLoginResponse;
-        console.log(googleData);
-        const token = googleData.tokenId;
+    const googleSuccess: UseGoogleLoginOptionsImplicitFlow["onSuccess"] = async (tokenResponse) => {
+        type UserInfo = {
+            sub: string;
+            name: string;
+            given_name: string;
+            family_name: string;
+            picture: string;
+            email: string;
+            email_verified: boolean;
+            locale: string;
+        };
+        const userInfo: UserInfo = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+            headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        }).then((res) => res.json());
 
-        const ticket = await client.verifyIdToken({
-            idToken: token,
-            audience: process.env.CLIENT_ID,
-        });
+        // TODO: Add defensive code. Validate the shape of the response.
 
-        const { name, email, picture } = ticket.getPayload()!;
+        const { name, email, picture } = userInfo;
         console.log(name);
         console.log(email);
         console.log(picture);
     };
 
-    const googleFailure = (error: Error) => {
-        console.error(error);
-    };
+    const googleLogin = useGoogleLogin({
+        onSuccess: googleSuccess,
+        onError: (response) => console.error(response),
+    });
 
     return (
         <>
@@ -129,33 +134,21 @@ const SignInPage = () => {
                         </div>
                         <div className="signin-title">Welcome back to bLinked, 👏🏽</div>
                         <div className="signin-subcontainer px-md-5 mt-5">
-                            <GoogleLogin
-                                className="signin-with-google px-md-3"
-                                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
-                                buttonText={"Sign in with Google"}
-                                render={(renderProps) => (
-                                    <div className="signin-with-google px-md-3">
-                                        <div className="shadow-sm">
-                                            <Image src={google} alt="" />
-                                        </div>
-                                        <button
-                                            className="w-100"
-                                            onClick={renderProps.onClick}
-                                            disabled={renderProps.disabled}
-                                        >
-                                            Sign in with Google
-                                        </button>
-                                    </div>
-                                )}
-                                onSuccess={googleSuccess}
-                                onFailure={googleFailure}
-                                cookiePolicy={"single_host_origin"}
-                            />
+                            <div className="signin-with-google px-md-3">
+                                <div className="shadow-sm">
+                                    <Image src={google} alt="" />
+                                </div>
+                                <button className="w-100" onClick={() => googleLogin()}>
+                                    Sign in with Google
+                                </button>
+                            </div>
+
                             <div className="signin-with-email">
                                 <div></div>
                                 <div className="mx-4">Or, sign in with your email</div>
                                 <div></div>
                             </div>
+
                             <div className="row">
                                 <div className="col-lg-12 auth-input-container">
                                     <div
@@ -266,6 +259,7 @@ const SignInPage = () => {
                             </div>
                         </div>
                     </div>
+
                     <div className="col-lg-4 px-5 py-5 signin-comp-b">
                         <div>
                             <div>
@@ -279,6 +273,7 @@ const SignInPage = () => {
                                 types of payments and analyze your sales with one tool.
                             </p>
                         </div>
+
                         <div className="signin-vector">
                             <div>
                                 <Image src={loginVectorA} alt="Login" className="img-fluid" />
