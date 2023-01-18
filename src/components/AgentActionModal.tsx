@@ -4,19 +4,13 @@ import { Modal } from "react-bootstrap";
 import { MdClose } from "react-icons/md";
 import { Memoji } from "../../public/img";
 import { getOrderStyle } from "../helpers/getRowStyles";
+import { AgentItem } from "./Table";
 
 type AgentActionModalProps = {
     show: boolean;
     setShow: (show: boolean) => void;
     action: string;
-    selected: {
-        agentName: string;
-        status: string;
-        phone: string;
-        email: string;
-        image: string;
-        agentN: string;
-    } | null;
+    selected: AgentItem | null;
 };
 
 export default function AgentActionModal({
@@ -91,11 +85,12 @@ export default function AgentActionModal({
         };
         getContent();
         if (action === "Edit" && selected !== null) {
+            // TODO: get initial data.
             setFirstName(selected.agentName || "");
-            setLastName(selected.agentN || "");
-            setEmail(selected.email || "");
-            setPhone(selected.phone || "");
-            setImage(selected.image || null);
+            setLastName("");
+            setEmail("");
+            setPhone("");
+            setImage(null);
         } else {
             setFirstName("");
             setLastName("");
@@ -127,7 +122,7 @@ export default function AgentActionModal({
         <Modal
             show={show}
             centered
-            size={action === "Suspend" || action === "Remove" ? "md" : "lg"}
+            size={action === "Suspend" || action === "Remove" ? undefined : "lg"}
             className="agent-action-modal"
         >
             <Modal.Header className="header">

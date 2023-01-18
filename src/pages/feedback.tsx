@@ -5,7 +5,7 @@ import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { ImSearch } from "react-icons/im";
 // Components
 import RatingCard from "../components/RatingCard";
-import Table from "../components/Table";
+import Table, { FeedbackItem } from "../components/Table";
 import Dashboard from "../components/Dashboard";
 import FilterOrdersDropdown from "../components/FilterOrdersDropdown";
 import FeedbackModal from "../components/FeedbackModal";
@@ -14,11 +14,10 @@ import feedback from "../mockData/feedback.json";
 // Helpers
 import { filterFeedback } from "../helpers/filterFeedback";
 import { withAuthRequired } from "../hocs/withAuthRequired";
-import { Order } from "../types/Order";
 
 const FeedbackPage = () => {
     const [show, setShow] = useState(false);
-    const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
+    const [selectedOrder, setSelectedOrder] = useState<FeedbackItem | null>(null);
     const [orders, setOrders] = useState(feedback);
 
     const [filter, setFilter] = useState("All");
@@ -90,7 +89,6 @@ const FeedbackPage = () => {
                                 items={orders}
                                 page="feedback"
                                 setShow={setShow}
-                                selected={selectedOrder}
                                 setSelected={setSelectedOrder}
                             />
                         </div>
@@ -130,7 +128,9 @@ const FeedbackPage = () => {
                 </div>
 
                 <div className="px-md-4 px-2 mb-4"></div>
-                {show && <FeedbackModal show={show} setShow={setShow} selected={selectedOrder} />}
+                {show && selectedOrder && (
+                    <FeedbackModal show={show} setShow={setShow} selected={selectedOrder} />
+                )}
             </div>
         </Dashboard>
     );

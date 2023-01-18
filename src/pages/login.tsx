@@ -141,7 +141,7 @@ const SignInPage = () => {
                         </div> */}
                         <GoogleLogin
                             className="signin-with-google px-md-3"
-                            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
                             buttonText={"Sign in with Google"}
                             render={(renderProps) => (
                                 <div className="signin-with-google px-md-3">

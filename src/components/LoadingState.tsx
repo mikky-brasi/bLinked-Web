@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useGlobalContext } from "../context/GlobalState";
-import { Loading1, Loading2, Loading3 } from "../../public/img/index";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Loading1, Loading2, Loading3 } from "../../public/img/index";
+import { useGlobalContext } from "../context/GlobalState";
 
 export default function LoadingState() {
     const { loading } = useGlobalContext();
