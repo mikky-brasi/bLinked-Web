@@ -29,7 +29,7 @@ const OrdersPage = () => {
     useEffect(() => setOrders(filterOrders(order, orderSearch, filter)), [orderSearch, filter]);
 
     return (
-        <Dashboard title="Orders">
+        <Dashboard title="Orders" useOldFonts>
             <div className="main-container">
                 <div className="px-md-4 px-2 pb-4 mt-4">
                     <div className="total-rating-container">

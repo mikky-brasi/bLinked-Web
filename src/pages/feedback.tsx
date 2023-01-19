@@ -32,7 +32,7 @@ const FeedbackPage = () => {
     );
 
     return (
-        <Dashboard title="Feedback">
+        <Dashboard title="Feedback" useOldFonts>
             <div className="main-container">
                 <div className="px-md-4 px-2 pb-4 mt-4">
                     <div className="total-rating-container">
