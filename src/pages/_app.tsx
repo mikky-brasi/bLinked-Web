@@ -13,7 +13,6 @@ import "@/styles/fonts.scss";
 import "../components/Footer.scss";
 import "@/styles/_input_box.scss";
 import "@/styles/pages/SignIn.scss";
-import "@/styles/pages/SignUp.scss";
 import "@/styles/pages/Forgot.scss";
 
 // Dashboard SCSS Start

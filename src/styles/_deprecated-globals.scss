@@ -31,12 +31,14 @@
 }
 
 .auth-cmn-title {
+  @warn "This class is deprecated. Use the mixin authCmnTitle instead.";
   font-weight: bold;
   font-size: 24px;
   font-family: var(--font-gt-walsheim-pro);
 }
 
 .auth-cmn-subtitle {
+  @warn "This class is deprecated. Use the mixin authCmnSubtitle instead.";
   font-weight: normal;
   font-size: 16px;
   margin-top: 15px;

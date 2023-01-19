@@ -7,6 +7,7 @@ import bLinkedLogo from "../../../public/landing/bLinkedLogo.svg";
 // Components
 import Footer from "../../components/Footer";
 import Image from "next/image";
+import styles from "@/styles/pages/SignUp.module.scss";
 
 const SignUpPage2 = () => {
     const router = useRouter();
@@ -64,7 +65,7 @@ const SignUpPage2 = () => {
     const handleLogin = () => router.push("/login");
 
     return (
-        <div className="auth-main apply-old-fonts">
+        <div className={styles.wrapper}>
             <div className="container auth-cmn-main">
                 <Image
                     src={bLinkedLogo}

@@ -8,6 +8,8 @@ import bLinkedLogo from "../../../public/landing/bLinkedLogo.svg";
 // Components
 import Footer from "../../components/Footer";
 import Image from "next/image";
+import styles from "@/styles/pages/SignUp.module.scss";
+import classNames from "classnames";
 
 const SignUpPage1 = () => {
     const router = useRouter();
@@ -81,7 +83,7 @@ const SignUpPage1 = () => {
     const handleLogin = () => router.push("/login");
 
     return (
-        <div className="auth-main apply-old-fonts">
+        <div className={styles.wrapper}>
             <div className="container auth-cmn-main">
                 <Image
                     src={bLinkedLogo}
@@ -89,9 +91,9 @@ const SignUpPage1 = () => {
                     className="img-fluid"
                     style={{ maxHeight: "150px" }}
                 />
-                <div className="auth-cmn-subcontainer px-md-5 py-5">
-                    <div className="auth-cmn-title">Let’s get you started 👇🏽</div>
-                    <div className="auth-cmn-subtitle">First of, let’s get to know you</div>
+                <div className={classNames("px-md-5 py-5", styles.subContainer)}>
+                    <div className={styles.title}>Let’s get you started 👇🏽</div>
+                    <div className={styles.subtitle}>First of, let’s get to know you</div>
 
                     <div className="row martop-32">
                         <div className="col-lg-6  auth-input-container">
@@ -219,7 +221,7 @@ const SignUpPage1 = () => {
                                     <Image
                                         src={passwordType === "password" ? eye : hiddenEye}
                                         alt="Eye"
-                                        className="img-fluid pointer"
+                                        className={classNames("img-fluid", styles.pointer)}
                                         onClick={handlePassType}
                                     />
                                 </div>
@@ -254,7 +256,7 @@ const SignUpPage1 = () => {
                         </div>
                     </div>
 
-                    <div className="my-4 signup-terms-condition">
+                    <div className={classNames("my-4", styles.termsCondition)}>
                         By clicking on the Continue button you agree with our
                         <span>
                             {" "}
@@ -263,13 +265,13 @@ const SignUpPage1 = () => {
                         and <span>Privacy Policy</span>
                     </div>
 
-                    <div className="px-2 auth-cmn-btn">
+                    <div className={classNames("px-2", styles.button)}>
                         <button className="w-100" onClick={handleSignup}>
                             Continue
                         </button>
                     </div>
 
-                    <div className="auth-cmn-signin mt-4">
+                    <div className={classNames("mt-4", styles.signIn)}>
                         Already have an account yet? <span onClick={handleLogin}>Sign in</span>
                     </div>
                 </div>

@@ -1,0 +1,62 @@
+@use "../fonts/mixins.scss";
+@use "../fonts/weights.scss";
+
+@mixin authMain {
+    background: url("/img/background.png");
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+}
+
+@mixin authCmnTitle {
+    @include mixins.font-GT-Walsheim-PRO(weights.$font-GT-Walsheim-PRO-weight-bold);
+    font-size: 24px;
+}
+
+@mixin authCmnSubtitle {
+    @include mixins.font-adineue-PRO;
+    font-size: 16px;
+    margin-top: 15px;
+    color: #5a5d82;
+}
+
+@mixin authCmnBtn {
+    > button {
+        @include mixins.font-adineue-PRO(weights.$font-adineue-PRO-weight-bold);
+        background: #3842b0;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 6px;
+        border: 2px solid #3842b0;
+        height: 60px;
+    }
+}
+
+@mixin authCmnSignIn {
+    @include mixins.font-adineue-PRO;
+    font-size: 14px;
+    color: #5a5d82;
+    letter-spacing: 0.03em;
+
+    > span {
+        @include mixins.font-GT-Walsheim-PRO(weights.$font-GT-Walsheim-PRO-weight-bold);
+        cursor: pointer;
+        color: #3842b0;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@mixin authCmnSubContainer {
+    width: 49.65%;
+    background: #fff;
+    border-radius: 15px;
+    text-align: center;
+
+    @media only screen and (max-width: 991px) {
+        width: 100% !important;
+    }
+}
