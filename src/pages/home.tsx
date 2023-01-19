@@ -72,7 +72,7 @@ const HomePage = () => {
     // };
 
     return (
-        <Dashboard title="Home">
+        <Dashboard title="Home" useOldFonts>
             <div className="main-container">
                 <div className="dashboard-subcontainer px-md-4 px-2 mt-4">
                     <div className="dashboard-title-container">
