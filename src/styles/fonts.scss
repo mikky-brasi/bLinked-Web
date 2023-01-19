@@ -7,6 +7,7 @@ body {
     // font-family: "GT Walsheim PRO", sans-serif;
 
     // TODO: delete when all styles are migrated to new fonts referencing.
+    // This helps to find all places where old fonts are used.
     .apply-new-fonts {
         font-family: "Times New Roman", Times, serif;
     }
