@@ -98,14 +98,14 @@ const MapComponent = (props: IProvidedProps) => {
                                 </div>
                                 {agents.map((agent) => {
                                     const icon = {
-                                        url:
-                                            agent.status === "Active"
-                                                ? MapMarker
-                                                : agent.status === "Available"
-                                                ? MapMarkerGreen
-                                                : agent.status === "Inactive"
-                                                ? MapMarkerGray
-                                                : MapMarkerRed, // url
+                                        url: (agent.status === "Active"
+                                            ? MapMarker
+                                            : agent.status === "Available"
+                                            ? MapMarkerGreen
+                                            : agent.status === "Inactive"
+                                            ? MapMarkerGray
+                                            : MapMarkerRed
+                                        ).src, // url
                                         scaledSize: new props.google.maps.Size(90, 42), // scaled size
                                     };
                                     return (
