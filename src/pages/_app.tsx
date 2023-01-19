@@ -1,11 +1,13 @@
+// Libraries
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-// TODO: remove deprecated imports. Uncomment fonts.scss when ready.
+// Common
+// TODO: remove deprecated imports when all pages are migrated to new fonts referencing.
 import "@/styles/_deprecated-index.scss";
 import "@/styles/_deprecated-globals.scss";
-// import "@/styles/fonts.scss";
+import "@/styles/fonts.scss";
 
 // Auth SCSS Start
 import "../components/Footer.scss";
