@@ -1,8 +1,8 @@
-@import "./weights.scss";
+@use "weights.scss";
 
 @font-face {
     font-family: "GT Walsheim PRO";
-    font-weight: $font-GT-Walsheim-PRO-weight-regular;
+    font-weight: weights.$font-GT-Walsheim-PRO-weight-regular;
     font-style: normal;
     src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Regular.woff2") format("woff2"),
         url("/fonts/GT Walsheim Pro/GTWalsheimPro-Regular.woff") format("woff"),
@@ -11,14 +11,14 @@
 
 @font-face {
     font-family: "GT Walsheim PRO";
-    font-weight: $font-GT-Walsheim-PRO-weight-medium;
+    font-weight: weights.$font-GT-Walsheim-PRO-weight-medium;
     font-style: normal;
     src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Medium.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "GT Walsheim PRO";
-    font-weight: $font-GT-Walsheim-PRO-weight-bold;
+    font-weight: weights.$font-GT-Walsheim-PRO-weight-bold;
     font-style: normal;
     src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Bold.woff2") format("woff2"),
         url("/fonts/GT Walsheim Pro/GTWalsheimPro-Bold.woff") format("woff"),
@@ -27,14 +27,14 @@
 
 @font-face {
     font-family: "GT Walsheim PRO";
-    font-weight: $font-GT-Walsheim-PRO-weight-black;
+    font-weight: weights.$font-GT-Walsheim-PRO-weight-black;
     font-style: normal;
     src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Black.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "GT Walsheim PRO";
-    font-weight: $font-GT-Walsheim-PRO-weight-light;
+    font-weight: weights.$font-GT-Walsheim-PRO-weight-light;
     font-style: normal;
     src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Light.woff2") format("woff2"),
         url("/fonts/GT Walsheim Pro/GTWalsheimPro-Light.woff") format("woff"),
@@ -43,7 +43,7 @@
 
 @font-face {
     font-family: "GT Walsheim PRO";
-    font-weight: $font-GT-Walsheim-PRO-weight-thin;
+    font-weight: weights.$font-GT-Walsheim-PRO-weight-thin;
     font-style: normal;
     src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Thin.ttf") format("truetype");
 }

@@ -7,7 +7,7 @@ import "react-date-range/dist/theme/default.css";
 // TODO: remove deprecated imports when all pages are migrated to new fonts referencing.
 import "@/styles/_deprecated-index.scss";
 import "@/styles/_deprecated-globals.scss";
-import "@/styles/fonts.scss";
+import "@/styles/index.scss";
 
 // Auth SCSS Start
 import "../components/Footer.scss";
