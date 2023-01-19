@@ -48,7 +48,7 @@ const OTPScreen = () => {
     };
 
     return (
-        <div className="auth-main">
+        <div className="auth-main apply-old-fonts">
             <div className="container auth-cmn-main">
                 <Image src={logo} alt="Logo" className="img-fluid my-5" />
                 <div className="auth-cmn-subcontainer px-md-5 py-5">

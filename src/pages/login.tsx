@@ -120,7 +120,7 @@ const SignInPage = () => {
     };
 
     return (
-        <div className="auth-main">
+        <div className="auth-main apply-old-fonts">
             <div className="row w-100">
                 <div className="col-lg-8 signin-comp-a">
                     <div className="d-flex justify-content-center">
