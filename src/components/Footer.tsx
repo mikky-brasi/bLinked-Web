@@ -1,12 +1,14 @@
+import classNames from "classnames";
 import React from "react";
+import styles from "./Footer.module.scss";
 
 const Footer = () => {
     return (
-        <div className="footer-main mt-4">
-            <div className="footer-contant-a">
-                Need help? <span>Contact support</span>
+        <div className={classNames("mt-4 apply-new-fonts", styles.wrapper)}>
+            <div className={styles.contentA}>
+                Need help? <span className={styles.contentALink}>Contact support</span>
             </div>
-            <div className="footer-contant-b">
+            <div className={styles.contentB}>
                 <div>Terms & Conditions</div>
                 <div className="mx-2">|</div>
                 <div>Privacy Policy</div>

@@ -10,7 +10,6 @@ import "@/styles/_deprecated-globals.scss";
 import "@/styles/fonts.scss";
 
 // Auth SCSS Start
-import "../components/Footer.scss";
 import "@/styles/_input_box.scss";
 import "@/styles/pages/SignIn.scss";
 import "@/styles/pages/SignUp.scss";
