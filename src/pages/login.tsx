@@ -122,7 +122,7 @@ const SignInPage = () => {
     };
 
     return (
-        <div className={classNames(styles.wrapper, "apply-new-fonts")}>
+        <div className={styles.wrapper}>
             <div className="row w-100">
                 <div className={classNames("col-lg-8", styles.containerA)}>
                     <div className="d-flex justify-content-center">
@@ -168,12 +168,7 @@ const SignInPage = () => {
                         </div>
 
                         <div className={classNames("row", styles.subContainerItem)}>
-                            <div
-                                className={classNames(
-                                    "col-lg-12 auth-input-container",
-                                    styles.inputContainer,
-                                )}
-                            >
+                            <div className="col-lg-12 auth-input-container">
                                 <div
                                     className={
                                         userFocus.email
@@ -224,12 +219,7 @@ const SignInPage = () => {
                                 Enter a valid email address
                             </div>
 
-                            <div
-                                className={classNames(
-                                    "col-lg-12 auth-input-container",
-                                    styles.inputContainer,
-                                )}
-                            >
+                            <div className="col-lg-12 auth-input-container">
                                 <div
                                     className={
                                         userFocus.password
