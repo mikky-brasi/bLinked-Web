@@ -64,7 +64,7 @@ const SignUpPage2 = () => {
     const handleLogin = () => router.push("/login");
 
     return (
-        <div className="auth-main">
+        <div className="auth-main apply-old-fonts">
             <div className="container auth-cmn-main">
                 <Image
                     src={bLinkedLogo}
