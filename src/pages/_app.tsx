@@ -25,7 +25,6 @@ import "@/styles/pages/Agents.scss";
 import "@/styles/pages/Feedback.scss";
 import "@/styles/pages/Landing.scss";
 
-import "../components/NotificationDropdown.scss";
 import "../components/Toast.scss";
 import "../components/LoadingState.scss";
 
