@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // Components
-import { Modal } from 'react-bootstrap';
-import { AgentModal } from './AgentModal';
-import { MdClose } from 'react-icons/md';
-import { BiChevronDown, BiDotsVerticalRounded } from 'react-icons/bi';
+import { Modal } from "react-bootstrap";
+import { AgentModal } from "./AgentModal";
+import { MdClose } from "react-icons/md";
+import { BiChevronDown, BiDotsVerticalRounded } from "react-icons/bi";
 // Data
 import agentsData from "../mockData/agents.json";
 // Helpers
-import { getOrderStyle } from '../helpers/getRowStyles';
+import { getOrderStyle } from "../helpers/getRowStyles";
 
 type OrderDetailsModalProps = {
     show: boolean;
@@ -16,13 +16,18 @@ type OrderDetailsModalProps = {
     setItemStatus?: (status: string) => void;
 };
 
-export default function OrderDetailsModal({ show, setShow, itemStatus, setItemStatus }: OrderDetailsModalProps) {
+export default function OrderDetailsModal({
+    show,
+    setShow,
+    itemStatus,
+    setItemStatus,
+}: OrderDetailsModalProps) {
     const [agentErr, setAgentErr] = useState(false);
     const [agentsFocus, setAgentsFocus] = useState(false);
     const [selectedAgent, setSelectedAgent] = useState("");
     const [searchResult, setSearchResult] = useState(false);
     const [agentSearch, setAgentSearch] = useState("");
-    const [agents, setAgents] = useState(agentsData)
+    const [agents, setAgents] = useState(agentsData);
 
     const handleModal = (status) => {
         setSearchResult(false);
@@ -35,22 +40,25 @@ export default function OrderDetailsModal({ show, setShow, itemStatus, setItemSt
 
     const handleAgentSearch = (e) => setAgentSearch(e.target.value);
 
-    const handleConfirm = () => !agents ? setAgentErr(true) : handleModal()
+    const handleConfirm = () => (!agents ? setAgentErr(true) : handleModal());
 
-    const inputFocus = () => setSearchResult(true)
+    const inputFocus = () => setSearchResult(true);
 
     useEffect(() => {
-        if (agentSearch === '') return;
-        setAgents(agentsData.filter(agent => (
-            agent.agentName?.toLowerCase().includes(agentSearch.toLowerCase()) ||
-            agent.location?.toLowerCase().includes(agentSearch.toLowerCase()) ||
-            agent.status?.toLowerCase().includes(agentSearch.toLowerCase())
-        )));
+        if (agentSearch === "") return;
+        setAgents(
+            agentsData.filter(
+                (agent) =>
+                    agent.agentName?.toLowerCase().includes(agentSearch.toLowerCase()) ||
+                    agent.location?.toLowerCase().includes(agentSearch.toLowerCase()) ||
+                    agent.status?.toLowerCase().includes(agentSearch.toLowerCase()),
+            ),
+        );
     }, [agentSearch]);
 
     useEffect(() => {
         if (agents.length > 0 && show) setSelectedAgent(agents[0].agentName);
-    }, [agents, show])
+    }, [agents, show]);
 
     return (
         <Modal show={show} onHide={handleModal} centered size="lg">
@@ -65,7 +73,8 @@ export default function OrderDetailsModal({ show, setShow, itemStatus, setItemSt
                     <div className="order-modal-main">
                         <div className="order-modal-id">Order ID 15285046</div>
                         <div className="order-modal-from-price mt-2">
-                            <span>From <span> Isolo Ire-Akari Estate &bull; 12mins ago</span>
+                            <span>
+                                From <span> Isolo Ire-Akari Estate &bull; 12mins ago</span>
                             </span>
                             <span>₦850,000.00</span>
                         </div>
@@ -73,7 +82,10 @@ export default function OrderDetailsModal({ show, setShow, itemStatus, setItemSt
                             To<span> Isolo Ire-Akari Estate</span>
                         </div>
                         <div className="order-modal-status mt-2">
-                            <span className="rounded-pill px-2 py-1" style={getOrderStyle(itemStatus)}>
+                            <span
+                                className="rounded-pill px-2 py-1"
+                                style={getOrderStyle(itemStatus)}
+                            >
                                 {itemStatus}
                             </span>
                         </div>
@@ -100,7 +112,15 @@ export default function OrderDetailsModal({ show, setShow, itemStatus, setItemSt
                         <div>
                             <div className="order-modal-title">Assign Agent</div>
                             <div className="col-lg-12 mt-md-4 mt-4 auth-input-container">
-                                <div className={agentsFocus || selectedAgent !== '' ? "input-box active w-100" : agentErr ? "input-box w-100 forgot-email-border" : "input-box w-100"}>
+                                <div
+                                    className={
+                                        agentsFocus || selectedAgent !== ""
+                                            ? "input-box active w-100"
+                                            : agentErr
+                                            ? "input-box w-100 forgot-email-border"
+                                            : "input-box w-100"
+                                    }
+                                >
                                     <div>
                                         {/* <img src={eye} alt="Eye" className="img-fluid" /> */}
                                         <BiChevronDown size={25} color="#A3A3C2" />
@@ -118,23 +138,36 @@ export default function OrderDetailsModal({ show, setShow, itemStatus, setItemSt
                             </div>
                             <div>
                                 <span className="order-agent-err">
-                                    {agentErr ? "An agent need to be assigned before this order can be confirmed" : ""}
+                                    {agentErr
+                                        ? "An agent need to be assigned before this order can be confirmed"
+                                        : ""}
                                 </span>
                             </div>
-                            <div className={searchResult ? "order-modal-search-agent mt-1 position-relative" : "d-none"}>
+                            <div
+                                className={
+                                    searchResult
+                                        ? "order-modal-search-agent mt-1 position-relative"
+                                        : "d-none"
+                                }
+                            >
                                 <div className="order-modal-search-agent-input position-absolute w-100">
-                                    <input type="text" placeholder="Search agent" value={agentSearch} onChange={handleAgentSearch} />
+                                    <input
+                                        type="text"
+                                        placeholder="Search agent"
+                                        value={agentSearch}
+                                        onChange={handleAgentSearch}
+                                    />
                                 </div>
                                 <div className="order-modal-agent-result-main position-absolute w-100 mt-5">
                                     <ul>
-                                        {agents.map(item => (
+                                        {agents.map((item) => (
                                             <AgentModal
                                                 key={item.id}
                                                 onClick={() => {
                                                     setAgentsFocus(true);
                                                     setSelectedAgent(item.agentName);
                                                     setSearchResult(false);
-                                                    setAgentErr(false)
+                                                    setAgentErr(false);
                                                 }}
                                                 item={item}
                                             />
@@ -150,13 +183,10 @@ export default function OrderDetailsModal({ show, setShow, itemStatus, setItemSt
                 <button className="order-modal-close-btn" onClick={handleModal}>
                     Close
                 </button>
-                <button
-                    className="order-modal-submit-btn"
-                    onClick={() => handleConfirm()}
-                >
+                <button className="order-modal-submit-btn" onClick={() => handleConfirm()}>
                     {itemStatus === "Assigned" ? "Mark as fulfilled" : "Confirm"}
                 </button>
             </Modal.Footer>
-        </Modal >
-    )
+        </Modal>
+    );
 }

@@ -23,7 +23,8 @@ const OrdersPage = () => {
     const [filter, setFilter] = useState("All");
     const [orderSearch, setOrderSearch] = useState("");
 
-    const handleOrderSearch = (e: React.ChangeEvent<HTMLInputElement>) => setOrderSearch(e.target.value);
+    const handleOrderSearch = (e: React.ChangeEvent<HTMLInputElement>) =>
+        setOrderSearch(e.target.value);
 
     useEffect(() => setOrders(filterOrders(order, orderSearch, filter)), [orderSearch, filter]);
 
@@ -73,19 +74,30 @@ const OrdersPage = () => {
                     <div className="orders-container py-4 ">
                         <div className="d-md-flex justify-content-between px-4">
                             <div className="d-md-flex">
-                                <FilterOrdersDropdown setFilter={setFilter} page="orders"/>
+                                <FilterOrdersDropdown setFilter={setFilter} page="orders" />
 
                                 <div className="orders-orderSearch-input mt-md-0">
-                                    <span><ImSearch size={15} color="#A3A3C2" /></span>
-                                    <input type="text" placeholder="Search orders" value={orderSearch} onChange={handleOrderSearch} />
+                                    <span>
+                                        <ImSearch size={15} color="#A3A3C2" />
+                                    </span>
+                                    <input
+                                        type="text"
+                                        placeholder="Search orders"
+                                        value={orderSearch}
+                                        onChange={handleOrderSearch}
+                                    />
                                 </div>
                             </div>
                         </div>
                         <div className="order-list-container mt-4 table-responsive">
-                            <Table items={orders} page="orders" setShow={setShow} setItemStatus={setItemStatus} />
+                            <Table
+                                items={orders}
+                                page="orders"
+                                setShow={setShow}
+                                setItemStatus={setItemStatus}
+                            />
                         </div>
-                        <div
-                            className="order-pagination-container px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
+                        <div className="order-pagination-container px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
                             <div className="my-2">Showing 9 of 290 agents</div>
                             <div className="d-md-flex">
                                 <div className="d-flex align-items-center">
@@ -122,7 +134,12 @@ const OrdersPage = () => {
 
                 <div className="px-md-4 px-2 mb-4"></div>
 
-                <OrderDetailsModal show={show} setShow={setShow} itemStatus={itemStatus} setItemStatus={setItemStatus} />
+                <OrderDetailsModal
+                    show={show}
+                    setShow={setShow}
+                    itemStatus={itemStatus}
+                    setItemStatus={setItemStatus}
+                />
             </div>
         </Dashboard>
     );

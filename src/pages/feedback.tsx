@@ -24,9 +24,13 @@ const FeedbackPage = () => {
     const [filter, setFilter] = useState("All");
     const [feedbackSearch, setFeedbackSearch] = useState("");
 
-    const handleFeedbackSearch = (e: React.ChangeEvent<HTMLInputElement>) => setFeedbackSearch(e.target.value);
+    const handleFeedbackSearch = (e: React.ChangeEvent<HTMLInputElement>) =>
+        setFeedbackSearch(e.target.value);
 
-    useEffect(() => setOrders(filterFeedback(feedback, feedbackSearch, filter)), [feedbackSearch, filter]);
+    useEffect(
+        () => setOrders(filterFeedback(feedback, feedbackSearch, filter)),
+        [feedbackSearch, filter],
+    );
 
     return (
         <Dashboard title="Feedback">
@@ -69,8 +73,15 @@ const FeedbackPage = () => {
                                 <FilterOrdersDropdown setFilter={setFilter} page="feedback" />
 
                                 <div className="orders-orderSearch-input mt-md-0">
-                                    <span><ImSearch size={15} color="#A3A3C2" /></span>
-                                    <input type="text" placeholder="Search orders" value={feedbackSearch} onChange={handleFeedbackSearch} />
+                                    <span>
+                                        <ImSearch size={15} color="#A3A3C2" />
+                                    </span>
+                                    <input
+                                        type="text"
+                                        placeholder="Search orders"
+                                        value={feedbackSearch}
+                                        onChange={handleFeedbackSearch}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -83,8 +94,7 @@ const FeedbackPage = () => {
                                 setSelected={setSelectedOrder}
                             />
                         </div>
-                        <div
-                            className="order-pagination-container px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
+                        <div className="order-pagination-container px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
                             <div className="my-2">Showing 9 of 290 orders</div>
                             <div className="d-md-flex">
                                 <div className="d-flex align-items-center">
@@ -120,9 +130,7 @@ const FeedbackPage = () => {
                 </div>
 
                 <div className="px-md-4 px-2 mb-4"></div>
-                {show &&
-                <FeedbackModal show={show} setShow={setShow} selected={selectedOrder}/>
-                }
+                {show && <FeedbackModal show={show} setShow={setShow} selected={selectedOrder} />}
             </div>
         </Dashboard>
     );

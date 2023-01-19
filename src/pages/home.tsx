@@ -28,18 +28,18 @@ const HomePage = () => {
     const [activeView, setActiveView] = useState("grid");
     // const [showInfoWindow, setShowInfoWinidow] = useState(false);
     const [show, setShow] = useState(false);
-    const [selected, setSelected] = useState<Order | null>(null)
+    const [selected, setSelected] = useState<Order | null>(null);
     // const [target, setTarget] = useState(null);
     // const [selectPlace, setSelectPlace] = useState({});
-    const from = new Date()
-    from.setMonth(new Date().getMonth() - 1)
-    const [fromDate, setFromDate] = useState(from)
-    const [toDate, setToDate] = useState(new Date())
-    const [orders, setOrders] = useState(order)
+    const from = new Date();
+    from.setMonth(new Date().getMonth() - 1);
+    const [fromDate, setFromDate] = useState(from);
+    const [toDate, setToDate] = useState(new Date());
+    const [orders, setOrders] = useState(order);
     const [search, setSearch] = useState("");
-    const [status, setStatus] = useState("All")
-    const [searchFromDate, setSearchFromDate] = useState(from)
-    const [searchToDate, setSearchToDate] = useState(new Date())
+    const [status, setStatus] = useState("All");
+    const [searchFromDate, setSearchFromDate] = useState(from);
+    const [searchToDate, setSearchToDate] = useState(new Date());
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -73,7 +73,7 @@ const HomePage = () => {
                         <div className="dashboard-title"> Welcome back, Assurance 🌤</div>
                         <div className="dashboard-subtitle mt-2">
                             <div className="tag-line">
-                                Here is what's happening with your business today!
+                                Here is what{"'"}s happening with your business today!
                             </div>
                             <DateDropdown
                                 fromDate={fromDate}
@@ -123,7 +123,9 @@ const HomePage = () => {
                                 <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
                                     <div className="home-pending-orders-title">
                                         <span>Pending Orders (0)</span>
-                                        <span><GoChevronDown /></span>
+                                        <span>
+                                            <GoChevronDown />
+                                        </span>
                                     </div>
                                 </Dropdown.Toggle>
 
@@ -141,7 +143,12 @@ const HomePage = () => {
                                     <span>
                                         <ImSearch size={15} color="#A3A3C2" />
                                     </span>
-                                    <input type="text" placeholder="Search orders e.g, ID" value={search} onChange={handleSearch} />
+                                    <input
+                                        type="text"
+                                        placeholder="Search orders e.g, ID"
+                                        value={search}
+                                        onChange={handleSearch}
+                                    />
                                 </div>
                                 {/* <div className="home-pending-filter-oders mt-3 mt-md-0 mb-2 mb-md-0">
                                     <FilterOrdersPanel setStatus={setStatus} setSearchFromDate={setSearchFromDate} setSearchToDate={setSearchToDate} page="orders"/>
@@ -177,11 +184,17 @@ const HomePage = () => {
                             <div className="home-pending-order-grid-container">
                                 {orders.length > 0 ? (
                                     <div className="row">
-                                        {orders.filter(order => order.status === 'New').map((item, i) => (
-                                            <div className="col-lg-4 mt-3" key={i}>
-                                                <PendingOrder item={item} setShow={setShow} setSelected={setSelected}/>
-                                            </div>
-                                        ))}
+                                        {orders
+                                            .filter((order) => order.status === "New")
+                                            .map((item, i) => (
+                                                <div className="col-lg-4 mt-3" key={i}>
+                                                    <PendingOrder
+                                                        item={item}
+                                                        setShow={setShow}
+                                                        setSelected={setSelected}
+                                                    />
+                                                </div>
+                                            ))}
                                     </div>
                                 ) : (
                                     <div className="row py-3">
@@ -193,14 +206,21 @@ const HomePage = () => {
                                                     className="img-fluid"
                                                 />
                                             </div>
-                                            <div className="mt-3">You have no pending orders yet!</div>
+                                            <div className="mt-3">
+                                                You have no pending orders yet!
+                                            </div>
                                         </div>
                                     </div>
                                 )}
                             </div>
                         ) : (
                             <div className="home-pending-order-list-container">
-                                <Table items={orders.filter(order => order.status === 'New')} page="home" setShow={setShow} setSelected={setSelected} />
+                                <Table
+                                    items={orders.filter((order) => order.status === "New")}
+                                    page="home"
+                                    setShow={setShow}
+                                    setSelected={setSelected}
+                                />
                             </div>
                         )}
                         <div className="home-pending-order-loadmore-btn mt-5 mb-3">

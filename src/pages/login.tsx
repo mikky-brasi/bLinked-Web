@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import validator from "validator";
-import { google, eye, hiddenEye, partical, partical2, partical3, partical4, partical5, loginVectorA, validemail } from "../../public/img";
-import bLinkedLogo from '../../public/landing/bLinkedLogo.svg';
+import {
+    google,
+    eye,
+    hiddenEye,
+    partical,
+    partical2,
+    partical3,
+    partical4,
+    partical5,
+    loginVectorA,
+    validemail,
+} from "../../public/img";
+import bLinkedLogo from "../../public/landing/bLinkedLogo.svg";
 import GoogleLogin, { GoogleLoginProps, GoogleLoginResponse } from "react-google-login";
 import { OAuth2Client } from "google-auth-library";
 import Image from "next/image";
@@ -10,7 +21,7 @@ import Image from "next/image";
 // https://stackoverflow.com/questions/71040050/why-am-i-getting-syntaxerror-cannot-use-import-statement-outside-a-module
 const gapiImport = import("gapi-script");
 
-const client = new OAuth2Client(process.env.CLIENT_ID)
+const client = new OAuth2Client(process.env.CLIENT_ID);
 
 const SignInPage = () => {
     const router = useRouter();
@@ -39,24 +50,24 @@ const SignInPage = () => {
         setUser({ ...user, [name]: value });
 
         if (!value) return setUserErr({ ...userErr, [name]: true });
-        
-        if (typeof value !== "undefined" && name === 'email') {
+
+        if (typeof value !== "undefined" && name === "email") {
             const lastAtPos = value.lastIndexOf("@");
             const lastDotPos = value.lastIndexOf(".");
-            const validEmail = (
+            const validEmail =
                 lastAtPos < lastDotPos &&
                 lastAtPos > 0 &&
                 value.indexOf("@@") === -1 &&
                 lastDotPos > 2 &&
-                value.length - lastDotPos > 2
-            );
+                value.length - lastDotPos > 2;
 
             if (!validEmail) return setUserErr({ ...userErr, [name]: true });
-        };
-        return setUserErr({ ...userErr, [name]: false })
+        }
+        return setUserErr({ ...userErr, [name]: false });
     };
 
-    const handlePassType = () => passwordType === "password" ? setPasswordType("text") : setPasswordType('password');
+    const handlePassType = () =>
+        passwordType === "password" ? setPasswordType("text") : setPasswordType("password");
 
     const handleLogin = () => {
         const { email, password } = user;
@@ -73,31 +84,31 @@ const SignInPage = () => {
     const handleCreateAC = () => router.push("/auth/sign_up1");
 
     useEffect(() => {
-      (async () => {
-        const { gapi } = await gapiImport;
+        (async () => {
+            const { gapi } = await gapiImport;
 
-        function start() {
-          gapi.client.init({
-            clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-            scope: 'email',
-          });
-        }
-    
-        gapi.load('client:auth2', start);
-      })();
-      }, []);
-      
+            function start() {
+                gapi.client.init({
+                    clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+                    scope: "email",
+                });
+            }
+
+            gapi.load("client:auth2", start);
+        })();
+    }, []);
+
     const googleSuccess: GoogleLoginProps["onSuccess"] = async (googleData) => {
         googleData = googleData as GoogleLoginResponse;
-        console.log(googleData)
+        console.log(googleData);
         const token = googleData.tokenId;
 
         const ticket = await client.verifyIdToken({
             idToken: token,
-            audience: process.env.CLIENT_ID
+            audience: process.env.CLIENT_ID,
         });
 
-        const { name, email, picture } = ticket.getPayload()!;    
+        const { name, email, picture } = ticket.getPayload()!;
         console.log(name);
         console.log(email);
         console.log(picture);
@@ -113,7 +124,12 @@ const SignInPage = () => {
             <div className="row w-100">
                 <div className="col-lg-8 signin-comp-a">
                     <div className="d-flex justify-content-center">
-                        <Image src={bLinkedLogo} alt="Logo" className="img-fluid" style={{maxHeight: '150px'}}/>
+                        <Image
+                            src={bLinkedLogo}
+                            alt="Logo"
+                            className="img-fluid"
+                            style={{ maxHeight: "150px" }}
+                        />
                     </div>
                     <div className="signin-title">Welcome back to bLinked, 👏🏽</div>
                     <div className="signin-subcontainer px-md-5 mt-5">
@@ -127,19 +143,23 @@ const SignInPage = () => {
                             className="signin-with-google px-md-3"
                             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                             buttonText={"Sign in with Google"}
-                            render={renderProps => (
+                            render={(renderProps) => (
                                 <div className="signin-with-google px-md-3">
                                     <div className="shadow-sm">
                                         <Image src={google} alt="" />
                                     </div>
-                                    <button className="w-100" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                                    <button
+                                        className="w-100"
+                                        onClick={renderProps.onClick}
+                                        disabled={renderProps.disabled}
+                                    >
                                         Sign in with Google
                                     </button>
                                 </div>
                             )}
                             onSuccess={googleSuccess}
                             onFailure={googleFailure}
-                            cookiePolicy={'single_host_origin'}
+                            cookiePolicy={"single_host_origin"}
                         />
                         <div className="signin-with-email">
                             <div></div>
@@ -151,12 +171,12 @@ const SignInPage = () => {
                                 <div
                                     className={
                                         userFocus.email
-                                            ? userErr.email ?
-                                                "input-box active w-100 forgot-email-border"
+                                            ? userErr.email
+                                                ? "input-box active w-100 forgot-email-border"
                                                 : "input-box active w-100"
                                             : userErr.email
-                                                ? "input-box w-100 forgot-email-border"
-                                                : "input-box w-100"
+                                            ? "input-box w-100 forgot-email-border"
+                                            : "input-box w-100"
                                     }
                                 >
                                     <div className={!validator.isEmail(user.email) ? "d-none" : ""}>
@@ -185,7 +205,13 @@ const SignInPage = () => {
                                     />
                                 </div>
                             </div>
-                            <div className={userErr.email ? "col-lg-12 text-start px-4 forgot-email-err" : "d-none"}>
+                            <div
+                                className={
+                                    userErr.email
+                                        ? "col-lg-12 text-start px-4 forgot-email-err"
+                                        : "d-none"
+                                }
+                            >
                                 Enter a valid email address
                             </div>
                             <div className="col-lg-12 auth-input-container">
@@ -194,12 +220,17 @@ const SignInPage = () => {
                                         userFocus.password
                                             ? "input-box active w-100"
                                             : userErr.password
-                                                ? "input-box w-100 forgot-email-border"
-                                                : "input-box w-100"
+                                            ? "input-box w-100 forgot-email-border"
+                                            : "input-box w-100"
                                     }
                                 >
                                     <div>
-                                        <Image src={passwordType === 'password' ? eye : hiddenEye} alt="Eye" className="img-fluid pointer" onClick={handlePassType} />
+                                        <Image
+                                            src={passwordType === "password" ? eye : hiddenEye}
+                                            alt="Eye"
+                                            className="img-fluid pointer"
+                                            onClick={handlePassType}
+                                        />
                                     </div>
                                     <label>Password</label>
                                     <input
@@ -227,10 +258,7 @@ const SignInPage = () => {
                                 Log in
                             </button>
                         </div>
-                        <div
-                            className="signin-forgot-password px-3"
-                            onClick={handleForgot}
-                        >
+                        <div className="signin-forgot-password px-3" onClick={handleForgot}>
                             Forgot your password?
                         </div>
                         <div className="signin-create-ac mt-4 px-3">
@@ -253,17 +281,13 @@ const SignInPage = () => {
                             Sell fast, sell more - grow your business.
                         </div>
                         <p className="signin-comp-b-desc mt-4">
-                            Manage your inventory accross multiple sales channels, collect all
-                            types of payments and analyze your sales with one tool.
+                            Manage your inventory accross multiple sales channels, collect all types
+                            of payments and analyze your sales with one tool.
                         </p>
                     </div>
                     <div className="signin-vector">
                         <div>
-                            <Image
-                                src={loginVectorA}
-                                alt="Login"
-                                className="img-fluid"
-                            />
+                            <Image src={loginVectorA} alt="Login" className="img-fluid" />
                         </div>
                         <div>
                             <Image src={partical} alt="" className="img-fluid" />

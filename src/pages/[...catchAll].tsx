@@ -2,11 +2,11 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function CatchAll() {
-  const router = useRouter();
+    const router = useRouter();
 
-  useEffect(() => {
-    router.push("/login");
-  }, [router]);
+    useEffect(() => {
+        router.push("/login");
+    }, [router]);
 
-  return null;
+    return null;
 }
