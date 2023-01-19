@@ -1,0 +1,14 @@
+@import "@/styles/fonts/mixins";
+
+@mixin landingTitle {
+    @include font-GT-Walsheim-PRO($font-GT-Walsheim-PRO-weight-bold);
+    font-size: 60px;
+    line-height: 71px;
+    color: #3a42aa;
+    margin-bottom: 20px;
+}
+
+@mixin landingText {
+    @include font-adineue-PRO;
+    color: #000;
+}

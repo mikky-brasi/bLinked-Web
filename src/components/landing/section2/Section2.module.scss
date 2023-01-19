@@ -1,0 +1,136 @@
+@import "@/styles/fonts/mixins";
+@import "../common.scss";
+
+.wrapper {
+    width: 100%;
+    background: #3a42aa;
+    background-image: url("/img/bLinked-Pattern-17.svg");
+    background-position: center;
+    background-size: cover;
+    padding: 64px 0 80px 140px;
+
+    @media all and (max-width: 1360px) {
+        padding-left: 100px;
+    }
+
+    @media all and (max-width: 580px) {
+        padding-left: 40px;
+    }
+
+    @media all and (max-width: 400px) {
+        padding: 64px 20px 80px;
+    }
+}
+
+.title {
+    @include landingTitle;
+    color: #fff;
+
+    @media all and (max-width: 580px) {
+        font-size: 40px;
+        line-height: 48px;
+    }
+}
+
+.titleAccent {
+    @extend .title;
+    color: #f0dac5;
+}
+
+.colRow {
+    display: flex;
+
+    @media all and (max-width: 1360px) {
+        flex-direction: column;
+    }
+}
+
+.firstCol {
+    max-width: 440px;
+
+    @media all and (max-width: 1360px) {
+        max-width: 100%;
+    }
+}
+
+.text {
+    @include landingText;
+    @include font-GT-Walsheim-PRO($font-GT-Walsheim-PRO-weight-light);
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 44px;
+    color: #fff;
+    opacity: 1;
+}
+
+.button {
+    @include font-GT-Walsheim-PRO($font-GT-Walsheim-PRO-weight-light);
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 60px;
+    border: none;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    padding: 14px 36px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: block;
+
+    &:first-of-type {
+        margin-top: 0;
+    }
+
+    @media all and (max-width: 800px) {
+        display: block;
+    }
+
+    @media all and (max-width: 1360px) {
+        display: inline;
+        margin-right: 15px;
+    }
+}
+
+.divider {
+    display: inline-block;
+    border: 1px solid #f0dac5;
+    background-color: #f0dac5;
+    margin-left: 62px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    transform: rotate(-90deg);
+    width: 35px;
+
+    @media all and (max-width: 800px) {
+        display: inline-block;
+        border: 1px solid #f0dac5;
+        background-color: #f0dac5;
+        margin-left: 62px;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        transform: rotate(-90deg);
+        width: 35px;
+    }
+
+    @media all and (max-width: 1360px) {
+        transform: rotate(0);
+        margin-right: 15px;
+        margin-left: 0;
+        margin-bottom: 5px;
+    }
+}
+
+.secondCol {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media all and (max-width: 1360px) {
+        justify-content: flex-start;
+    }
+}
+
+.image {
+    max-width: 100%;
+}

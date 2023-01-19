@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import validator from "validator";
 // Assets
 import { validemail } from "../../../public/img";
-import bLinkedLogo from "../../../public/landing/bLinkedLogo.svg";
+import bLinkedLogo from "../../../public/img/bLinkedLogo.svg";
 // Components
 import Footer from "../../components/Footer";
 import Image from "next/image";

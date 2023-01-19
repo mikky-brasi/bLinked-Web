@@ -11,7 +11,7 @@ import {
     orderMenu,
     settingMenu,
 } from "../../public/img";
-import bLinkedLogo from "../../public/landing/bLinkedLogo.svg";
+import bLinkedLogo from "../../public/img/bLinkedLogo.svg";
 
 type SidebarProps = {
     activeSidebar: boolean;

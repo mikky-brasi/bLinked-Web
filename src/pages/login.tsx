@@ -13,7 +13,7 @@ import {
     loginVectorA,
     validemail,
 } from "../../public/img";
-import bLinkedLogo from "../../public/landing/bLinkedLogo.svg";
+import bLinkedLogo from "../../public/img/bLinkedLogo.svg";
 import GoogleLogin, { GoogleLoginProps, GoogleLoginResponse } from "react-google-login";
 import { OAuth2Client } from "google-auth-library";
 import Image from "next/image";

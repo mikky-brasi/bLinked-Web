@@ -1,0 +1,115 @@
+@import "@/styles/fonts/mixins";
+@import "../common.scss";
+
+.wrapper {
+    display: flex;
+    padding: 72px 132px 72px 170px;
+    background: #fff;
+
+    @media all and (max-width: 1530px) {
+        padding: 72px 120px;
+    }
+
+    @media all and (max-width: 1270px) {
+        padding: 72px 40px;
+    }
+
+    @media all and (max-width: 800px) {
+        flex-direction: column-reverse;
+        padding: 72px 80px;
+    }
+
+    @media all and (max-width: 580px) {
+        padding: 72px 40px;
+    }
+
+    @media all and (max-width: 400px) {
+        padding: 72px 20px;
+    }
+}
+
+.firstCol {
+    flex-grow: 1;
+    padding: 42px;
+    max-width: 742px;
+
+    @media all and (max-width: 1270px) {
+        max-width: 50%;
+    }
+
+    @media all and (max-width: 800px) {
+        max-width: 100%;
+        padding-bottom: 0;
+    }
+}
+
+.image {
+    height: auto;
+
+    @media all and (max-width: 1270px) {
+        max-width: 100%;
+    }
+}
+
+.secondCol {
+    @media all and (max-width: 800px) {
+        max-width: 100%;
+    }
+}
+
+.title {
+    @include landingTitle;
+    margin-top: 60px;
+
+    @media all and (max-width: 580px) {
+        font-size: 40px;
+        line-height: 48px;
+    }
+}
+
+.text {
+    @include landingText;
+    font-size: 22px;
+    line-height: 32px;
+    margin-bottom: 26px;
+    max-width: 505px;
+
+    @media all and (max-width: 800px) {
+        max-width: 100%;
+    }
+}
+
+.list {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 44px;
+    list-style-type: none;
+}
+
+.listItem {
+    @include font-adineue-PRO;
+    font-size: 18px;
+    line-height: 25px;
+    color: #3a42aa;
+    margin-bottom: 24px;
+    padding-left: 34px;
+    background: url("/landing/ListIcon.png") no-repeat;
+    background-position: 0px center;
+}
+
+.button {
+    @include font-adineue-PRO;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 32px;
+    background: #f0dac5;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #3a42aa;
+}

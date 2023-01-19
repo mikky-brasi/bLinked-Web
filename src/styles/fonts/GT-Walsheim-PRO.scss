@@ -34,6 +34,15 @@
 
 @font-face {
     font-family: "GT Walsheim PRO";
+    font-weight: $font-GT-Walsheim-PRO-weight-light;
+    font-style: normal;
+    src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Light.woff2") format("woff2"),
+        url("/fonts/GT Walsheim Pro/GTWalsheimPro-Light.woff") format("woff"),
+        url("/fonts/GT Walsheim Pro/GTWalsheimPro-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "GT Walsheim PRO";
     font-weight: $font-GT-Walsheim-PRO-weight-thin;
     font-style: normal;
     src: url("/fonts/GT Walsheim Pro/GTWalsheimPro-Thin.ttf") format("truetype");
