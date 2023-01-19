@@ -2,8 +2,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-import "@/styles/index.scss";
-import "@/styles/globals.scss";
+// TODO: remove deprecated imports. Uncomment fonts.scss when ready.
+import "@/styles/_deprecated-index.scss";
+import "@/styles/_deprecated-globals.scss";
+// import "@/styles/fonts.scss";
 
 // Auth SCSS Start
 import "../components/Footer.scss";

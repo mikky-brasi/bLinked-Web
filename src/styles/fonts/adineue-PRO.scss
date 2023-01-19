@@ -1,0 +1,22 @@
+@import "./weights.scss";
+
+@font-face {
+    font-family: "adineue PRO";
+    font-weight: $font-adineue-PRO-weight-regular;
+    font-style: normal;
+    src: url("/fonts/adineue PRO/adineue PRO.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "adineue PRO";
+    font-weight: $font-adineue-PRO-weight-light;
+    font-style: normal;
+    src: url("/fonts/adineue PRO/adineue PRO KZ Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "adineue PRO";
+    font-weight: $font-adineue-PRO-weight-bold;
+    font-style: normal;
+    src: url("/fonts/adineue PRO/adineue PRO Bold.ttf") format("truetype");
+}

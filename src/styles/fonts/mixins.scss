@@ -1,0 +1,11 @@
+@import "./weights.scss";
+
+@mixin font-GT-Walsheim-PRO($weight: $font-GT-Walsheim-PRO-weight-regular) {
+    font-family: "GT Walsheim PRO", sans-serif;
+    font-weight: $weight;
+}
+
+@mixin font-adineue-PRO($weight: $font-adineue-PRO-weight-regular) {
+    font-family: "adineue PRO", sans-serif;
+    font-weight: $weight;
+}
