@@ -17,6 +17,8 @@ import bLinkedLogo from "../../public/landing/bLinkedLogo.svg";
 import GoogleLogin, { GoogleLoginProps, GoogleLoginResponse } from "react-google-login";
 import { OAuth2Client } from "google-auth-library";
 import Image from "next/image";
+import styles from "@/styles/pages/SignIn.module.scss";
+import classNames from "classnames";
 
 // https://stackoverflow.com/questions/71040050/why-am-i-getting-syntaxerror-cannot-use-import-statement-outside-a-module
 const gapiImport = import("gapi-script");
@@ -120,9 +122,9 @@ const SignInPage = () => {
     };
 
     return (
-        <div className="auth-main">
+        <div className={classNames(styles.wrapper, "apply-new-fonts")}>
             <div className="row w-100">
-                <div className="col-lg-8 signin-comp-a">
+                <div className={classNames("col-lg-8", styles.containerA)}>
                     <div className="d-flex justify-content-center">
                         <Image
                             src={bLinkedLogo}
@@ -131,20 +133,15 @@ const SignInPage = () => {
                             style={{ maxHeight: "150px" }}
                         />
                     </div>
-                    <div className="signin-title">Welcome back to bLinked, 👏🏽</div>
-                    <div className="signin-subcontainer px-md-5 mt-5">
-                        {/* <div className="signin-with-google px-md-3">
-                            <div className="shadow-sm">
-                                <img src={google} alt="" />
-                            </div>
-                            <button className="w-100">Sign in with Google</button>
-                        </div> */}
+
+                    <div className={styles.containerATitle}>Welcome back to bLinked, 👏🏽</div>
+
+                    <div className={classNames("px-md-5 mt-5", styles.subContainer)}>
                         <GoogleLogin
-                            className="signin-with-google px-md-3"
                             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
                             buttonText={"Sign in with Google"}
                             render={(renderProps) => (
-                                <div className="signin-with-google px-md-3">
+                                <div className={classNames("px-md-3", styles.signInWithGoogle)}>
                                     <div className="shadow-sm">
                                         <Image src={google} alt="" />
                                     </div>
@@ -161,13 +158,22 @@ const SignInPage = () => {
                             onFailure={googleFailure}
                             cookiePolicy={"single_host_origin"}
                         />
-                        <div className="signin-with-email">
+
+                        <div className={styles.signInWithEmailDivider}>
                             <div></div>
-                            <div className="mx-4">Or, sign in with your email</div>
+                            <div className={classNames("mx-4", styles.signInWithEmailDividerText)}>
+                                Or, sign in with your email
+                            </div>
                             <div></div>
                         </div>
-                        <div className="row">
-                            <div className="col-lg-12 auth-input-container">
+
+                        <div className={classNames("row", styles.subContainerItem)}>
+                            <div
+                                className={classNames(
+                                    "col-lg-12 auth-input-container",
+                                    styles.inputContainer,
+                                )}
+                            >
                                 <div
                                     className={
                                         userFocus.email
@@ -186,7 +192,9 @@ const SignInPage = () => {
                                             className="img-fluid"
                                         />
                                     </div>
+
                                     <label>Email</label>
+
                                     <input
                                         type="text"
                                         className="w-100"
@@ -205,6 +213,7 @@ const SignInPage = () => {
                                     />
                                 </div>
                             </div>
+
                             <div
                                 className={
                                     userErr.email
@@ -214,7 +223,13 @@ const SignInPage = () => {
                             >
                                 Enter a valid email address
                             </div>
-                            <div className="col-lg-12 auth-input-container">
+
+                            <div
+                                className={classNames(
+                                    "col-lg-12 auth-input-container",
+                                    styles.inputContainer,
+                                )}
+                            >
                                 <div
                                     className={
                                         userFocus.password
@@ -228,11 +243,13 @@ const SignInPage = () => {
                                         <Image
                                             src={passwordType === "password" ? eye : hiddenEye}
                                             alt="Eye"
-                                            className="img-fluid pointer"
+                                            className={classNames("img-fluid", styles.eyeIcon)}
                                             onClick={handlePassType}
                                         />
                                     </div>
+
                                     <label>Password</label>
+
                                     <input
                                         type={passwordType}
                                         className="w-100"
@@ -253,51 +270,65 @@ const SignInPage = () => {
                             </div>
                         </div>
 
-                        <div className="signin-with-email-btn px-md-3">
+                        <div className={classNames("px-md-3", styles.signInWithEmailBtnContainer)}>
                             <button className="w-100" onClick={handleLogin}>
                                 Log in
                             </button>
                         </div>
-                        <div className="signin-forgot-password px-3" onClick={handleForgot}>
+
+                        <div
+                            className={classNames("px-3", styles.forgotPassword)}
+                            onClick={handleForgot}
+                        >
                             Forgot your password?
                         </div>
-                        <div className="signin-create-ac mt-4 px-3">
+
+                        <div className={classNames("mt-4 px-3", styles.createAccount)}>
                             Don’t have an account yet?{" "}
                             <span onClick={handleCreateAC}>Create account</span>
                         </div>
-                        <div className="signin-footer px-3 mb-5">
+
+                        <div className={classNames("px-3 mb-5", styles.signInFooter)}>
                             <div>Help</div>
                             <div>Terms & Conditions</div>
                             <div>Privacy Policy</div>
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4 px-5 py-5 signin-comp-b">
+
+                <div className={classNames("col-lg-4 px-5 py-5", styles.containerB)}>
                     <div>
                         <div>
                             <Image src={partical5} alt="" className="img-fluid" />
                         </div>
-                        <div className="signin-comp-b-title mt-5">
+
+                        <div className={classNames(styles.containerBTitle, "mt-5")}>
                             Sell fast, sell more - grow your business.
                         </div>
-                        <p className="signin-comp-b-desc mt-4">
+
+                        <p className={classNames(styles.containerBDesc, "mt-4")}>
                             Manage your inventory accross multiple sales channels, collect all types
                             of payments and analyze your sales with one tool.
                         </p>
                     </div>
-                    <div className="signin-vector">
+
+                    <div className={styles.vector}>
                         <div>
                             <Image src={loginVectorA} alt="Login" className="img-fluid" />
                         </div>
+
                         <div>
                             <Image src={partical} alt="" className="img-fluid" />
                         </div>
+
                         <div>
                             <Image src={partical2} alt="" className="img-fluid" />
                         </div>
+
                         <div>
                             <Image src={partical3} alt="" className="img-fluid" />
                         </div>
+
                         <div>
                             <Image src={partical4} alt="" className="img-fluid" />
                         </div>
