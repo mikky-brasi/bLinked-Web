@@ -12,7 +12,7 @@ export default function NotificationDropdown() {
     ] = useState([]);
 
     return (
-        <Dropdown className="apply-new-fonts">
+        <Dropdown>
             <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
                 <Image src={notificationIcon} alt="Bell" className={styles.bell} />
             </Dropdown.Toggle>
