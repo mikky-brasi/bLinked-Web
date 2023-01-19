@@ -1,5 +1,4 @@
 import styles from "@/styles/pages/Landing.module.scss";
-import classNames from "classnames";
 import { Footer } from "../components/landing/footer/Footer";
 import { Header } from "../components/landing/header/Header";
 import { Section1 } from "../components/landing/section1/Section1";
@@ -13,7 +12,7 @@ export default function LandingPage() {
         <>
             <Header />
 
-            <main className={classNames(styles.main, "apply-new-fonts")}>
+            <main className={styles.main}>
                 <Section1 />
                 <Section2 />
                 <Section3 />

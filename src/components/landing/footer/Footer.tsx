@@ -6,11 +6,10 @@ import Dribbble from "./dribbble.png";
 import Instagram from "./instagram.png";
 import Twitter from "./twitter.png";
 import Youtube from "./youtube.png";
-import classNames from "classnames";
 
 export function Footer() {
     return (
-        <footer className={classNames("apply-new-fonts", styles.footer)}>
+        <footer className={styles.footer}>
             <div className={styles.section}>
                 <Image src={logo} alt="Logo" className={styles.logo} />
 
