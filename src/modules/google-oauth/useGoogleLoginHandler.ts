@@ -45,5 +45,5 @@ export const useGoogleLoginHandler =
 
               const isMounted = useIsMounted();
 
-              return isMounted ? googleLogin : undefined;
+              return isMounted ? () => googleLogin() : undefined;
           };
