@@ -24,7 +24,7 @@ import Link from "next/link";
 export default function LandingPage() {
     return (
         <>
-            <header>
+            <header className="apply-old-fonts">
                 <Image src={bLinkedLogo} alt="bLinked Logo" />
                 <nav className="nav">
                     <Dropdown alignRight>
@@ -64,7 +64,7 @@ export default function LandingPage() {
                 </nav>
             </header>
 
-            <main>
+            <main className="apply-old-fonts">
                 <section className="first-section">
                     <div className="first-col">
                         <h1 className="title">
@@ -230,7 +230,7 @@ export default function LandingPage() {
                 </section>
             </main>
 
-            <footer>
+            <footer className="apply-old-fonts">
                 <div>
                     <Image src={LogoFooter} alt="Logo" className="logo" />
                     <p className="text">
