@@ -5,11 +5,10 @@ import { IoMdMenu } from "react-icons/io";
 import bLinkedLogo from "../../../../public/img/bLinkedLogo.svg";
 import styles from "./Header.module.scss";
 import { CustomToggle } from "../../CustomToggle";
-import classNames from "classnames";
 
 export function Header() {
     return (
-        <header className={classNames(styles.header, "apply-new-fonts")}>
+        <header className={styles.header}>
             <Image src={bLinkedLogo} alt="bLinked Logo" className={styles.logo} />
 
             <nav className={styles.nav}>
