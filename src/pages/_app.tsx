@@ -6,9 +6,6 @@ import "react-date-range/dist/theme/default.css";
 // Common
 import "@/styles/index.scss";
 
-// Auth SCSS Start
-import "@/styles/_input_box.scss";
-
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { GlobalProvider } from "../context/GlobalState";

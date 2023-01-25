@@ -16,7 +16,7 @@ const SettingsPage = () => {
     };
 
     return (
-        <Dashboard title="General settings" useOldFonts>
+        <Dashboard title="General settings">
             <div className="px-md-4 px-2 pb-4 mt-4">
                 <div className={classNames(styles.settingsContainer, "h-100")}>
                     <div className={styles.menuContainer}>
