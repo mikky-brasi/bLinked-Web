@@ -9,7 +9,7 @@ export default function NotificationDropdown() {
     const [
         notifications,
         // setNotifications
-    ] = useState([{}]);
+    ] = useState([]);
 
     return (
         <Dropdown>

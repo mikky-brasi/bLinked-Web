@@ -44,15 +44,6 @@
 .accountTrigger {
     position: relative;
     @include fonts.font-adineue-PRO;
-
-    .dashboard-header-menu {
-        position: absolute;
-        background: #fff;
-        right: 0;
-        width: 300px;
-        margin-top: 10px;
-        border-radius: 12px;
-    }
 }
 
 .accountContainer {
