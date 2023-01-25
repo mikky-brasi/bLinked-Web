@@ -37,7 +37,7 @@ const AgentsPage = () => {
     useEffect(() => setAgents(filterAgents(agent, agentSearch, filter)), [agentSearch, filter]);
 
     return (
-        <Dashboard title="Agents">
+        <Dashboard title="Agents" useOldFonts>
             <div className="main-container">
                 <div className="px-md-4 px-2 pb-4 mt-4">
                     <div className="total-rating-container">

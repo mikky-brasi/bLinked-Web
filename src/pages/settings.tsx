@@ -14,7 +14,7 @@ const SettingsPage = () => {
     };
 
     return (
-        <Dashboard title="General settings">
+        <Dashboard title="General settings" useOldFonts>
             <div className="px-md-4 px-2 pb-4 mt-4">
                 <div className="settings-container h-100">
                     <div className="settings-menu-container ">
