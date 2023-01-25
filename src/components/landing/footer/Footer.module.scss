@@ -69,7 +69,6 @@
 
 .subtitle {
     @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
-    font-weight: 600;
     font-size: 20px;
     line-height: 30px;
     color: #ffffff;

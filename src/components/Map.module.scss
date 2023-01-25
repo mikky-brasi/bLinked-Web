@@ -358,27 +358,27 @@
 }
 
 .greyText {
+    @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
     font-size: 16px;
-    font-weight: bold;
     color: #5a5d82;
 }
 
 .pinkText {
+    @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
     color: #ff4554;
     font-size: 16px;
-    font-weight: bold;
 }
 
 .greenText {
+    @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
     color: #288f40;
     font-size: 16px;
-    font-weight: bold;
 }
 
 .blueText {
+    @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
     color: #1752ff;
     font-size: 16px;
-    font-weight: bold;
 }
 
 .agentType {

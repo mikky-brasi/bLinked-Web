@@ -63,42 +63,9 @@
     width: 60%;
     padding: 0 50px;
 
-    > .setting-user-profile {
-        margin-top: 40px;
-    }
-
-    .setting-user-title {
-        font-weight: 700;
-        font-size: 22px;
-        color: #0f112b;
-        font-family: var(--font-gt-walsheim-pro);
-    }
-
-    .setting-user-picture {
-        display: flex;
-        align-items: center;
-
-        > div:nth-child(1) {
-            width: 88px;
-            height: 88px;
-            border-radius: 100%;
-            background: #5a5d82;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 32px;
-            color: #fff;
-            font-weight: 700;
-        }
-    }
-
     @media only screen and (max-width: 1300px) {
         width: 100%;
         padding: 0 20px;
-
-        > .setting-user-profile {
-            margin-top: 0;
-        }
     }
 }
 

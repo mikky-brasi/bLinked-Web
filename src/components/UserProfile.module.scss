@@ -48,7 +48,6 @@
 
   .danger {
     @include fonts.font-adineue-PRO;
-    // @include 
     font-size: 20px;
     color: #e22738;
   }
@@ -60,10 +59,10 @@
   }
 
   .deactivateUserBtn {
+    @include fonts.font-adineue-PRO;
     background: #f5f5f7;
     border-radius: 7px;
     border: none;
     font-size: 16px;
     color: #5a5d82;
-    @include fonts.font-adineue-PRO;
   }

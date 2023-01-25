@@ -6,12 +6,10 @@
     padding: 10px 20px;
     transition: all 0.3s;
     border-radius: 8px;
-    font-weight: 500;
 
     &.logout {
         color: red;
         transition: all 0.3s;
-        font-family: var(--font-inter);
     }
 
     &:hover {

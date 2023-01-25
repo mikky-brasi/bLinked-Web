@@ -1,12 +1,11 @@
 @use "@/styles/fonts";
 
 .logo {
-    @include fonts.font-adineue-PRO;
+    @include fonts.font-adineue-PRO(fonts.$font-adineue-PRO-weight-bold);
     width: 40px;
     height: 40px;
     color: #fff;
     background: #0d99f2;
-    font-weight: 500;
     font-size: 16px;
     display: flex;
     justify-content: center;
