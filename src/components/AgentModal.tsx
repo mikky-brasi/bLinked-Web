@@ -1,7 +1,9 @@
+import classNames from "classnames";
 import Image from "next/image";
 import React from "react";
 import { location } from "../../public/img";
 import { getAgentStyle } from "../helpers/getRowStyles";
+import styles from "./AgentModal.module.scss";
 
 type AgentModalProps = {
     item: any;
@@ -12,8 +14,8 @@ export const AgentModal = ({ item, onClick }: AgentModalProps) => {
     return (
         <li className="d-md-flex justify-content-between" onClick={onClick}>
             <div className="d-flex align-items-center">
-                <div className="order-agent-logo">GO</div>
-                <div className="order-agent-name-loc">
+                <div className={styles.logo}>GO</div>
+                <div className={styles.nameLoc}>
                     <span>{item.agentName}</span>
                     <span className="my-1">
                         <Image src={location} alt="" />
@@ -21,7 +23,10 @@ export const AgentModal = ({ item, onClick }: AgentModalProps) => {
                     </span>
                     <div className="rounded-pill d-md-none d-flex">
                         <span
-                            className="order-modal-agent-status rounded-pill px-3  d-md-flex d-none"
+                            className={classNames(
+                                styles.status,
+                                "rounded-pill px-3  d-md-flex d-none",
+                            )}
                             style={getAgentStyle(item.status)}
                         >
                             {item.status}
@@ -31,7 +36,7 @@ export const AgentModal = ({ item, onClick }: AgentModalProps) => {
             </div>
             <div className="d-flex align-items-center">
                 <span
-                    className="order-modal-agent-status rounded-pill px-3  d-md-flex d-none"
+                    className={classNames(styles.status, "rounded-pill px-3  d-md-flex d-none")}
                     style={getAgentStyle(item.status)}
                 >
                     {item.status}

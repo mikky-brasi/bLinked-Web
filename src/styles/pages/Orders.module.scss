@@ -1,0 +1,216 @@
+@use "@/styles/fonts";
+
+.ordersContainer {
+    background: #fff;
+    border: 1px solid #ecebf5;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+
+    .orders-title {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 18px;
+        color: rgba(#0f112b, 0.8);
+
+        > span:nth-child(1) {
+            margin-right: 5px;
+        }
+    }
+
+    .orders-search-input {
+        @include fonts.font-adineue-PRO;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        > span {
+            position: absolute;
+            left: 10px;
+        }
+
+        > input {
+            border: 1px solid #ecebf5;
+            padding: 0 15px 0 30px;
+            border-radius: 8px;
+            height: 38px;
+            font-size: 14px;
+            color: #9395b4;
+            width: 250px;
+            outline: none;
+
+            &::placeholder {
+                color: #9395b4;
+            }
+        }
+    }
+
+    .orders-filter {
+        margin-right: 10px;
+
+        > button {
+            font-family: var(--font-adineue-pro);
+            font-size: 14px;
+            border: none;
+            background: #f5f5f7;
+            border-radius: 6px;
+            height: 38px;
+            width: 180px;
+            color: #5a5d82;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            > img {
+                margin-right: 10px;
+                width: 14px;
+            }
+        }
+    }
+}
+
+.searchInput {
+    @include fonts.font-adineue-PRO;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    > span {
+        position: absolute;
+        left: 10px;
+    }
+
+    > input {
+        border: 1px solid #ecebf5;
+        padding: 0 15px 0 30px;
+        border-radius: 8px;
+        height: 38px;
+        font-size: 14px;
+        color: #9395b4;
+        width: 220px;
+    }
+}
+
+.filterBtn {
+    @include fonts.font-adineue-PRO;
+    border: none;
+    background: #3842b0;
+    border-radius: 7px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 10px 25px;
+}
+
+.listContainer {
+    overflow: visible;
+
+    > table {
+        overflow: hidden;
+        overflow-y: visible;
+
+        tr {
+            border-bottom: 2px solid rgba(#9395b4, 0.06);
+            overflow-y: visible;
+
+            > th {
+                @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+                padding: 15px 18px;
+                background: rgba(#9395b4, 0.06);
+                font-size: 12px;
+                color: #5a5d82;
+
+                &:nth-child(1) {
+                    cursor: pointer;
+                }
+            }
+
+            > td {
+                overflow-y: visible;
+                padding: 15px 18px;
+                color: #0f112b;
+                font-size: 14px;
+                font-weight: 500;
+                vertical-align: middle;
+
+                &:nth-child(1) {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.paginationContainer {
+    @include fonts.font-adineue-PRO;
+    color: #92929d;
+    font-size: 14px;
+
+    > div:nth-child(1) {
+        color: #637381;
+    }
+
+    > div:nth-child(2) {
+        display: flex;
+        font-size: 14px;
+        color: #637381;
+
+        > div:nth-child(2) {
+            height: 35px;
+            border: 1px solid #e2e2ea;
+            border-radius: 10px;
+            margin-left: 15px;
+
+            > input {
+                //   width: 30px;
+                min-width: 30px;
+                max-width: 30px;
+                outline: none;
+                background: none;
+                border: none;
+            }
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border-left: 1px solid #e2e2ea;
+                width: 18px;
+            }
+        }
+    }
+}
+
+.page {
+    @include fonts.font-adineue-PRO;
+
+    > span {
+        margin: 0 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &.activePageSpan {
+            @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+            color: #3842b0;
+        }
+
+        &:hover {
+            @include fonts.font-adineue-PRO(fonts.$font-adineue-PRO-weight-bold);
+            color: #3842b0;
+        }
+    }
+}
+
+.prev,
+.next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    width: 28px;
+    height: 35px;
+    border: 1px solid #e2e2ea;
+    border-radius: 10px;
+}

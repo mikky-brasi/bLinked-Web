@@ -1,0 +1,34 @@
+@use "@/styles/fonts";
+
+.wrapper {
+    border-radius: 8px;
+    border: 1px solid #ecebf5;
+}
+
+.title {
+    @include fonts.font-adineue-PRO;
+    color: #5a5d82;
+    font-size: 18px;
+}
+
+.total {
+    > span:nth-child(1) {
+        @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+        font-size: 28px;
+        color: #3842b0;
+    }
+
+    > span:nth-child(2) {
+        @include fonts.font-adineue-PRO;
+        font-size: 15px;
+        color: #1eb75b;
+        margin-left: 8px;
+    }
+}
+
+.description {
+    @include fonts.font-adineue-PRO;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: rgba(#5a5d82, 0.8);
+}

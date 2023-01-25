@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useGlobalContext } from "../context/GlobalState";
 import { AlertImage1, AlertImage2 } from "../../public/img";
 import Image from "next/image";
+import styles from "./Toast.module.scss";
+import classNames from "classnames";
 
 export default function Toast() {
     const {
@@ -20,8 +22,11 @@ export default function Toast() {
     }, [open]);
 
     return (
-        <div className={`toast ${open ? "open" : "closed"}`} style={{ backgroundColor: color }}>
-            <div className="image-bg">
+        <div
+            className={classNames(styles.toast, open && styles.open)}
+            style={{ backgroundColor: color }}
+        >
+            <div className={styles["image-bg"]}>
                 <Image src={AlertImage1} alt="" />
                 <Image src={AlertImage2} alt="" />
             </div>

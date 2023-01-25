@@ -8,20 +8,17 @@ import { BiChevronDown, BiDotsVerticalRounded } from "react-icons/bi";
 import agentsData from "../mockData/agents.json";
 // Helpers
 import { getOrderStyle } from "../helpers/getRowStyles";
+import modalStyles from "./modals.module.scss";
+import classNames from "classnames";
+import styles from "./OrderDetailsModal.module.scss";
 
 type OrderDetailsModalProps = {
     show: boolean;
     setShow: (show: boolean) => void;
     itemStatus: string;
-    setItemStatus?: (status: string) => void;
 };
 
-export default function OrderDetailsModal({
-    show,
-    setShow,
-    itemStatus,
-}: // setItemStatus, // TODO: Can this be deleted?
-OrderDetailsModalProps) {
+export default function OrderDetailsModal({ show, setShow, itemStatus }: OrderDetailsModalProps) {
     const [agentErr, setAgentErr] = useState(false);
     const [agentsFocus, setAgentsFocus] = useState(false);
     const [selectedAgent, setSelectedAgent] = useState("");
@@ -62,26 +59,32 @@ OrderDetailsModalProps) {
 
     return (
         <Modal show={show} onHide={handleModal} centered size="lg">
-            <Modal.Header className="d-flex justify-content-between order-modal-header py-4">
-                <div className="mx-md-4">Order Details</div>
+            <Modal.Header
+                className={classNames(
+                    modalStyles.header,
+                    styles.header,
+                    "d-flex justify-content-between py-4",
+                )}
+            >
+                <div className={classNames(styles.headerTitle)}>Order Details</div>
                 <div className="mx-md-4" onClick={handleModal}>
                     <MdClose />
                 </div>
             </Modal.Header>
             <Modal.Body>
                 <div className="my-4 px-md-4">
-                    <div className="order-modal-main">
-                        <div className="order-modal-id">Order ID 15285046</div>
-                        <div className="order-modal-from-price mt-2">
+                    <div>
+                        <div className={styles.id}>Order ID 15285046</div>
+                        <div className={classNames(styles.fromPrice, "mt-2")}>
                             <span>
                                 From <span> Isolo Ire-Akari Estate &bull; 12mins ago</span>
                             </span>
                             <span>₦850,000.00</span>
                         </div>
-                        <div className="order-modal-to">
+                        <div className={styles.to}>
                             To<span> Isolo Ire-Akari Estate</span>
                         </div>
-                        <div className="order-modal-status mt-2">
+                        <div className={classNames(styles.status, "mt-2")}>
                             <span
                                 className="rounded-pill px-2 py-1"
                                 style={getOrderStyle(itemStatus)}
@@ -93,7 +96,7 @@ OrderDetailsModalProps) {
                 </div>
                 <div className="my-5 px-md-4">
                     {itemStatus === "Assigned" ? (
-                        <div className="order-modal-agent">
+                        <div className={styles.agent}>
                             <div className="row p-4">
                                 <div className="col-lg-6">
                                     <div>Order amount</div>
@@ -102,7 +105,7 @@ OrderDetailsModalProps) {
                                 <div className="col-lg-6">
                                     <div>Assigned Agent</div>
                                     <div>Assurance Uwangue</div>
-                                    <div className="order-agent-menu">
+                                    <div className={styles.menu}>
                                         <BiDotsVerticalRounded />
                                     </div>
                                 </div>
@@ -110,7 +113,7 @@ OrderDetailsModalProps) {
                         </div>
                     ) : (
                         <div>
-                            <div className="order-modal-title">Assign Agent</div>
+                            <div className={styles.title}>Assign Agent</div>
                             <div className="col-lg-12 mt-md-4 mt-4 auth-input-container">
                                 <div
                                     className={
@@ -137,20 +140,19 @@ OrderDetailsModalProps) {
                                 </div>
                             </div>
                             <div>
-                                <span className="order-agent-err">
+                                <span className={styles.agentError}>
                                     {agentErr
                                         ? "An agent need to be assigned before this order can be confirmed"
                                         : ""}
                                 </span>
                             </div>
-                            <div
-                                className={
-                                    searchResult
-                                        ? "order-modal-search-agent mt-1 position-relative"
-                                        : "d-none"
-                                }
-                            >
-                                <div className="order-modal-search-agent-input position-absolute w-100">
+                            <div className={searchResult ? "mt-1 position-relative" : "d-none"}>
+                                <div
+                                    className={classNames(
+                                        styles.agentInput,
+                                        "position-absolute w-100",
+                                    )}
+                                >
                                     <input
                                         type="text"
                                         placeholder="Search agent"
@@ -158,7 +160,12 @@ OrderDetailsModalProps) {
                                         onChange={handleAgentSearch}
                                     />
                                 </div>
-                                <div className="order-modal-agent-result-main position-absolute w-100 mt-5">
+                                <div
+                                    className={classNames(
+                                        styles.resultMain,
+                                        "position-absolute w-100 mt-5",
+                                    )}
+                                >
                                     <ul>
                                         {agents.map((item) => (
                                             <AgentModal
@@ -179,11 +186,13 @@ OrderDetailsModalProps) {
                     )}
                 </div>
             </Modal.Body>
+
             <Modal.Footer className="py-4">
-                <button className="order-modal-close-btn" onClick={handleModal}>
+                <button className={styles.closeBtn} onClick={handleModal}>
                     Close
                 </button>
-                <button className="order-modal-submit-btn" onClick={() => handleConfirm()}>
+
+                <button className={styles.submitBtn} onClick={() => handleConfirm()}>
                     {itemStatus === "Assigned" ? "Mark as fulfilled" : "Confirm"}
                 </button>
             </Modal.Footer>

@@ -4,6 +4,8 @@ import { History } from "../../public/img";
 import Image from "next/image";
 import { ImSearch } from "react-icons/im";
 import history from "../mockData/recentSearch.json";
+import styles from "./SearchModal.module.scss";
+import classNames from "classnames";
 
 type FeedbackModalProps = {
     show: boolean;
@@ -16,15 +18,18 @@ export default function FeedbackModal({ show, setShow }: FeedbackModalProps) {
     };
 
     return (
-        <Modal show={show} onHide={handleClose} centered size="lg" className="dashboard-search">
-            <div className="dashboard-search-input m-0 ">
+        <Modal show={show} onHide={handleClose} centered size="lg" className={styles.wrapper}>
+            <div className={classNames(styles.input, "m-0")}>
                 <span>
                     <ImSearch size={20} color="#A3A3C2" />
                 </span>
+
                 <input type="text" placeholder="Search Anything..." />
             </div>
-            <div className="my-4 mx-2 dashboard-search-history">
+
+            <div className={classNames(styles.history, "my-4 mx-2")}>
                 <span className="mx-1">RECENT SEARCHES</span>
+
                 <ul className="mt-2">
                     {history.map((data) => (
                         <li className="p-1 pr-0" key={data.id}>

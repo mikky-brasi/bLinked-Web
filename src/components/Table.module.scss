@@ -1,0 +1,39 @@
+@use "@/styles/fonts";
+
+.orderItemName {
+    > span > span:nth-child(1) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: #23b4bd;
+        border-radius: 100%;
+        margin-right: 10px;
+        font-size: 18px;
+        color: #fff;
+        font-weight: 600;
+    }
+}
+
+.orderListStatus {
+    overflow: visible;
+    position: relative;
+
+    > span {
+        font-size: 11px;
+    }
+}
+
+tr > td.homePendingOrderListStatus {
+    font-size: 11px;
+}
+
+.table {
+    @include fonts.font-adineue-PRO;
+}
+
+.threeDots {
+    cursor: pointer;
+    position: relative;
+}

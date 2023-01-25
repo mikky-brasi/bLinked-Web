@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Dropdown } from "react-bootstrap";
@@ -7,6 +8,7 @@ import { GoChevronDown } from "react-icons/go";
 import { ImSearch } from "react-icons/im";
 import NotificationDropdown from "./NotificationDropdown";
 import SearchModal from "./SearchModal";
+import styles from "./Header.module.scss";
 
 type HeaderProps = {
     handleSideBar: () => void;
@@ -27,28 +29,37 @@ const Header = ({ handleSideBar, title }: HeaderProps) => {
     };
 
     return (
-        <div className="dashboard-header-main px-md-4 px-2">
-            <div className="dashboard-header-path">
-                <span onClick={handleSideBar} className="d-flex d-md-none">
+        <div className={classNames(styles.wrapper, "px-md-4 px-2")}>
+            <div className={styles.path}>
+                <span onClick={handleSideBar} className="d-flex d-lg-none">
                     <CgMenuLeftAlt size={28} />
                 </span>
-                <span className="mx-2 ">{title}</span>
+
+                <span className="mx-2">{title}</span>
             </div>
-            <div className="dashboard-header-account">
-                <div className="dashboard-header-search" onClick={showSearchModal}>
-                    <ImSearch className="search-icon mx-2" size={20} />
+
+            <div className={styles.account}>
+                <div className={styles.search} onClick={showSearchModal}>
+                    <ImSearch className={classNames(styles.searchIcon, "mx-2")} size={20} />
                     <span>Search</span>
                 </div>
-                <div className="dashboard-header-notification">
+
+                <div className={styles.notification}>
                     <NotificationDropdown />
-                    {/* <img src={notificationIcon} alt="Bell" className="img-fluid" /> */}
                 </div>
+
                 <Dropdown className="d-inline mx-2 border-0">
                     <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
-                        <div className="dashboard-header-ac-section">
-                            <div className="dashboard-header-ac">
-                                <div className="dashboard-header-ac-icon">BL</div>
-                                <div className="dashboard-header-ac-name d-flex align-items-center">
+                        <div className={styles.accountTrigger}>
+                            <div className={styles.accountContainer}>
+                                <div className={styles.accountIcon}>BL</div>
+
+                                <div
+                                    className={classNames(
+                                        styles.accountName,
+                                        "d-flex align-items-center",
+                                    )}
+                                >
                                     <span className="d-none d-md-flex">Bamboo Lounge</span>
                                     <GoChevronDown size={18} />
                                 </div>
@@ -57,28 +68,36 @@ const Header = ({ handleSideBar, title }: HeaderProps) => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className="p-1">
-                        <Dropdown.Item className="drop-home-profile py-3">
-                            <div className="dashboard-header-ac-icon">BL</div>
+                        <Dropdown.Item className={classNames(styles.profile, "py-3")}>
+                            <div className={styles.accountIcon}>BL</div>
                             <div>
                                 <span>Bamboo Lounge</span>
                                 <span>Sales manager</span>
                             </div>
                         </Dropdown.Item>
+
                         <Dropdown.Divider />
+
                         <Dropdown.Item
-                            className="drop-menu-item"
+                            className={styles.menuItem}
                             onClick={() => router.push("/settings")}
                         >
                             Profile
                         </Dropdown.Item>
+
                         <Dropdown.Item
-                            className="drop-menu-item"
+                            className={styles.menuItem}
                             onClick={() => router.push("/settings")}
                         >
                             Support
                         </Dropdown.Item>
+
                         <Dropdown.Divider />
-                        <Dropdown.Item className="drop-menu-item logout" onClick={handleLogout}>
+
+                        <Dropdown.Item
+                            className={classNames(styles.menuItem, styles.logout)}
+                            onClick={handleLogout}
+                        >
                             Logout
                         </Dropdown.Item>
                     </Dropdown.Menu>

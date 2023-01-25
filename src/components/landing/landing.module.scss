@@ -1,0 +1,14 @@
+@use "@/styles/fonts";
+
+.title {
+    @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+    font-size: 60px;
+    line-height: 71px;
+    color: #3a42aa;
+    margin-bottom: 20px;
+}
+
+.text {
+    @include fonts.font-adineue-PRO;
+    color: #000;
+}

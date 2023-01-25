@@ -1,0 +1,23 @@
+@use "@/styles/fonts";
+
+.wrapper {
+    margin-right: 10px;
+
+    > button {
+        @include fonts.font-adineue-PRO;
+
+        border: none;
+        background: #f5f5f7;
+        border-radius: 6px;
+        height: 38px;
+        width: auto;
+        color: #5a5d82;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        > img {
+            margin-right: 10px;
+        }
+    }
+}

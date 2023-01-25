@@ -1,0 +1,48 @@
+@use "@/styles/fonts";
+
+.wrapper {
+    @include fonts.font-adineue-PRO;
+}
+
+.input {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    > span {
+        position: absolute;
+        left: 10px;
+    }
+
+    > input {
+        border: 1px solid #ecebf5;
+        padding: 0 15px 0 40px;
+        border-radius: 8px;
+        height: 48px;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 18px;
+        color: #1e293b;
+        width: 100%;
+    }
+}
+
+.history {
+    > span {
+        font-size: 14px;
+        color: #94a3b8;
+    }
+
+    > ul {
+        list-style: none;
+        margin-left: -2rem;
+    }
+
+    li {
+        letter-spacing: 1px;
+    }
+
+    li:hover {
+        cursor: pointer;
+        background-color: #3842b0;
+    }
+}

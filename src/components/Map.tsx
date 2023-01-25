@@ -18,6 +18,8 @@ import {
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 import Image from "next/image";
+import styles from "./Map.module.scss";
+import classNames from "classnames";
 
 const MapComponent = (props: IProvidedProps) => {
     const mapRef = useRef<Map>(null);
@@ -64,7 +66,7 @@ const MapComponent = (props: IProvidedProps) => {
     return (
         <div className="px-md-4 px-2 pb-4">
             <div className="d-md-flex">
-                <div className="home-location-container px-4 py-4">
+                <div className={classNames(styles.locationContainer, "px-4 py-4")}>
                     <div className="mt-2 mb-4">Agent Locations</div>
                     <div>
                         <figure style={{ borderRadius: 8, overflow: "hidden" }}>
@@ -76,21 +78,28 @@ const MapComponent = (props: IProvidedProps) => {
                                 style={style}
                                 containerStyle={containerStyle}
                                 initialCenter={mapCenter}
+                                zoomControl={false}
+                                mapTypeControl={false}
+                                scaleControl={false}
+                                streetViewControl={false}
+                                fullscreenControl={false}
+                                panControl={false}
+                                rotateControl={false}
                             >
-                                <div className="google-map-controller-main">
+                                <div className={styles.googleMapControllerMain}>
                                     <button onClick={() => setZoom(12)}>
                                         <Image src={GoogleLocate} alt="" className="img-fluid" />
                                     </button>
-                                    <div className="google-controller-line" />
+                                    <div className={styles.controllerLine} />
                                     <button
-                                        className="google-map-controller-btn"
+                                        className={styles.controllerBtn}
                                         onClick={zoom > 2 ? () => setZoom(zoom + 1) : () => {}}
                                     >
                                         <FiPlus />
                                     </button>
-                                    <div className="google-controller-line" />
+                                    <div className={styles.controllerLine} />
                                     <button
-                                        className="google-map-controller-btn"
+                                        className={styles.controllerBtn}
                                         onClick={zoom > 2 ? () => setZoom(zoom - 1) : () => {}}
                                     >
                                         <FiMinus />
@@ -124,20 +133,22 @@ const MapComponent = (props: IProvidedProps) => {
                                 {showInfoWindow && (
                                     // @ts-expect-error
                                     <InfoWindow marker={activeMarker} visible={showInfoWindow}>
-                                        <div className="info_window">
+                                        <div className={styles.infoWindow}>
                                             <div
                                                 // TODO: change div for Image
-                                                className="profile_image"
+                                                className={styles.profileImage}
                                             />
 
-                                            <p className="agent_name">Tajao Bullaha</p>
-                                            <div className="info_address">
+                                            <p className={styles.agentName}>Tajao Bullaha</p>
+                                            <div className={styles.infoAddress}>
                                                 <Image src={MapMarker} alt="" />
-                                                <p className="agent_location">
+                                                <p className={styles.agentLocation}>
                                                     Ire-akari Estate Isolo, Lagos State
                                                 </p>
                                             </div>
-                                            <span className="info_status">Enroute Dropoff</span>
+                                            <span className={styles.infoStatus}>
+                                                Enroute Dropoff
+                                            </span>
                                         </div>
                                     </InfoWindow>
                                 )}
@@ -145,15 +156,15 @@ const MapComponent = (props: IProvidedProps) => {
                         </figure>
                     </div>
                 </div>
-                <div className="home-agent-container px-4 py-4 mt-md-0 mt-4">
+                <div className={classNames(styles.agentContainer, "px-4 py-4 mt-md-0 mt-4")}>
                     <div className="mt-2">
-                        <div className="home-agent-title">Agent Analysis</div>
-                        <div className="home-agent-subtitle my-1">
+                        <div className={styles.agentTitle}>Agent Analysis</div>
+                        <div className={classNames(styles.agentSubtitle, "my-1")}>
                             Realtime status of registered agent
                         </div>
                     </div>
                     <div>
-                        <div className="home-agent-status-a mt-5">
+                        <div className={classNames(styles.agentStatusA, "mt-5")}>
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
@@ -161,10 +172,12 @@ const MapComponent = (props: IProvidedProps) => {
                                         id="inactive-agents"
                                         className="py-2 px-3 text-center text-20"
                                     >
-                                        <span className="d-block mb-1 home-agent-type">
+                                        <span
+                                            className={classNames(styles.agentType, "d-block mb-1")}
+                                        >
                                             Inactive Agents
                                         </span>
-                                        <span className="home-agent-text-grey">300</span>
+                                        <span className={styles.greyText}>300</span>
                                     </Popover>
                                 }
                             >
@@ -180,10 +193,12 @@ const MapComponent = (props: IProvidedProps) => {
                                         id="unavailable-agents"
                                         className="py-2 px-3 text-center text-16"
                                     >
-                                        <span className="d-block mb-1 home-agent-type">
+                                        <span
+                                            className={classNames(styles.agentType, "d-block mb-1")}
+                                        >
                                             Unavailable Agents
                                         </span>
-                                        <span className="home-agent-text-pink">130</span>
+                                        <span className={styles.pinkText}>130</span>
                                     </Popover>
                                 }
                             >
@@ -193,7 +208,7 @@ const MapComponent = (props: IProvidedProps) => {
                                 </div>
                             </OverlayTrigger>
                         </div>
-                        <div className="home-agent-status-b mt-4">
+                        <div className={classNames(styles.agentStatusB, "mt-4")}>
                             <OverlayTrigger
                                 placement="top"
                                 overlay={
@@ -201,10 +216,12 @@ const MapComponent = (props: IProvidedProps) => {
                                         id="available-agents"
                                         className="py-2 px-3 text-center text-16"
                                     >
-                                        <span className="d-block mb-1 home-agent-type">
+                                        <span
+                                            className={classNames(styles.agentType, "d-block mb-1")}
+                                        >
                                             Available Agents
                                         </span>
-                                        <span className="home-agent-text-green">500</span>
+                                        <span className={styles.greenText}>500</span>
                                     </Popover>
                                 }
                             >
@@ -220,10 +237,12 @@ const MapComponent = (props: IProvidedProps) => {
                                         id="active-agents"
                                         className="py-2 px-3 text-center text-16"
                                     >
-                                        <span className="d-block mb-1 home-agent-type">
+                                        <span
+                                            className={classNames(styles.agentType, "d-block mb-1")}
+                                        >
                                             Active Agents
                                         </span>
-                                        <span className="home-agent-text-blue">100</span>
+                                        <span className={styles.blueText}>100</span>
                                     </Popover>
                                 }
                             >
@@ -234,7 +253,7 @@ const MapComponent = (props: IProvidedProps) => {
                             </OverlayTrigger>
                         </div>
                     </div>
-                    <div className="row home-agent-status mt-5">
+                    <div className={classNames(styles.agentStatus, "row mt-5")}>
                         <div className="col-6 mt-2">
                             <div></div>
                             <div>Available</div>

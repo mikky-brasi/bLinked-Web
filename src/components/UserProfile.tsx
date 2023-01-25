@@ -1,8 +1,11 @@
+import classNames from "classnames";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import validator from "validator";
 import { validemail } from "../../public/img";
+import styles from "./UserProfile.module.scss";
+import settingStyles from "@/styles/pages/Settings.module.scss";
 
 const UserProfile = () => {
     const [user, setUser] = useState({
@@ -123,15 +126,15 @@ const UserProfile = () => {
 
     return (
         <>
-            <div className="setting-user-profile">
-                <div className="setting-user-title">
+            <div className={styles.wrapper}>
+                <div className={styles.title}>
                     <div className="d-flex justify-content-between mt-4">
                         <span> User Profile</span>
                     </div>
                 </div>
-                <div className="setting-user-picture mt-4">
+                <div className={classNames(styles.userPicture, "mt-4")}>
                     <div>BL</div>
-                    <div className="setting-edit-picture-btn mx-4">
+                    <div className={classNames(styles.editPictureBtn, "mx-4")}>
                         <input
                             type="file"
                             accept="image/*"
@@ -145,8 +148,8 @@ const UserProfile = () => {
             </div>
             <hr className="my-4" />
             <div className="py-4">
-                <div className="settings-user-form-title">Basic information</div>
-                <div className="settings-user-form-subline">
+                <div className={settingStyles.formTitle}>Basic information</div>
+                <div className={settingStyles.formSubline}>
                     Let’s get to know you. Set up your name and contact details in simple steps.
                 </div>
                 <div className="mt-4">
@@ -319,18 +322,28 @@ const UserProfile = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="settings-user-form-action-btn d-flex justify-content-md-end justify-content-center my-5">
+                    <div
+                        className={classNames(
+                            settingStyles.formActionBtn,
+                            "d-flex justify-content-md-end justify-content-center my-5",
+                        )}
+                    >
                         <button>Discard</button>
                         <button onClick={handleSave}>Save</button>
                     </div>
                     <hr className="my-4" />
                     <div className="py-4">
-                        <div className="settings-danger">Danger zone</div>
-                        <div className="settings-danger-desc mt-2 col-md-8">
+                        <div className={styles.danger}>Danger zone</div>
+                        <div className={classNames(styles.dangerDesc, "mt-2 col-md-8")}>
                             Deactivating your account means you will lose all workspaces created by
                             you and all your every other account information.{" "}
                         </div>
-                        <button className="settings-deactive-user-btn px-md-5 px-2 py-md-2 py-2 mt-5">
+                        <button
+                            className={classNames(
+                                styles.deactivateUserBtn,
+                                "px-md-5 px-2 py-md-2 py-2 mt-5",
+                            )}
+                        >
                             Deactivate your account
                         </button>
                     </div>

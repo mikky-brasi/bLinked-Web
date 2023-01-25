@@ -2,6 +2,8 @@ import React from "react";
 import { getOrderStyle } from "../helpers/getRowStyles";
 import { BsThreeDots } from "react-icons/bs";
 import AgentDropdown from "./AgentDropdown";
+import styles from "./Table.module.scss";
+import classNames from "classnames";
 
 export type FeedbackItem = {
     id: number;
@@ -71,7 +73,7 @@ type TableProps =
           setSelected: (item: FeedbackItem) => void;
       };
 
-export default function Table<TItem>(props: TableProps) {
+export default function Table(props: TableProps) {
     if (props.page === "home") {
         const { items, setShow, setSelected } = props;
 
@@ -96,7 +98,7 @@ export default function Table<TItem>(props: TableProps) {
                                 <td>{from}</td>
                                 <td>{to}</td>
                                 <td>₦{parseInt(price).toFixed(2)}</td>
-                                <td className="home-pending-order-list-status">
+                                <td className={styles.homePendingOrderListStatus}>
                                     <span
                                         className="px-2 py-1 rounded-pill"
                                         style={getOrderStyle(status)}
@@ -105,7 +107,7 @@ export default function Table<TItem>(props: TableProps) {
                                     </span>
                                 </td>
                                 <td
-                                    className="three_dots"
+                                    className={styles.threeDots}
                                     onClick={() => {
                                         setSelected(item);
                                         setShow(true);
@@ -125,7 +127,7 @@ export default function Table<TItem>(props: TableProps) {
         const { items, setShow, setItemStatus } = props;
 
         return (
-            <table className="table">
+            <table className={classNames("table", styles.table)}>
                 <thead>
                     <tr>
                         <th>ORDER VENDOR</th>
@@ -141,7 +143,7 @@ export default function Table<TItem>(props: TableProps) {
                         const { name, from, to, price, status } = item;
                         return (
                             <tr key={i}>
-                                <td className="order-item-name">
+                                <td className={styles.orderItemName}>
                                     <span className="d-flex align-items-center">
                                         <span>TB</span>
                                         {name}
@@ -156,7 +158,7 @@ export default function Table<TItem>(props: TableProps) {
                                 <td>
                                     <span>₦{parseInt(price).toFixed(2)}</span>
                                 </td>
-                                <td className="order-list-status">
+                                <td className={styles.orderListStatus}>
                                     <span
                                         className="px-2 py-1 rounded-pill"
                                         style={getOrderStyle(status)}
@@ -165,7 +167,7 @@ export default function Table<TItem>(props: TableProps) {
                                     </span>
                                 </td>
                                 <td
-                                    className="three_dots"
+                                    className={styles.threeDots}
                                     onClick={() => {
                                         setShow(true);
                                         setItemStatus(status);
@@ -194,7 +196,7 @@ export default function Table<TItem>(props: TableProps) {
         } = props;
 
         return (
-            <table className="table">
+            <table className={classNames("table", styles.table)}>
                 <thead>
                     <tr>
                         <th>AGENT CONTACT</th>
@@ -210,7 +212,7 @@ export default function Table<TItem>(props: TableProps) {
                         const { id, agentName, location, revenue, orders, status } = item;
                         return (
                             <tr key={id}>
-                                <td className="order-item-name">
+                                <td className={styles.orderItemName}>
                                     <span className="d-flex align-items-center">
                                         <span>TB</span>
                                         {agentName}
@@ -225,7 +227,7 @@ export default function Table<TItem>(props: TableProps) {
                                 <td>
                                     <span>₦{parseInt(revenue).toFixed(2)}</span>
                                 </td>
-                                <td className="order-list-status">
+                                <td className={styles.orderListStatus}>
                                     <span
                                         className="px-2 py-1 rounded-pill"
                                         style={getOrderStyle(status)}
@@ -234,7 +236,7 @@ export default function Table<TItem>(props: TableProps) {
                                     </span>
                                 </td>
                                 <td
-                                    className="three_dots"
+                                    className={styles.threeDots}
                                     onClick={() => {
                                         setSelected(item);
                                         setShowDropdown(!showDropdown);
@@ -263,7 +265,7 @@ export default function Table<TItem>(props: TableProps) {
         const { items, setSelected, setShow } = props;
 
         return (
-            <table className="table">
+            <table className={classNames("table", styles.table)}>
                 <thead>
                     <tr>
                         <th>AGENT NAME</th>
@@ -279,7 +281,7 @@ export default function Table<TItem>(props: TableProps) {
                         const { agentName, orderId, customerName, budget, status } = item;
                         return (
                             <tr key={i}>
-                                <td className="order-item-name">
+                                <td className={styles.orderItemName}>
                                     <span className="d-flex align-items-center">
                                         <span>TB</span>
                                         {agentName}
@@ -294,7 +296,7 @@ export default function Table<TItem>(props: TableProps) {
                                 <td>
                                     <span>₦{parseInt(budget).toFixed(2)}</span>
                                 </td>
-                                <td className="order-list-status">
+                                <td className={styles.orderListStatus}>
                                     <span
                                         className="px-2 py-1 rounded-pill"
                                         style={getOrderStyle(status)}
@@ -303,7 +305,7 @@ export default function Table<TItem>(props: TableProps) {
                                     </span>
                                 </td>
                                 <td
-                                    className="three_dots"
+                                    className={styles.threeDots}
                                     onClick={() => {
                                         setSelected(item);
                                         setShow(true);

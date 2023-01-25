@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Loading1, Loading2, Loading3 } from "../../public/img/index";
 import { useGlobalContext } from "../context/GlobalState";
+import styles from "./LoadingState.module.scss";
 
 export default function LoadingState() {
     const { loading } = useGlobalContext();
@@ -18,8 +19,8 @@ export default function LoadingState() {
     }, [loading, logo]);
 
     return (
-        <div className="loading-state" style={{ display: loading ? "flex" : "none" }}>
-            <Image src={logo} alt="logo" />
+        <div className={styles.wrapper} style={{ display: loading ? "flex" : "none" }}>
+            <Image src={logo} alt="logo" className={styles.img} />
         </div>
     );
 }
