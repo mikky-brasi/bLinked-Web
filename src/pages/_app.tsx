@@ -31,11 +31,12 @@ import "../components/LoadingState.scss";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { withMaybeGoogleOAuthProvider } from "../modules/google-oauth/withMaybeGoogleOAuthProvider";
 import { GlobalProvider } from "../context/GlobalState";
 import AlertToast from "../components/Toast";
 import LoadingState from "../components/LoadingState";
 
-export default function App({ Component, pageProps }: AppProps) {
+export function App({ Component, pageProps }: AppProps) {
     return (
         <GlobalProvider>
             <Head>
@@ -51,3 +52,5 @@ export default function App({ Component, pageProps }: AppProps) {
         </GlobalProvider>
     );
 }
+
+export default withMaybeGoogleOAuthProvider(App);

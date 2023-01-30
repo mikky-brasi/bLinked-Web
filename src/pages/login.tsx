@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import validator from "validator";
 import {
@@ -14,14 +14,8 @@ import {
     validemail,
 } from "../../public/img";
 import bLinkedLogo from "../../public/landing/bLinkedLogo.svg";
-import GoogleLogin, { GoogleLoginProps, GoogleLoginResponse } from "react-google-login";
-import { OAuth2Client } from "google-auth-library";
+import { useGoogleLoginHandler } from "../modules/google-oauth/useGoogleLoginHandler";
 import Image from "next/image";
-
-// https://stackoverflow.com/questions/71040050/why-am-i-getting-syntaxerror-cannot-use-import-statement-outside-a-module
-const gapiImport = import("gapi-script");
-
-const client = new OAuth2Client(process.env.CLIENT_ID);
 
 const SignInPage = () => {
     const router = useRouter();
@@ -83,41 +77,7 @@ const SignInPage = () => {
 
     const handleCreateAC = () => router.push("/auth/sign_up1");
 
-    useEffect(() => {
-        (async () => {
-            const { gapi } = await gapiImport;
-
-            function start() {
-                gapi.client.init({
-                    clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-                    scope: "email",
-                });
-            }
-
-            gapi.load("client:auth2", start);
-        })();
-    }, []);
-
-    const googleSuccess: GoogleLoginProps["onSuccess"] = async (googleData) => {
-        googleData = googleData as GoogleLoginResponse;
-        console.log(googleData);
-        const token = googleData.tokenId;
-
-        const ticket = await client.verifyIdToken({
-            idToken: token,
-            audience: process.env.CLIENT_ID,
-        });
-
-        const { name, email, picture } = ticket.getPayload()!;
-        console.log(name);
-        console.log(email);
-        console.log(picture);
-    };
-
-    const googleFailure = (error: Error) => {
-        console.log(error);
-        console.log("Google Sing In ha fracasado intentelo denuevo mas tarde");
-    };
+    const handleGoogleLogin = useGoogleLoginHandler?.();
 
     return (
         <div className="auth-main apply-old-fonts">
@@ -133,39 +93,26 @@ const SignInPage = () => {
                     </div>
                     <div className="signin-title">Welcome back to bLinked, 👏🏽</div>
                     <div className="signin-subcontainer px-md-5 mt-5">
-                        {/* <div className="signin-with-google px-md-3">
+                        <div className="signin-with-google px-md-3">
                             <div className="shadow-sm">
-                                <img src={google} alt="" />
+                                <Image src={google} alt="" />
                             </div>
-                            <button className="w-100">Sign in with Google</button>
-                        </div> */}
-                        <GoogleLogin
-                            className="signin-with-google px-md-3"
-                            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
-                            buttonText={"Sign in with Google"}
-                            render={(renderProps) => (
-                                <div className="signin-with-google px-md-3">
-                                    <div className="shadow-sm">
-                                        <Image src={google} alt="" />
-                                    </div>
-                                    <button
-                                        className="w-100"
-                                        onClick={renderProps.onClick}
-                                        disabled={renderProps.disabled}
-                                    >
-                                        Sign in with Google
-                                    </button>
-                                </div>
-                            )}
-                            onSuccess={googleSuccess}
-                            onFailure={googleFailure}
-                            cookiePolicy={"single_host_origin"}
-                        />
+
+                            <button
+                                className="w-100"
+                                onClick={handleGoogleLogin}
+                                disabled={!handleGoogleLogin}
+                            >
+                                Sign in with Google
+                            </button>
+                        </div>
+
                         <div className="signin-with-email">
                             <div></div>
                             <div className="mx-4">Or, sign in with your email</div>
                             <div></div>
                         </div>
+
                         <div className="row">
                             <div className="col-lg-12 auth-input-container">
                                 <div
@@ -272,6 +219,7 @@ const SignInPage = () => {
                         </div>
                     </div>
                 </div>
+
                 <div className="col-lg-4 px-5 py-5 signin-comp-b">
                     <div>
                         <div>
@@ -285,6 +233,7 @@ const SignInPage = () => {
                             of payments and analyze your sales with one tool.
                         </p>
                     </div>
+
                     <div className="signin-vector">
                         <div>
                             <Image src={loginVectorA} alt="Login" className="img-fluid" />
