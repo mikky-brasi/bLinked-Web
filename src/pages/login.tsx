@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import {
     google,
@@ -13,8 +12,7 @@ import {
     validemail,
 } from "../../public/img";
 import bLinkedLogo from "../../public/img/bLinkedLogo.svg";
-import GoogleLogin, { GoogleLoginProps, GoogleLoginResponse } from "react-google-login";
-import { OAuth2Client } from "google-auth-library";
+import { useGoogleLoginHandler } from "../modules/google-oauth/useGoogleLoginHandler";
 import Image from "next/image";
 import styles from "@/styles/pages/SignIn.module.scss";
 import authStyles from "@/styles/shared/auth.module.scss";
@@ -23,11 +21,7 @@ import { useForm } from "react-hook-form";
 import { useFloatingLabelFormInput } from "../hooks/useFloatingLabelFormInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
-// https://stackoverflow.com/questions/71040050/why-am-i-getting-syntaxerror-cannot-use-import-statement-outside-a-module
-const gapiImport = import("gapi-script");
-
-const client = new OAuth2Client(process.env.CLIENT_ID);
+import { useState } from "react";
 
 const LoginFormSchema = z.object({
     email: z.string().email("Enter a valid email address"),
@@ -61,41 +55,7 @@ const SignInPage = () => {
 
     const handleCreateAC = () => router.push("/auth/sign_up1");
 
-    useEffect(() => {
-        (async () => {
-            const { gapi } = await gapiImport;
-
-            function start() {
-                gapi.client.init({
-                    clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-                    scope: "email",
-                });
-            }
-
-            gapi.load("client:auth2", start);
-        })();
-    }, []);
-
-    const googleSuccess: GoogleLoginProps["onSuccess"] = async (googleData) => {
-        googleData = googleData as GoogleLoginResponse;
-        console.log(googleData);
-        const token = googleData.tokenId;
-
-        const ticket = await client.verifyIdToken({
-            idToken: token,
-            audience: process.env.CLIENT_ID,
-        });
-
-        const { name, email, picture } = ticket.getPayload()!;
-        console.log(name);
-        console.log(email);
-        console.log(picture);
-    };
-
-    const googleFailure = (error: Error) => {
-        console.log(error);
-        console.log("Google Sing In ha fracasado intentelo denuevo mas tarde");
-    };
+    const handleGoogleLogin = useGoogleLoginHandler?.();
 
     return (
         <div className={authStyles.wrapper}>
@@ -109,32 +69,21 @@ const SignInPage = () => {
                             style={{ maxHeight: "150px" }}
                         />
                     </div>
-
                     <div className={styles.containerATitle}>Welcome back to bLinked, 👏🏽</div>
 
                     <div className={classNames(styles.subContainer, "px-md-5 mt-5")}>
-                        <GoogleLogin
-                            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
-                            buttonText={"Sign in with Google"}
-                            render={(renderProps) => (
-                                <div className={classNames(styles.signInWithGoogle, "px-md-3")}>
-                                    <div className="shadow-sm">
-                                        <Image src={google} alt="" />
-                                    </div>
-                                    <button
-                                        className="w-100"
-                                        onClick={renderProps.onClick}
-                                        disabled={renderProps.disabled}
-                                    >
-                                        Sign in with Google
-                                    </button>
-                                </div>
-                            )}
-                            onSuccess={googleSuccess}
-                            onFailure={googleFailure}
-                            cookiePolicy={"single_host_origin"}
-                        />
-
+                        <div className={classNames(styles.signInWithGoogle, "px-md-3")}>
+                            <div className="shadow-sm">
+                                <Image src={google} alt="" />
+                            </div>
+                            <button
+                                className="w-100"
+                                onClick={handleGoogleLogin}
+                                disabled={!handleGoogleLogin}
+                            >
+                                Sign in with Google
+                            </button>
+                        </div>
                         <div className={styles.signInWithEmailDivider}>
                             <div></div>
                             <div className={classNames(styles.signInWithEmailDividerText, "mx-4")}>
