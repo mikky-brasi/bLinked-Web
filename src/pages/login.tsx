@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import { useRouter } from "next/router";
-import validator from "validator";
 import {
     google,
     eye,
@@ -19,58 +17,35 @@ import Image from "next/image";
 import styles from "@/styles/pages/SignIn.module.scss";
 import authStyles from "@/styles/shared/auth.module.scss";
 import classNames from "classnames";
+import { useForm } from "react-hook-form";
+import { useFloatingLabelFormInput } from "../hooks/useFloatingLabelFormInput";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useState } from "react";
+
+const LoginFormSchema = z.object({
+    email: z.string().email("Enter a valid email address"),
+    password: z.string(),
+});
+
+type LoginFormValues = z.infer<typeof LoginFormSchema>;
 
 const SignInPage = () => {
     const router = useRouter();
 
-    const [user, setUser] = useState({
-        email: "",
-        password: "",
-    });
-
-    const [userErr, setUserErr] = useState({
-        email: false,
-        password: false,
-    });
-
-    const [userFocus, setUserFocus] = useState({
-        email: false,
-        password: false,
-    });
+    const form = useForm<LoginFormValues>({ mode: "all", resolver: zodResolver(LoginFormSchema) });
+    const { errors, dirtyFields } = form.formState;
 
     const [passwordType, setPasswordType] = useState("password");
 
-    const inputFocus = (name: string) => setUserFocus({ ...userFocus, [name]: true });
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setUser({ ...user, [name]: value });
-
-        if (!value) return setUserErr({ ...userErr, [name]: true });
-
-        if (typeof value !== "undefined" && name === "email") {
-            const lastAtPos = value.lastIndexOf("@");
-            const lastDotPos = value.lastIndexOf(".");
-            const validEmail =
-                lastAtPos < lastDotPos &&
-                lastAtPos > 0 &&
-                value.indexOf("@@") === -1 &&
-                lastDotPos > 2 &&
-                value.length - lastDotPos > 2;
-
-            if (!validEmail) return setUserErr({ ...userErr, [name]: true });
-        }
-        return setUserErr({ ...userErr, [name]: false });
-    };
+    const emailInput = useFloatingLabelFormInput(form, "email");
+    const passwordInput = useFloatingLabelFormInput(form, "password");
 
     const handlePassType = () =>
         passwordType === "password" ? setPasswordType("text") : setPasswordType("password");
 
-    const handleLogin = () => {
-        const { email, password } = user;
-        if (!password) return setUserErr({ ...userErr, password: true });
-        if (!email) return setUserErr({ ...userErr, email: true });
-        if (userErr.email || userErr.password) return;
+    const submit = (values: LoginFormValues) => {
+        const { email } = values;
 
         localStorage.setItem("accessToken", email);
         router.push("/home");
@@ -117,20 +92,23 @@ const SignInPage = () => {
                             <div></div>
                         </div>
 
-                        <div className={classNames(styles.subContainerItem, "row")}>
+                        <form
+                            className={classNames(styles.subContainerItem, "row")}
+                            onSubmit={form.handleSubmit(submit)}
+                        >
                             <div className={classNames(authStyles.inputContainer, "col-lg-12")}>
                                 <div
-                                    className={
-                                        userFocus.email
-                                            ? userErr.email
-                                                ? "input-box active w-100 forgot-email-border"
-                                                : "input-box active w-100"
-                                            : userErr.email
-                                            ? "input-box w-100 forgot-email-border"
-                                            : "input-box w-100"
-                                    }
+                                    className={classNames(
+                                        "input-box w-100",
+                                        emailInput.active && "active",
+                                        errors.email && "forgot-email-border",
+                                    )}
                                 >
-                                    <div className={!validator.isEmail(user.email) ? "d-none" : ""}>
+                                    <div
+                                        className={classNames(
+                                            (errors.email || !dirtyFields.email) && "d-none",
+                                        )}
+                                    >
                                         <Image
                                             src={validemail}
                                             alt="Valid Email"
@@ -140,44 +118,27 @@ const SignInPage = () => {
 
                                     <label>Email</label>
 
-                                    <input
-                                        type="text"
-                                        className="w-100"
-                                        name="email"
-                                        value={user.email}
-                                        onFocus={() => inputFocus("email")}
-                                        onChange={handleChange}
-                                        onBlur={() => {
-                                            if (!user.email) {
-                                                setUserFocus({
-                                                    ...userFocus,
-                                                    email: false,
-                                                });
-                                            }
-                                        }}
-                                    />
+                                    <input type="text" className="w-100" {...emailInput.props} />
                                 </div>
                             </div>
 
                             <div
                                 className={
-                                    userErr.email
+                                    errors.email
                                         ? "col-lg-12 text-start px-4 forgot-email-err"
                                         : "d-none"
                                 }
                             >
-                                Enter a valid email address
+                                {errors.email?.message}
                             </div>
 
                             <div className={classNames(authStyles.inputContainer, "col-lg-12")}>
                                 <div
-                                    className={
-                                        userFocus.password
-                                            ? "input-box active w-100"
-                                            : userErr.password
-                                            ? "input-box w-100 forgot-email-border"
-                                            : "input-box w-100"
-                                    }
+                                    className={classNames(
+                                        "input-box w-100",
+                                        passwordInput.active && "active",
+                                        errors.password && "forgot-email-border",
+                                    )}
                                 >
                                     <div>
                                         <Image
@@ -193,28 +154,26 @@ const SignInPage = () => {
                                     <input
                                         type={passwordType}
                                         className="w-100"
-                                        name="password"
-                                        value={user.password}
-                                        onFocus={() => inputFocus("password")}
-                                        onChange={handleChange}
-                                        onBlur={() => {
-                                            if (!user.password) {
-                                                setUserFocus({
-                                                    ...userFocus,
-                                                    password: false,
-                                                });
-                                            }
-                                        }}
+                                        {...passwordInput.props}
                                     />
                                 </div>
                             </div>
-                        </div>
 
-                        <div className={classNames(styles.signInWithEmailBtnContainer, "px-md-3")}>
-                            <button className="w-100" onClick={handleLogin}>
-                                Log in
-                            </button>
-                        </div>
+                            <div
+                                className={classNames(
+                                    styles.signInWithEmailBtnContainer,
+                                    "px-md-3",
+                                )}
+                            >
+                                <button
+                                    type="submit"
+                                    className="w-100"
+                                    onClick={() => form.trigger()}
+                                >
+                                    Log in
+                                </button>
+                            </div>
+                        </form>
 
                         <div
                             className={classNames(styles.forgotPassword, "px-3")}
