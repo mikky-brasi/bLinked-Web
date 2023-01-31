@@ -1,5 +1,4 @@
-@use "fonts/mixins.scss";
-@use "fonts/weights";
+@use "fonts";
 
 .auth-input-container {
   position: relative;
@@ -10,7 +9,7 @@
 
 .apply-old-fonts .input-box,
 .input-box {
-  @include mixins.font-adineue-PRO;
+  @include fonts.font-adineue-PRO;
   height: 56px;
   display: flex;
   align-items: flex-end;
@@ -83,9 +82,8 @@
   }
 }
 
-.apply-old-fonts .forgot-email-err,
 .forgot-email-err {
-    @include mixins.font-GT-Walsheim-PRO(weights.$font-GT-Walsheim-PRO-weight-light);
+    @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-light);
     color: #ff4554;
     font-size: 12px;
     transition: all 0.2s;

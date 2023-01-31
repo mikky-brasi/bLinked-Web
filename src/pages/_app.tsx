@@ -4,30 +4,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
 // Common
-// TODO: remove deprecated imports when all pages are migrated to new fonts referencing.
-import "@/styles/_deprecated-index.scss";
-import "@/styles/_deprecated-globals.scss";
 import "@/styles/index.scss";
-
-// Auth SCSS Start
-import "../components/Footer.scss";
-import "@/styles/_input_box.scss";
-import "@/styles/pages/SignIn.scss";
-import "@/styles/pages/SignUp.scss";
-import "@/styles/pages/Forgot.scss";
-
-// Dashboard SCSS Start
-import "../components/Dashboard.scss";
-import "@/styles/pages/Home.scss";
-import "@/styles/pages/Settings.scss";
-import "@/styles/pages/Orders.scss";
-import "@/styles/pages/Agents.scss";
-import "@/styles/pages/Feedback.scss";
-import "@/styles/pages/Landing.scss";
-
-import "../components/NotificationDropdown.scss";
-import "../components/Toast.scss";
-import "../components/LoadingState.scss";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";

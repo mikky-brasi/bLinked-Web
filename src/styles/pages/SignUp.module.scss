@@ -1,0 +1,16 @@
+@use "../fonts";
+
+.pointer {
+    cursor: pointer;
+}
+
+.termsCondition {
+    @include fonts.font-adineue-PRO;
+    font-size: 14px;
+    color: #5a5d82;
+
+    > span {
+        @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+        color: #3842b0;
+    }
+}

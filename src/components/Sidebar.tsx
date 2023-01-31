@@ -11,7 +11,9 @@ import {
     orderMenu,
     settingMenu,
 } from "../../public/img";
-import bLinkedLogo from "../../public/landing/bLinkedLogo.svg";
+import bLinkedLogo from "../../public/img/bLinkedLogo.svg";
+import styles from "./Sidebar.module.scss";
+import classNames from "classnames";
 
 type SidebarProps = {
     activeSidebar: boolean;
@@ -38,9 +40,9 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
     }, [router.pathname]);
 
     return (
-        <div className={!activeSidebar ? "" : "sidebar-bg"}>
-            <div className={!activeSidebar ? "sidebar-main" : "sidebar-main active"}>
-                <div className="mt-5 position-relative sidebar-logo" style={{ cursor: "pointer" }}>
+        <div className={classNames(activeSidebar && styles.wrapper)}>
+            <div className={classNames(styles.main, activeSidebar && styles.active)}>
+                <div className={classNames(styles.logo, "mt-5 position-relative")}>
                     <Image
                         src={bLinkedLogo}
                         alt="Logo"
@@ -52,6 +54,7 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                         }}
                         onClick={() => router.push("/home")}
                     />
+
                     <div
                         onClick={() => setActiveSidebar(!activeSidebar)}
                         className="d-flex d-md-none"
@@ -59,10 +62,11 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                         <MdClose />
                     </div>
                 </div>
-                <div className="sidebar-menu">
+
+                <div className={styles.menu}>
                     <ul className="mt-5">
                         <li
-                            className={activeMenu === "home" ? "active" : ""}
+                            className={classNames(activeMenu === "home" && styles.active)}
                             onClick={() => handleClick("home")}
                         >
                             <div>
@@ -74,7 +78,7 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                         </li>
 
                         <li
-                            className={activeMenu === "orders" ? "active" : ""}
+                            className={classNames(activeMenu === "orders" && styles.active)}
                             onClick={() => handleClick("orders")}
                         >
                             <div>
@@ -85,8 +89,9 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                             </div>
                             <div>1</div>
                         </li>
+
                         <li
-                            className={activeMenu === "feedback" ? "active" : ""}
+                            className={classNames(activeMenu === "feedback" && styles.active)}
                             onClick={() => handleClick("feedback")}
                         >
                             <div>
@@ -100,8 +105,9 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                                 <span>Feedback</span>
                             </div>
                         </li>
+
                         <li
-                            className={activeMenu === "agents" ? "active" : ""}
+                            className={classNames(activeMenu === "agents" && styles.active)}
                             onClick={() => handleClick("agents")}
                         >
                             <div>
@@ -112,7 +118,7 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                             </div>
                         </li>
                         <li
-                            className={activeMenu === "settings" ? "active" : ""}
+                            className={classNames(activeMenu === "settings" && styles.active)}
                             onClick={() => handleClick("settings")}
                         >
                             <div>
@@ -122,6 +128,7 @@ const Sidebar = ({ activeSidebar, setActiveSidebar }: SidebarProps) => {
                                 <span>Settings</span>
                             </div>
                         </li>
+
                         <li onClick={handleLogout}>
                             <div>
                                 <span>

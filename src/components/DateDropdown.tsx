@@ -5,12 +5,16 @@ import { GoChevronDown } from "react-icons/go";
 import { calenderIcon } from "../../public/img";
 import { DateRangePicker } from "react-date-range";
 import Image from "next/image";
+import commonStyles from "./common.module.scss";
+import classNames from "classnames";
+import styles from "./DateDropdown.module.scss";
 
 type DateDropdownProps = {
     fromDate: Date;
     setFromDate: (value: Date) => void;
     toDate: Date;
     setToDate: (value: Date) => void;
+    fullWidthOnMobile?: boolean;
 };
 
 export default function DateDropdown({
@@ -18,6 +22,7 @@ export default function DateDropdown({
     setFromDate,
     toDate,
     setToDate,
+    fullWidthOnMobile,
 }: DateDropdownProps) {
     const lastMoth = new Date();
     lastMoth.setDate(lastMoth.getDate() - 28);
@@ -28,29 +33,37 @@ export default function DateDropdown({
     const [isCustom, setIsCustom] = useState(false);
 
     return (
-        <Dropdown className="d-inline mx-2 border-0 clearfix" alignRight={true}>
+        <Dropdown className={"d-inline mx-2 border-0 clearfix"} alignRight={true}>
             <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
-                <div className="dashboard-date mt-md-0 mt-4 shadow-sm">
+                <div
+                    className={classNames(
+                        styles.date,
+                        "mt-md-0 mt-4 shadow-sm",
+                        fullWidthOnMobile && styles.fullWidthOnMobile,
+                    )}
+                >
                     <div className="d-flex align-items-center">
                         <Image src={calenderIcon} alt="Calender" className="img-fluid" />
                         <div className="mx-2">{range}</div>
                     </div>
+
                     <div>
                         <GoChevronDown size={18} />
                     </div>
                 </div>
             </Dropdown.Toggle>
+
             {!isCustom ? (
-                <Dropdown.Menu className="p-2 drop-menu-date">
-                    <Dropdown.Item className="drop-menu-item">
-                        <div className="drop--menu-date-item">
+                <Dropdown.Menu className={"p-2"}>
+                    <Dropdown.Item className={commonStyles.dropdownMenuItem}>
+                        <div className={styles.dateItem}>
                             <span>{title}</span>
                             <span>{range}</span>
                         </div>
                     </Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item
-                        className="drop-menu-item"
+                        className={commonStyles.dropdownMenuItem}
                         onClick={() => {
                             setTitle("Today");
                             setRange(new Date().toDateString().substring(4));
@@ -59,7 +72,7 @@ export default function DateDropdown({
                         Today
                     </Dropdown.Item>
                     <Dropdown.Item
-                        className="drop-menu-item"
+                        className={commonStyles.dropdownMenuItem}
                         onClick={() => {
                             const lastWeek = new Date();
                             lastWeek.setDate(lastWeek.getDate() - 7);
@@ -74,7 +87,7 @@ export default function DateDropdown({
                         Last 7 days
                     </Dropdown.Item>
                     <Dropdown.Item
-                        className="drop-menu-item"
+                        className={commonStyles.dropdownMenuItem}
                         onClick={() => {
                             const lastMoth = new Date();
                             lastMoth.setDate(lastMoth.getDate() - 28);
@@ -89,7 +102,7 @@ export default function DateDropdown({
                         Last 28 days
                     </Dropdown.Item>
                     <Dropdown.Item
-                        className="drop-menu-item"
+                        className={commonStyles.dropdownMenuItem}
                         onClick={() => {
                             const last90Days = new Date();
                             last90Days.setDate(last90Days.getDate() - 90);
@@ -104,7 +117,7 @@ export default function DateDropdown({
                         Last 90 days
                     </Dropdown.Item>
                     <p
-                        className="drop-menu-item"
+                        className={commonStyles.dropdownMenuItem}
                         onClick={(e) => {
                             e.preventDefault();
                             setIsCustom(true);
@@ -115,7 +128,7 @@ export default function DateDropdown({
                     </p>
                 </Dropdown.Menu>
             ) : (
-                <Dropdown.Menu className="p-2">
+                <Dropdown.Menu className={classNames(styles.rangeContainer, "p-2")}>
                     <DateRangePicker
                         ranges={[
                             {

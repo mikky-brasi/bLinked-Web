@@ -4,10 +4,13 @@ import validator from "validator";
 // Assets
 import { validemail } from "../../../public/img";
 import { eye, hiddenEye } from "../../../public/img";
-import bLinkedLogo from "../../../public/landing/bLinkedLogo.svg";
+import bLinkedLogo from "../../../public/img/bLinkedLogo.svg";
 // Components
 import Footer from "../../components/Footer";
 import Image from "next/image";
+import styles from "@/styles/pages/SignUp.module.scss";
+import classNames from "classnames";
+import authStyles from "@/styles/shared/auth.module.scss";
 
 const SignUpPage1 = () => {
     const router = useRouter();
@@ -81,20 +84,20 @@ const SignUpPage1 = () => {
     const handleLogin = () => router.push("/login");
 
     return (
-        <div className="auth-main apply-old-fonts">
-            <div className="container auth-cmn-main">
+        <div className={authStyles.wrapper}>
+            <div className={classNames(authStyles.main, "container")}>
                 <Image
                     src={bLinkedLogo}
                     alt="Logo"
                     className="img-fluid"
                     style={{ maxHeight: "150px" }}
                 />
-                <div className="auth-cmn-subcontainer px-md-5 py-5">
-                    <div className="auth-cmn-title">Let’s get you started 👇🏽</div>
-                    <div className="auth-cmn-subtitle">First of, let’s get to know you</div>
+                <div className={classNames(authStyles.subContainer, "px-md-5 py-5")}>
+                    <div className={authStyles.title}>Let’s get you started 👇🏽</div>
+                    <div className={authStyles.subtitle}>First of, let’s get to know you</div>
 
                     <div className="row martop-32">
-                        <div className="col-lg-6  auth-input-container">
+                        <div className={classNames(authStyles.inputContainer, "col-lg-6")}>
                             <div
                                 className={
                                     userFocus.fname
@@ -123,7 +126,7 @@ const SignUpPage1 = () => {
                                 />
                             </div>
                         </div>
-                        <div className="col-lg-6  auth-input-container">
+                        <div className={classNames(authStyles.inputContainer, "col-lg-6")}>
                             <div
                                 className={
                                     userFocus.lname
@@ -154,7 +157,9 @@ const SignUpPage1 = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-lg-12 martop-32 auth-input-container">
+                        <div
+                            className={classNames(authStyles.inputContainer, "col-lg-12 martop-32")}
+                        >
                             <div
                                 className={
                                     userFocus.email
@@ -203,7 +208,9 @@ const SignUpPage1 = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-lg-12 martop-32 auth-input-container">
+                        <div
+                            className={classNames(authStyles.inputContainer, "col-lg-12 martop-32")}
+                        >
                             <div
                                 className={
                                     userFocus.password
@@ -254,7 +261,7 @@ const SignUpPage1 = () => {
                         </div>
                     </div>
 
-                    <div className="my-4 signup-terms-condition">
+                    <div className={classNames(styles.termsCondition, "my-4")}>
                         By clicking on the Continue button you agree with our
                         <span>
                             {" "}
@@ -263,13 +270,13 @@ const SignUpPage1 = () => {
                         and <span>Privacy Policy</span>
                     </div>
 
-                    <div className="px-2 auth-cmn-btn">
+                    <div className={classNames(authStyles.button, "px-2")}>
                         <button className="w-100" onClick={handleSignup}>
                             Continue
                         </button>
                     </div>
 
-                    <div className="auth-cmn-signin mt-4">
+                    <div className={classNames(authStyles.signIn, "mt-4")}>
                         Already have an account yet? <span onClick={handleLogin}>Sign in</span>
                     </div>
                 </div>

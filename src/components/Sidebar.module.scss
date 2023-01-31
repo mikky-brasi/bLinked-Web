@@ -1,0 +1,144 @@
+@use "@/styles/fonts";
+
+.wrapper {
+    @media only screen and (max-width: 991px) {
+        position: fixed;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 5;
+        transition: all 0.5s linear;
+    }
+}
+
+.main {
+    position: fixed;
+    width: 18%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transition: all 0.5s linear;
+    padding: 0 20px;
+
+    @media only screen and (max-width: 1366px) {
+        padding: 0 20px;
+    }
+
+    @media only screen and (max-width: 991px) {
+        padding: 0 20px;
+        left: -100%;
+        width: auto;
+        z-index: 2;
+
+        &.active {
+            left: 0;
+        }
+    }
+}
+
+.logo {
+    cursor: pointer;
+
+    > div {
+        position: absolute;
+        top: -100%;
+        right: -22%;
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+        background: #ffffff;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.menu {
+    ul {
+        @include fonts.font-adineue-PRO;
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            font-style: normal;
+            font-weight: normal;
+            cursor: pointer;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            border-radius: 8px;
+            color: #5a5d82;
+            font-size: 14px;
+            transition: all 0.2s ease-in-out;
+            background: none;
+            letter-spacing: 0.2s;
+
+            > div {
+                display: flex;
+                align-items: center;
+
+                > span {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 10px;
+
+                    > img {
+                        width: 18px;
+                        filter: grayscale(100%);
+                        opacity: 0.6;
+                    }
+                }
+
+                &:nth-child(2) {
+                    @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+                    height: 18px;
+                    background: #3842b0;
+                    color: #fff;
+                    border-radius: 15px;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    font-size: 12px;
+                    font-weight: bold;
+                    padding: 0 8px;
+                }
+            }
+
+            &:hover {
+                background: rgba(#3842b0, 0.04);
+                font-weight: 700;
+                color: #3842b0;
+
+                > div {
+                    > span {
+                        > img {
+                            transition: all 0.2s ease-in-out;
+                            filter: grayscale(0%);
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            &.active {
+                @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+                background: rgba(#3842b0, 0.04);
+                font-weight: 600;
+                color: #3842b0;
+
+                > div {
+                    > span {
+                        > img {
+                            filter: grayscale(0%);
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

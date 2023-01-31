@@ -3,10 +3,12 @@ import { useRouter } from "next/router";
 import validator from "validator";
 // Assets
 import { validemail } from "../../../public/img";
-import bLinkedLogo from "../../../public/landing/bLinkedLogo.svg";
+import bLinkedLogo from "../../../public/img/bLinkedLogo.svg";
 // Components
 import Footer from "../../components/Footer";
 import Image from "next/image";
+import authStyles from "@/styles/shared/auth.module.scss";
+import classNames from "classnames";
 
 const SignUpPage2 = () => {
     const router = useRouter();
@@ -64,22 +66,24 @@ const SignUpPage2 = () => {
     const handleLogin = () => router.push("/login");
 
     return (
-        <div className="auth-main apply-old-fonts">
-            <div className="container auth-cmn-main">
+        <div className={authStyles.wrapper}>
+            <div className={classNames(authStyles.main, "container")}>
                 <Image
                     src={bLinkedLogo}
                     alt="Logo"
                     className="img-fluid"
                     style={{ maxHeight: "150px" }}
                 />
-                <div className="auth-cmn-subcontainer px-md-5 py-5">
-                    <div className="auth-cmn-title">It{"'"}s time to Grow your Business,</div>
-                    <div className="auth-cmn-subtitle">
+                <div className={classNames(authStyles.subContainer, "px-md-5 py-5")}>
+                    <div className={authStyles.title}>It{"'"}s time to Grow your Business,</div>
+                    <div className={authStyles.subtitle}>
                         You’re almost there! Quickly tell us about your business{" "}
                     </div>
 
                     <div className="row mt-4">
-                        <div className="col-lg-12 martop-32 auth-input-container">
+                        <div
+                            className={classNames(authStyles.inputContainer, "col-lg-12 martop-32")}
+                        >
                             <div
                                 className={
                                     cmpFocus.cname
@@ -111,7 +115,9 @@ const SignUpPage2 = () => {
                     </div>
 
                     <div className="row">
-                        <div className="col-lg-12 martop-32 auth-input-container">
+                        <div
+                            className={classNames(authStyles.inputContainer, "col-lg-12 martop-32")}
+                        >
                             <div
                                 className={
                                     cmpFocus.cemail
@@ -160,7 +166,9 @@ const SignUpPage2 = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-lg-12 martop-32 auth-input-container">
+                        <div
+                            className={classNames(authStyles.inputContainer, "col-lg-12 martop-32")}
+                        >
                             <div
                                 className={
                                     cmpFocus.cphone
@@ -191,13 +199,13 @@ const SignUpPage2 = () => {
                         </div>
                     </div>
 
-                    <div className="px-2 auth-cmn-btn mt-5">
+                    <div className={classNames(authStyles.button, "px-2 mt-5")}>
                         <button className="w-100" onClick={handleSignUp}>
                             Sign up
                         </button>
                     </div>
 
-                    <div className="auth-cmn-signin mt-4">
+                    <div className={classNames(authStyles.signIn, "mt-4")}>
                         Already have an account yet? <span onClick={handleLogin}>Sign in</span>
                     </div>
                 </div>

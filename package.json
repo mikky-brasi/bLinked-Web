@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "scss:types": "typed-scss-modules \"src/**/*.module.scss\" -p.@ src --nameFormat none --exportType default"
   },
   "dependencies": {
     "@next/font": "13.1.2",
@@ -37,6 +38,6 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.3",
-    "typescript-plugin-css-modules": "^4.1.1"
+    "typed-scss-modules": "^7.0.2"
   }
 }

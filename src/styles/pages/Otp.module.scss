@@ -1,0 +1,36 @@
+@use "../fonts";
+
+.otp {
+    display: flex;
+    justify-content: center;
+    @include fonts.font-adineue-PRO;
+
+    > input {
+        width: 64px;
+        height: 64px;
+        text-align: center;
+        border: 1px solid #d8e0e7;
+        outline: none;
+        margin: 0 10px;
+        border-radius: 6px;
+
+        &:focus {
+            border: 2px solid #3842b0;
+        }
+
+        &.active {
+            border: 2px solid #3842b0;
+        }
+
+        &.otpError {
+            border: 2px solid #ff4554;
+        }
+    }
+
+    @media only screen and (max-width: 991px) {
+        > input {
+            width: 50px;
+            height: 50px;
+        }
+    }
+}

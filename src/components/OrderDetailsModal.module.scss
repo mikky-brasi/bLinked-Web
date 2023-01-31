@@ -1,0 +1,178 @@
+@use "@/styles/fonts";
+
+.header {
+    > div:nth-child(2) {
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+        background: rgba(#3842b0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        color: #3842b0;
+    }
+}
+
+.headerTitle {
+    @include fonts.font-adineue-PRO;
+    font-size: 22px;
+    color: #211104;
+}
+
+.id {
+    @include fonts.font-adineue-PRO;
+    font-weight: 500;
+    font-size: 16px;
+    color: #0f112b;
+}
+
+.fromPrice {
+    @include fonts.font-adineue-PRO;
+    font-size: 14px;
+    color: #5a5d82;
+    display: flex;
+    justify-content: space-between;
+
+    > span:nth-child(2) {
+        font-size: 18px;
+        color: #3842b0;
+    }
+}
+
+.to {
+    @include fonts.font-adineue-PRO;
+    font-size: 14px;
+    color: #5a5d82;
+    display: flex;
+}
+
+.status {
+    @include fonts.font-adineue-PRO;
+
+    > span {
+        font-size: 12px;
+    }
+}
+
+.agent {
+    @include fonts.font-adineue-PRO;
+    border: 1px solid #e2e2ea;
+    border-radius: 12px;
+
+    > div > div {
+        position: relative;
+
+        &:nth-child(1) {
+            border-right: 1px solid #e2e2ea;
+
+            > div:nth-child(1) {
+                font-size: 14px;
+                color: #9395b4;
+            }
+
+            > div:nth-child(2) {
+                font-weight: 500;
+                font-size: 16px;
+                color: #0f112b;
+            }
+        }
+
+        &:nth-child(2) {
+            > div:nth-child(1) {
+                font-size: 14px;
+                color: #9395b4;
+            }
+
+            > div:nth-child(2) {
+                font-weight: 500;
+                font-size: 16px;
+                color: #0f112b;
+            }
+        }
+
+        .menu {
+            cursor: pointer;
+            position: absolute;
+            top: -10px;
+            right: 0;
+            color: #5a5d82;
+            font-size: 18px;
+        }
+    }
+}
+
+.title {
+    @include fonts.font-adineue-PRO;
+    font-size: 16px;
+    color: #0f112b;
+}
+
+.resultMain {
+    border: 1px solid #ecebf5;
+    border-radius: 6px;
+    padding: 5px 20px;
+    background: #fff;
+    height: 250px;
+    overflow: auto;
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            margin-top: 25px;
+        }
+    }
+}
+
+.agentInput {
+    > input {
+        @include fonts.font-adineue-PRO;
+        width: 100%;
+        border: 1px solid #ecebf5;
+        padding: 12px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #9395b4;
+        outline: none;
+
+        &:focus {
+            border: 1px solid #ecebf5;
+        }
+
+        &::placeholder {
+            color: #9395b4;
+        }
+    }
+}
+
+.agentError {
+    @include fonts.font-adineue-PRO;
+    font-size: 12px;
+    color: #ff4554;
+}
+
+%button {
+    @include fonts.font-adineue-PRO;
+    background: #f5f5f7;
+    font-size: 14px;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 25px;
+}
+
+.closeBtn {
+    @extend %button;
+    background: #f5f5f7;
+    color: #5a5d82;
+    padding: 10px 25px;
+}
+
+.submitBtn {
+    @extend %button;
+    background: #3842b0;
+    color: #fff;
+    padding: 10px 25px;
+    margin-right: 25px;
+}

@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -5,6 +6,7 @@ import validator from "validator";
 
 import { logo, validemail } from "../../../public/img";
 import Footer from "../../components/Footer";
+import authStyles from "@/styles/shared/auth.module.scss";
 
 const ForgotEmailScreen = () => {
     const router = useRouter();
@@ -49,20 +51,25 @@ const ForgotEmailScreen = () => {
     };
 
     return (
-        <div className="auth-main apply-old-fonts">
-            <div className="container auth-cmn-main">
+        <div className={authStyles.wrapper}>
+            <div className={classNames(authStyles.main, "container")}>
                 <Image src={logo} alt="Logo" className="img-fluid my-5" />
-                <div className="auth-cmn-subcontainer px-md-5 py-5">
-                    <div className="auth-cmn-title">Forget password, 🔐</div>
+                <div className={classNames(authStyles.subContainer, "px-md-5 py-5")}>
+                    <div className={authStyles.title}>Forget password, 🔐</div>
                     <div className="row justify-content-center">
-                        <div className="auth-cmn-subtitle col-md-7">
+                        <div className={classNames(authStyles.subtitle, "col-md-7")}>
                             Enter your email address and we’ll email you a link to reset your
                             password.
                         </div>
                     </div>
 
                     <div className="row mt-5">
-                        <div className="col-lg-12 px-4 mt-md-4 mt-4 auth-input-container fotgot-pass-border">
+                        <div
+                            className={classNames(
+                                authStyles.inputContainer,
+                                "col-lg-12 px-4 mt-md-4 mt-4 fotgot-pass-border",
+                            )}
+                        >
                             <div
                                 className={
                                     emailFocus
@@ -106,13 +113,13 @@ const ForgotEmailScreen = () => {
                         </div>
                     </div>
 
-                    <div className="px-2 auth-cmn-btn mt-5">
+                    <div className={classNames(authStyles.button, "px-2 mt-5")}>
                         <button className="w-100" onClick={handleSendLink}>
                             Send link
                         </button>
                     </div>
 
-                    <div className="auth-cmn-signin mt-4">
+                    <div className={classNames(authStyles.signIn, "mt-4")}>
                         Take me back to<span onClick={handleLogin}> Login</span>
                     </div>
                 </div>

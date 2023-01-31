@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./CustomToggle.module.scss";
 
 const CustomToggleRender: React.ForwardRefRenderFunction<
     HTMLSpanElement,
@@ -13,6 +14,7 @@ const CustomToggleRender: React.ForwardRefRenderFunction<
             e.preventDefault();
             onClick(e);
         }}
+        className={styles.toggle}
     >
         {children}
     </span>

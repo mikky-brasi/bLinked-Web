@@ -1,0 +1,146 @@
+@use "@/styles/fonts";
+
+.settingsContainer {
+    background: #fff;
+    border: 1px solid #ecebf5;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow-x: hidden;
+    display: flex;
+
+    hr {
+        border: 1px solid #d9d8db;
+    }
+
+    @media only screen and (max-width: 1300px) {
+        background: #fff;
+        border: 1px solid #ecebf5;
+        display: block;
+    }
+}
+
+.menuContainer {
+    border-right: 1px solid #ecebf5;
+    width: 20%;
+    display: flex;
+
+    > ul {
+        margin-top: 40px;
+        list-style: none;
+        padding-left: 0;
+
+        > li {
+            @include fonts.font-adineue-PRO;
+            font-size: 14px;
+            color: #5a5d82;
+            padding: 15px 70px 15px 20px;
+            transition: all 0.1s linear;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            cursor: pointer;
+
+            &.active,
+            &:hover {
+                @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+                border-left: 3px solid #3842b0;
+                background: rgba(#3842b0, 0.05);
+                color: #3842b0;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1300px) {
+        width: 100%;
+
+        > ul {
+            display: none;
+            overflow: hidden;
+        }
+    }
+}
+
+.formContainer {
+    width: 60%;
+    padding: 0 50px;
+
+    @media only screen and (max-width: 1300px) {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
+.menuResponsiveContainer {
+    display: none;
+
+    @media only screen and (max-width: 1300px) {
+        display: block;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.2s linear;
+
+        > ul {
+            margin-top: 0px;
+            list-style: none;
+            padding-left: 0;
+
+            > li {
+                @include fonts.font-adineue-PRO;
+                font-size: 14px;
+                font-weight: normal;
+                color: #5a5d82;
+                padding: 15px 70px 15px 20px;
+                transition: all 0.1s linear;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                cursor: pointer;
+
+                &.active {
+                    @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+                    border-left: 3px solid #3842b0;
+                    background: rgba(#3842b0, 0.05);
+                    font-weight: bold;
+                    color: #3842b0;
+                }
+            }
+        }
+    }
+}
+
+.formTitle {
+    @include fonts.font-adineue-PRO;
+    font-size: 20px;
+    color: #183b56;
+}
+
+.formSubline {
+    @include fonts.font-adineue-PRO;
+    font-size: 14px;
+    color: #5a5d82;
+}
+
+.formActionBtn {
+    @include fonts.font-adineue-PRO;
+
+    > button {
+        padding: 10px 25px;
+
+        &:nth-child(1) {
+            border: none;
+            background: #f5f5f7;
+            border-radius: 7px;
+            font-size: 16px;
+            color: #5a5d82;
+            margin-right: 20px;
+        }
+
+        &:nth-child(2) {
+            @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+            border: none;
+            background: #3842b0;
+            border-radius: 7px;
+            font-size: 16px;
+            color: #ffffff;
+        }
+    }
+}

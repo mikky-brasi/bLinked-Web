@@ -1,0 +1,24 @@
+.wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: rgba(#3842b0, 0.05);
+}
+
+.container {
+    width: 82%;
+
+    @media only screen and (max-width: 991px) {
+        width: 100%;
+    }
+}
+
+.mainContainer {
+    animation: fadeIn 0.2s linear;
+}
+
+.totalRatingContainer {
+    background: #fff;
+    border: 1px solid #ecebf5;
+    border-radius: 8px;
+}

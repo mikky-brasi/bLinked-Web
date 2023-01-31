@@ -1,0 +1,19 @@
+@use "@/styles/fonts";
+
+.dropdownMenuItem {
+    @include fonts.font-adineue-PRO;
+    font-size: 14px;
+    padding: 10px 20px;
+    transition: all 0.3s;
+    border-radius: 8px;
+
+    &.logout {
+        color: red;
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        color: #3842b0;
+        background: #eff0f9;
+    }
+}

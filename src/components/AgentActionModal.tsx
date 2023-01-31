@@ -5,6 +5,9 @@ import { MdClose } from "react-icons/md";
 import { Memoji } from "../../public/img";
 import { getOrderStyle } from "../helpers/getRowStyles";
 import { AgentItem } from "./Table";
+import styles from "./AgentActionModal.module.scss";
+import classNames from "classnames";
+import modalStyles from "./modals.module.scss";
 
 type AgentActionModalProps = {
     show: boolean;
@@ -123,26 +126,28 @@ export default function AgentActionModal({
             show={show}
             centered
             size={action === "Suspend" || action === "Remove" ? undefined : "lg"}
-            className="agent-action-modal"
+            className={styles.wrapper}
         >
-            <Modal.Header className="header">
-                <h3 className="title">{content.title}</h3>
-                <div className="close" onClick={() => setShow(false)}>
+            <Modal.Header className={modalStyles.header}>
+                <h3 className={modalStyles.title}>{content.title}</h3>
+                <div className={modalStyles.close} onClick={() => setShow(false)}>
                     <MdClose color="#3842B0" />
                 </div>
             </Modal.Header>
+
             {action === "Suspend" || action === "Remove" ? (
-                <Modal.Body className="body">
-                    <h4 className="subtitle">{content.subtitle}</h4>
-                    <p className="text">{content.text}</p>
+                <Modal.Body className={styles.body}>
+                    <h4 className={styles.subtitle}>{content.subtitle}</h4>
+                    <p className={styles.text}>{content.text}</p>
                 </Modal.Body>
             ) : null}
+
             {action === "Add" || action === "Edit" ? (
-                <Modal.Body className="body">
-                    <form className="form">
-                        {action === "Add" && <p className="image-label">{image}</p>}
+                <Modal.Body className={styles.body}>
+                    <form className={styles.form}>
+                        {action === "Add" && <p className={styles.imageLabel}>{image}</p>}
                         {action === "Edit" && !!selected && (
-                            <p className="image-label">
+                            <p className={styles.imageLabel}>
                                 {selected.agentName}
                                 <span
                                     className="mx-2 px-2 rounded-pill"
@@ -152,15 +157,15 @@ export default function AgentActionModal({
                                 </span>
                             </p>
                         )}
-                        <div className="image-container">
-                            <div className="bg">
+                        <div className={styles.imageContainer}>
+                            <div className={styles.bg}>
                                 <Image
                                     src={image ? `data:image/png;base64,${image}` : Memoji}
                                     alt="Emoji placeholder"
-                                    className="img"
+                                    className={styles.img}
                                 />
                                 <input
-                                    className="hidden"
+                                    className={styles.hidden}
                                     accept="image/png, image/jpeg, image/jpg, image/webp"
                                     ref={inputRef}
                                     onChange={(e) => handleImg(e)}
@@ -168,17 +173,17 @@ export default function AgentActionModal({
                                 />
                             </div>
                             <button
-                                className="photo-btn"
+                                className={styles.photoBtn}
                                 type="button"
                                 onClick={() => onInputClick()}
                             >
                                 Edit photo
                             </button>
                         </div>
-                        <div className="row">
-                            <div className="group">
+                        <div className={classNames(styles.row, "row")}>
+                            <div className={styles.group}>
                                 <label
-                                    className="label"
+                                    className={styles.label}
                                     style={{
                                         display:
                                             focus === "firstName" || firstName.length > 0
@@ -189,7 +194,7 @@ export default function AgentActionModal({
                                     First name
                                 </label>
                                 <input
-                                    className="input"
+                                    className={styles.input}
                                     placeholder="First Name"
                                     value={firstName}
                                     onChange={(e) => setFirstName(e.target.value)}
@@ -197,9 +202,9 @@ export default function AgentActionModal({
                                     onBlur={() => setFocus("")}
                                 />
                             </div>
-                            <div className="group">
+                            <div className={styles.group}>
                                 <label
-                                    className="label"
+                                    className={styles.label}
                                     style={{
                                         display:
                                             focus === "lastName" || lastName.length > 0
@@ -210,7 +215,7 @@ export default function AgentActionModal({
                                     Last name
                                 </label>
                                 <input
-                                    className="input"
+                                    className={styles.input}
                                     placeholder="Last Name"
                                     value={lastName}
                                     onChange={(e) => setLastName(e.target.value)}
@@ -219,9 +224,9 @@ export default function AgentActionModal({
                                 />
                             </div>
                         </div>
-                        <div className="group">
+                        <div className={styles.group}>
                             <label
-                                className="label"
+                                className={styles.label}
                                 style={{
                                     display:
                                         focus === "email" || email.length > 0 ? "block" : "none",
@@ -230,7 +235,7 @@ export default function AgentActionModal({
                                 Email address
                             </label>
                             <input
-                                className="input"
+                                className={styles.input}
                                 placeholder="Email Address"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -238,9 +243,9 @@ export default function AgentActionModal({
                                 onBlur={() => setFocus("")}
                             />
                         </div>
-                        <div className="group">
+                        <div className={styles.group}>
                             <label
-                                className="label"
+                                className={styles.label}
                                 style={{
                                     display:
                                         focus === "phone" || phone.length > 0 ? "block" : "none",
@@ -249,7 +254,7 @@ export default function AgentActionModal({
                                 Phone Number
                             </label>
                             <input
-                                className="input"
+                                className={styles.input}
                                 placeholder="Phone Number"
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
@@ -260,11 +265,11 @@ export default function AgentActionModal({
                     </form>
                 </Modal.Body>
             ) : null}
-            <Modal.Footer className="footer">
-                <button className="cancel" onClick={() => setShow(false)}>
+            <Modal.Footer className={styles.footer}>
+                <button className={styles.cancel} onClick={() => setShow(false)}>
                     Cancel
                 </button>
-                <button className="submit" style={content.buttonStyle}>
+                <button className={styles.submit} style={content.buttonStyle}>
                     {content.button}
                 </button>
             </Modal.Footer>

@@ -2,6 +2,9 @@ import React from "react";
 import { getOrderStyle } from "../helpers/getRowStyles";
 import { BsThreeDots } from "react-icons/bs";
 import { HomeItem } from "./Table";
+import tableStyles from "./Table.module.scss";
+import classNames from "classnames";
+import styles from "./PendingOrder.module.scss";
 
 type PendingOrderBoxProps = {
     item: HomeItem;
@@ -12,12 +15,12 @@ type PendingOrderBoxProps = {
 const PendingOrderBox = ({ item, setShow, setSelected }: PendingOrderBoxProps) => {
     const { name, from, to, price, status } = item;
     return (
-        <div className="home-pending-order-grid-box py-4">
+        <div className={classNames(styles.gridBox, "py-4")}>
             <div className="mb-5">
-                <div className="home-pending-order-name">
+                <div className={styles.name}>
                     <span>{name}</span>
                     <span
-                        className="three_dots"
+                        className={tableStyles.threeDots}
                         onClick={() => {
                             setSelected(item);
                             setShow(true);
@@ -26,15 +29,15 @@ const PendingOrderBox = ({ item, setShow, setSelected }: PendingOrderBoxProps) =
                         <BsThreeDots color="#727E8F" size={23} />
                     </span>
                 </div>
-                <div className="home-pending-order-loc mt-2">
+                <div className={classNames(styles.orderLoc, "mt-2")}>
                     <span>From {from} | 20 mins ago</span>
                     <span>To {to}</span>
                 </div>
             </div>
             <div className="d-flex justify-content-between align-items-center mt-4">
-                <span className="home-pending-order-price">₦{price}</span>
+                <span className={styles.price}>₦{price}</span>
                 <span
-                    className="home-pending-order-status px-3 py-1 rounded-pill"
+                    className={classNames(styles.status, "px-3 py-1 rounded-pill")}
                     style={getOrderStyle(status)}
                 >
                     {status}

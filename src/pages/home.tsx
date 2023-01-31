@@ -21,6 +21,10 @@ import { orderEmpty } from "../../public/img";
 import OrderDetailsModal from "../components/OrderDetailsModal";
 import Image from "next/image";
 import { withAuthRequired } from "../hocs/withAuthRequired";
+import dashboardStyles from "../components/Dashboard.module.scss";
+import commonStyles from "../components/common.module.scss";
+import classNames from "classnames";
+import styles from "../styles/pages/Home.module.scss";
 
 const HomePage = () => {
     // const ref = useRef(null);
@@ -72,13 +76,13 @@ const HomePage = () => {
     // };
 
     return (
-        <Dashboard title="Home" useOldFonts>
-            <div className="main-container">
+        <Dashboard title="Home">
+            <div className={dashboardStyles.mainContainer}>
                 <div className="dashboard-subcontainer px-md-4 px-2 mt-4">
-                    <div className="dashboard-title-container">
-                        <div className="dashboard-title"> Welcome back, Assurance 🌤</div>
-                        <div className="dashboard-subtitle mt-2">
-                            <div className="tag-line">
+                    <div>
+                        <div className={styles.dashboardTitle}> Welcome back, Assurance 🌤</div>
+                        <div className={classNames(styles.subtitle, "mt-2")}>
+                            <div className={styles.tagLine}>
                                 Here is what{"'"}s happening with your business today!
                             </div>
                             <DateDropdown
@@ -86,13 +90,14 @@ const HomePage = () => {
                                 setFromDate={setFromDate}
                                 toDate={toDate}
                                 setToDate={setToDate}
+                                fullWidthOnMobile
                             />
                         </div>
                     </div>
                 </div>
 
                 <div className="px-md-4 px-2 pt-4 pb-4">
-                    <div className="total-rating-container">
+                    <div className={dashboardStyles.totalRatingContainer}>
                         <div className="row px-md-4 px-2 py-4">
                             <div className="col-lg-4 px-md-3">
                                 <RatingCard
@@ -123,11 +128,11 @@ const HomePage = () => {
                 </div>
 
                 <div className="px-md-4 px-2 pb-4">
-                    <div className="home-pending-orders-container p-md-4 p-2">
+                    <div className={classNames(styles.pendingOrdersContainer, "p-md-4 p-2")}>
                         <div className="d-md-flex justify-content-between">
                             <Dropdown className="d-inline mx-2 border-0">
                                 <Dropdown.Toggle as={CustomToggle} id="dropdown-autoclose-true">
-                                    <div className="home-pending-orders-title">
+                                    <div className={styles.pendingOrdersTitle}>
                                         <span>Pending Orders (0)</span>
                                         <span>
                                             <GoChevronDown />
@@ -136,16 +141,31 @@ const HomePage = () => {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu className="p-2">
-                                    <Dropdown.Item className="drop-menu-item py-3">
+                                    <Dropdown.Item
+                                        className={classNames(
+                                            commonStyles.dropdownMenuItem,
+                                            "py-3",
+                                        )}
+                                    >
                                         Pending Orders (0)
                                     </Dropdown.Item>
-                                    <Dropdown.Item className="drop-menu-item py-3">
+                                    <Dropdown.Item
+                                        className={classNames(
+                                            commonStyles.dropdownMenuItem,
+                                            "py-3",
+                                        )}
+                                    >
                                         New Orders (0)
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                             <div className="d-md-flex">
-                                <div className="home-pending-search-input mt-3 mt-md-0 mb-2 mb-md-0">
+                                <div
+                                    className={classNames(
+                                        styles.pendingSearchInput,
+                                        "mt-3 mt-md-0 mb-2 mb-md-0",
+                                    )}
+                                >
                                     <span>
                                         <ImSearch size={15} color="#A3A3C2" />
                                     </span>
@@ -156,28 +176,28 @@ const HomePage = () => {
                                         onChange={handleSearch}
                                     />
                                 </div>
-                                {/* <div className="home-pending-filter-oders mt-3 mt-md-0 mb-2 mb-md-0">
-                                    <FilterOrdersPanel setStatus={setStatus} setSearchFromDate={setSearchFromDate} setSearchToDate={setSearchToDate} page="orders"/>
-                                </div> */}
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <div className="home-pending-vertical mx-3 d-md-block d-none" />
+                                    <div
+                                        className={classNames(
+                                            styles.homePendingVertical,
+                                            "mx-3 d-md-block d-none",
+                                        )}
+                                    />
                                     <div className="d-flex">
                                         <div
-                                            className={
-                                                activeView === "grid"
-                                                    ? "home-pending-order-grid-view active"
-                                                    : "home-pending-order-grid-view"
-                                            }
+                                            className={classNames(
+                                                styles.pendingOrderGridView,
+                                                activeView === "grid" && styles.active,
+                                            )}
                                             onClick={() => setActiveView("grid")}
                                         >
                                             <BsGridFill color="#0F112B" size={20} />
                                         </div>
                                         <div
-                                            className={
-                                                activeView === "list"
-                                                    ? "home-pending-order-list-view active"
-                                                    : "home-pending-order-list-view"
-                                            }
+                                            className={classNames(
+                                                styles.pendingOrderListView,
+                                                activeView === "list" && styles.active,
+                                            )}
                                             onClick={() => setActiveView("list")}
                                         >
                                             <FcMenu size={22} />
@@ -187,7 +207,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         {activeView === "grid" ? (
-                            <div className="home-pending-order-grid-container">
+                            <div className={styles.gridContainer}>
                                 {orders.length > 0 ? (
                                     <div className="row">
                                         {orders
@@ -204,7 +224,7 @@ const HomePage = () => {
                                     </div>
                                 ) : (
                                     <div className="row py-3">
-                                        <div className="col-12 py-5 home-pending-order-empty">
+                                        <div className={classNames(styles.empty, "col-12 py-5")}>
                                             <div>
                                                 <Image
                                                     src={orderEmpty}
@@ -220,7 +240,7 @@ const HomePage = () => {
                                 )}
                             </div>
                         ) : (
-                            <div className="home-pending-order-list-container">
+                            <div className={styles.listContainer}>
                                 <Table
                                     items={orders.filter((order) => order.status === "New")}
                                     page="home"
@@ -229,7 +249,7 @@ const HomePage = () => {
                                 />
                             </div>
                         )}
-                        <div className="home-pending-order-loadmore-btn mt-5 mb-3">
+                        <div className={classNames(styles.loadMoreBtn, "mt-5 mb-3")}>
                             <button>Load more orders</button>
                         </div>
                     </div>

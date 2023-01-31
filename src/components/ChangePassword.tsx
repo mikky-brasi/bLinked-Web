@@ -1,7 +1,9 @@
+import classNames from "classnames";
 import Image from "next/image";
 import React, { useState } from "react";
 import validator from "validator";
 import { eye } from "../../public/img";
+import settingStyles from "@/styles/pages/Settings.module.scss";
 
 const SettingsChangePassword = () => {
     const [user, setUser] = useState({
@@ -143,8 +145,8 @@ const SettingsChangePassword = () => {
     return (
         <>
             <div className="py-4 settings-change-pass-main">
-                <div className="settings-user-form-title mt-4">Change password</div>
-                <div className="settings-user-form-subline mt-2">
+                <div className={classNames(settingStyles.formTitle, "mt-4")}>Change password</div>
+                <div className={classNames(settingStyles.formSubline, "mt-2")}>
                     Enter your current password to set a new one. Ensure it is personal to you
                     alone.
                 </div>
@@ -299,7 +301,12 @@ const SettingsChangePassword = () => {
                             Passwords do not match
                         </div>
                     </div>
-                    <div className="settings-user-form-action-btn d-flex justify-content-md-end justify-content-center my-5">
+                    <div
+                        className={classNames(
+                            settingStyles.formActionBtn,
+                            "d-flex justify-content-md-end justify-content-center my-5",
+                        )}
+                    >
                         <button>Discard</button>
                         <button onClick={handleClick}>Save</button>
                     </div>

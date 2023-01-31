@@ -1,0 +1,40 @@
+@use "@/styles/fonts";
+
+.logo {
+    @include fonts.font-adineue-PRO(fonts.$font-adineue-PRO-weight-bold);
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    background: #0d99f2;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+
+.nameLoc {
+    @include fonts.font-adineue-PRO;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    > span:nth-child(1) {
+        font-size: 14px;
+        color: #0f112b;
+    }
+
+    > span:nth-child(2) {
+        font-size: 13px;
+        text-transform: capitalize;
+        color: rgba(#5a5d82, 0.8);
+    }
+}
+
+.status {
+    @include fonts.font-adineue-PRO;
+    font-size: 14px;
+    text-transform: capitalize;
+    background-color: red;
+}

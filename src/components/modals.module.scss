@@ -1,0 +1,27 @@
+@use "@/styles/fonts";
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+}
+
+.title {
+    @include fonts.font-GT-Walsheim-PRO(fonts.$font-GT-Walsheim-PRO-weight-bold);
+    font-size: 22px;
+    margin: 0;
+}
+
+.close {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    background: rgba(56, 66, 176, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    color: #3842b0;
+}
+

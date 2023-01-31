@@ -13,9 +13,12 @@ import {
     loginVectorA,
     validemail,
 } from "../../public/img";
-import bLinkedLogo from "../../public/landing/bLinkedLogo.svg";
+import bLinkedLogo from "../../public/img/bLinkedLogo.svg";
 import { useGoogleLoginHandler } from "../modules/google-oauth/useGoogleLoginHandler";
 import Image from "next/image";
+import styles from "@/styles/pages/SignIn.module.scss";
+import authStyles from "@/styles/shared/auth.module.scss";
+import classNames from "classnames";
 
 const SignInPage = () => {
     const router = useRouter();
@@ -80,9 +83,9 @@ const SignInPage = () => {
     const handleGoogleLogin = useGoogleLoginHandler?.();
 
     return (
-        <div className="auth-main apply-old-fonts">
+        <div className={authStyles.wrapper}>
             <div className="row w-100">
-                <div className="col-lg-8 signin-comp-a">
+                <div className={classNames(styles.containerA, "col-lg-8")}>
                     <div className="d-flex justify-content-center">
                         <Image
                             src={bLinkedLogo}
@@ -91,13 +94,13 @@ const SignInPage = () => {
                             style={{ maxHeight: "150px" }}
                         />
                     </div>
-                    <div className="signin-title">Welcome back to bLinked, 👏🏽</div>
-                    <div className="signin-subcontainer px-md-5 mt-5">
-                        <div className="signin-with-google px-md-3">
+                    <div className={styles.containerATitle}>Welcome back to bLinked, 👏🏽</div>
+
+                    <div className={classNames(styles.subContainer, "px-md-5 mt-5")}>
+                        <div className={classNames(styles.signInWithGoogle, "px-md-3")}>
                             <div className="shadow-sm">
                                 <Image src={google} alt="" />
                             </div>
-
                             <button
                                 className="w-100"
                                 onClick={handleGoogleLogin}
@@ -106,15 +109,16 @@ const SignInPage = () => {
                                 Sign in with Google
                             </button>
                         </div>
-
-                        <div className="signin-with-email">
+                        <div className={styles.signInWithEmailDivider}>
                             <div></div>
-                            <div className="mx-4">Or, sign in with your email</div>
+                            <div className={classNames(styles.signInWithEmailDividerText, "mx-4")}>
+                                Or, sign in with your email
+                            </div>
                             <div></div>
                         </div>
 
-                        <div className="row">
-                            <div className="col-lg-12 auth-input-container">
+                        <div className={classNames(styles.subContainerItem, "row")}>
+                            <div className={classNames(authStyles.inputContainer, "col-lg-12")}>
                                 <div
                                     className={
                                         userFocus.email
@@ -133,7 +137,9 @@ const SignInPage = () => {
                                             className="img-fluid"
                                         />
                                     </div>
+
                                     <label>Email</label>
+
                                     <input
                                         type="text"
                                         className="w-100"
@@ -152,6 +158,7 @@ const SignInPage = () => {
                                     />
                                 </div>
                             </div>
+
                             <div
                                 className={
                                     userErr.email
@@ -161,7 +168,8 @@ const SignInPage = () => {
                             >
                                 Enter a valid email address
                             </div>
-                            <div className="col-lg-12 auth-input-container">
+
+                            <div className={classNames(authStyles.inputContainer, "col-lg-12")}>
                                 <div
                                     className={
                                         userFocus.password
@@ -175,11 +183,13 @@ const SignInPage = () => {
                                         <Image
                                             src={passwordType === "password" ? eye : hiddenEye}
                                             alt="Eye"
-                                            className="img-fluid pointer"
+                                            className={classNames(styles.eyeIcon, "img-fluid")}
                                             onClick={handlePassType}
                                         />
                                     </div>
+
                                     <label>Password</label>
+
                                     <input
                                         type={passwordType}
                                         className="w-100"
@@ -200,19 +210,25 @@ const SignInPage = () => {
                             </div>
                         </div>
 
-                        <div className="signin-with-email-btn px-md-3">
+                        <div className={classNames(styles.signInWithEmailBtnContainer, "px-md-3")}>
                             <button className="w-100" onClick={handleLogin}>
                                 Log in
                             </button>
                         </div>
-                        <div className="signin-forgot-password px-3" onClick={handleForgot}>
+
+                        <div
+                            className={classNames(styles.forgotPassword, "px-3")}
+                            onClick={handleForgot}
+                        >
                             Forgot your password?
                         </div>
-                        <div className="signin-create-ac mt-4 px-3">
+
+                        <div className={classNames(styles.createAccount, "mt-4 px-3")}>
                             Don’t have an account yet?{" "}
                             <span onClick={handleCreateAC}>Create account</span>
                         </div>
-                        <div className="signin-footer px-3 mb-5">
+
+                        <div className={classNames(styles.signInFooter, "px-3 mb-5")}>
                             <div>Help</div>
                             <div>Terms & Conditions</div>
                             <div>Privacy Policy</div>
@@ -220,33 +236,39 @@ const SignInPage = () => {
                     </div>
                 </div>
 
-                <div className="col-lg-4 px-5 py-5 signin-comp-b">
+                <div className={classNames(styles.containerB, "col-lg-4 px-5 py-5")}>
                     <div>
                         <div>
                             <Image src={partical5} alt="" className="img-fluid" />
                         </div>
-                        <div className="signin-comp-b-title mt-5">
+
+                        <div className={classNames(styles.containerBTitle, "mt-5")}>
                             Sell fast, sell more - grow your business.
                         </div>
-                        <p className="signin-comp-b-desc mt-4">
+
+                        <p className={classNames(styles.containerBDesc, "mt-4")}>
                             Manage your inventory accross multiple sales channels, collect all types
                             of payments and analyze your sales with one tool.
                         </p>
                     </div>
 
-                    <div className="signin-vector">
+                    <div className={styles.vector}>
                         <div>
                             <Image src={loginVectorA} alt="Login" className="img-fluid" />
                         </div>
+
                         <div>
                             <Image src={partical} alt="" className="img-fluid" />
                         </div>
+
                         <div>
                             <Image src={partical2} alt="" className="img-fluid" />
                         </div>
+
                         <div>
                             <Image src={partical3} alt="" className="img-fluid" />
                         </div>
+
                         <div>
                             <Image src={partical4} alt="" className="img-fluid" />
                         </div>

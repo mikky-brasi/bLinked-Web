@@ -1,5 +1,7 @@
+import classNames from "classnames";
 import React from "react";
 import { Dropdown } from "react-bootstrap";
+import styles from "./AgentDropdown.module.scss";
 
 const AgentDropdownActions = ["Edit", "Suspend", "Remove"] as const;
 type AgentDropdownAction = (typeof AgentDropdownActions)[number];
@@ -22,19 +24,22 @@ export default function AgentDropdown({
     };
 
     return (
-        <div className="agent-dropdown">
+        <div className={styles.wrapper}>
             <Dropdown.Item
-                className="drop-menu-item py-3"
+                className={classNames(styles.menuItem, "py-3")}
                 onClick={() => handleClick("Edit")}
                 style={{ color: "#3842b0" }}
             >
                 Edit Agent
             </Dropdown.Item>
-            <Dropdown.Item className="drop-menu-item py-3" onClick={() => handleClick("Suspend")}>
+            <Dropdown.Item
+                className={classNames(styles.menuItem, "py-3")}
+                onClick={() => handleClick("Suspend")}
+            >
                 Suspend Agent
             </Dropdown.Item>
             <Dropdown.Item
-                className="drop-menu-item py-3"
+                className={classNames(styles.menuItem, "py-3")}
                 onClick={() => handleClick("Remove")}
                 style={{ color: "#F00" }}
             >

@@ -1,0 +1,38 @@
+@use "@/styles/fonts";
+
+.wrapper {
+    width: 49.65%;
+    color: #5a5d82;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 76px;
+    margin-top: 24px;
+
+    @media only screen and (max-width: 991px) {
+        width: auto;
+        display: block;
+    }
+}
+
+.contentA {
+    @include fonts.font-adineue-PRO;
+    font-size: 14px;
+    color: #5a5d82;
+}
+
+.contentALink {
+    @extend .contentA;
+    cursor: pointer;
+    color: #3842b0;
+}
+
+.contentB {
+    @include fonts.font-adineue-PRO;
+    font-size: 14px;
+    display: flex;
+
+    > div:nth-child(1),
+    > div:nth-child(3) {
+        cursor: pointer;
+    }
+}

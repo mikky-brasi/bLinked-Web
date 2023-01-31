@@ -14,6 +14,9 @@ import order from "../mockData/orders.json";
 // Helpers
 import { filterOrders } from "../helpers/filterOrders";
 import { withAuthRequired } from "../hocs/withAuthRequired";
+import dashboardStyles from "../components/Dashboard.module.scss";
+import orderStyles from "../styles/pages/Orders.module.scss";
+import classNames from "classnames";
 
 const OrdersPage = () => {
     const [show, setShow] = useState(false);
@@ -29,10 +32,10 @@ const OrdersPage = () => {
     useEffect(() => setOrders(filterOrders(order, orderSearch, filter)), [orderSearch, filter]);
 
     return (
-        <Dashboard title="Orders" useOldFonts>
-            <div className="main-container">
+        <Dashboard title="Orders">
+            <div className={dashboardStyles.mainContainer}>
                 <div className="px-md-4 px-2 pb-4 mt-4">
-                    <div className="total-rating-container">
+                    <div className={dashboardStyles.totalRatingContainer}>
                         <div className="row px-4 py-4">
                             <div className="col-lg-3 px-md-3">
                                 <RatingCard
@@ -71,12 +74,12 @@ const OrdersPage = () => {
                 </div>
 
                 <div className="px-md-4 px-2 mb-4">
-                    <div className="orders-container py-4 ">
+                    <div className={classNames(orderStyles.ordersContainer, "py-4")}>
                         <div className="d-md-flex justify-content-between px-4">
                             <div className="d-md-flex">
                                 <FilterOrdersDropdown setFilter={setFilter} page="orders" />
 
-                                <div className="orders-orderSearch-input mt-md-0">
+                                <div className={classNames(orderStyles.searchInput, "mt-md-0")}>
                                     <span>
                                         <ImSearch size={15} color="#A3A3C2" />
                                     </span>
@@ -89,7 +92,12 @@ const OrdersPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="order-list-container mt-4 table-responsive">
+                        <div
+                            className={classNames(
+                                orderStyles.listContainer,
+                                "mt-4 table-responsive",
+                            )}
+                        >
                             <Table
                                 items={orders}
                                 page="orders"
@@ -97,21 +105,26 @@ const OrdersPage = () => {
                                 setItemStatus={setItemStatus}
                             />
                         </div>
-                        <div className="order-pagination-container px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
+                        <div
+                            className={classNames(
+                                orderStyles.paginationContainer,
+                                "px-md-4 d-flex flex-md-row flex-column justify-content-between align-items-center",
+                            )}
+                        >
                             <div className="my-2">Showing 9 of 290 agents</div>
                             <div className="d-md-flex">
                                 <div className="d-flex align-items-center">
-                                    <div className="order-prev">
+                                    <div className={orderStyles.prev}>
                                         <BiChevronLeft />
                                     </div>
-                                    <div className="order-page mx-2">
-                                        <span className="active">1</span>
+                                    <div className={classNames(orderStyles.page, "mx-2")}>
+                                        <span className={orderStyles.activePageSpan}>1</span>
                                         <span>2</span>
                                         <span>3</span>
                                         <span>...</span>
                                         <span>6</span>
                                     </div>
-                                    <div className="order-next">
+                                    <div className={orderStyles.next}>
                                         <BiChevronRight />
                                     </div>
                                 </div>
@@ -134,12 +147,7 @@ const OrdersPage = () => {
 
                 <div className="px-md-4 px-2 mb-4"></div>
 
-                <OrderDetailsModal
-                    show={show}
-                    setShow={setShow}
-                    itemStatus={itemStatus}
-                    setItemStatus={setItemStatus}
-                />
+                <OrderDetailsModal show={show} setShow={setShow} itemStatus={itemStatus} />
             </div>
         </Dashboard>
     );
